@@ -18,7 +18,7 @@ module MDL
     end
 
     def details
-      details_fields.map do |field|
+      details_with_actual_collections.map do |field|
         val = solr_doc[field[:key]]
         vals = field_values([val].flatten, field[:key], field[:facet])
         map_details(vals, field[:label], field[:delimiter])
@@ -26,6 +26,27 @@ module MDL
     end
 
     private
+
+    # Many users add Contributing org details in the OAI collection name field.
+    # We don't want to show these collections, because they are redundant with
+    # contributing org. So, remove collection if these two field values are the same
+    def details_with_actual_collections()
+      details_fields.select do |field|
+        good_collection(field, solr_doc) || !is_collection(field)
+      end
+    end
+
+    def is_collection(field)
+      field[:key] == 'collection_name_ssi'
+    end
+
+    def good_collection(field, doc)
+      is_collection(field) && !same_contrib_and_collection?(doc)
+    end
+
+    def same_contrib_and_collection?(doc)
+      doc['collection_name_ssi'] == doc['contributing_organization_ssi']
+    end
 
     def map_details(values, label, delimiter = nil, facet = nil)
       if values != [{}]
