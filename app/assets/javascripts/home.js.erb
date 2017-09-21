@@ -15,6 +15,11 @@ $( document ).on('turbolinks:load', function() {
   $('.home-page .blacklight-keyword_ssim h3 a').text('Browse By Keyword')
   $('.home-page .blacklight-physical_format_ssi h3 a').text('Browse By Format')
 
+$('.home-page .more_facets_link').each(function() {
+  var $this = $(this);
+  var _href = $this.attr("href");
+  $this.attr("href", _href + '?facet.sort=index');
+});
 
   $('.home-page .more_facets_link').removeClass('more_facets_link');
 });
