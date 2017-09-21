@@ -10,11 +10,11 @@ module MdlBlacklightHelper
   end
 
   def json_result_link
-    link_to(raw('<div class="icon-json pull-right"></div>'), current_search_json, {class: 'json-link'})
+    link_to(raw('<div class="icon-json pull-right"><span class="sr-only">Download JSON</span></div>'), current_search_json, {class: 'json-link'})
   end
 
   def json_page_link
-    link_to(raw('<div class="icon-json text-center"></div>'), "#{uri.scheme}://#{uri.host}:#{uri.port}/#{uri.path}.json", {class: 'json-link'})
+    link_to(raw('<div class="icon-json text-center"><span class="sr-only">Download JSON</span></div>'), "#{uri.scheme}://#{uri.host}:#{uri.port}/#{uri.path}.json", {class: 'json-link'})
   end
 
   def uri
