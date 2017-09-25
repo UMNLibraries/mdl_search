@@ -4,3 +4,4 @@ en:
     search:
       fields:
         table_ssim: "Table of Contents"
+	  start_over: 'Home'
