@@ -468,6 +468,54 @@ a.remove:hover {
 	margin-top: 10px;
 }
 
+.home-page .panel-default > .panel-heading {
+	color: #ffffff;
+	text-shadow: 2px 2px #333333;
+}
+
+.home-page .panel-title > a:hover {
+	color: #ffffff;
+}
+
+.blacklight-collection_name_ssi .panel-default > .panel-heading {
+	background-color: #0e76bc;
+}
+
+.blacklight-keyword_ssim .panel-default > .panel-heading {
+	background-color: #a55e00;
+}
+
+.blacklight-physical_format_ssi .panel-default > .panel-heading {
+	background-color: #468031;
+}
+
+.blacklight-collection_name_ssi .panel-heading.collapse-toggle .panel-title::after {
+	color: #0e76bc;
+	text-shadow: none;
+}
+
+.blacklight-keyword_ssim .panel-heading.collapse-toggle .panel-title::after {
+	color: #a55e00;
+	text-shadow: none;
+}
+
+.blacklight-physical_format_ssi .panel-heading.collapse-toggle .panel-title::after {
+	color: #468031;
+	text-shadow: none;
+}
+
+.home-page .blacklight-collection_name_ssi .facet-content {
+	background-color: #f3ffff;
+}
+
+.home-page .blacklight-keyword_ssim .facet-content {
+	background-color: #fffff5;
+}
+
+.home-page .blacklight-physical_format_ssi .facet-content {
+	background-color: #fffffd;
+}
+
 .input-group-btn {
 	width: auto;
 }
