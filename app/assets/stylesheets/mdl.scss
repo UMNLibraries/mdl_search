@@ -477,16 +477,16 @@ a.remove:hover {
 	color: #ffffff;
 }
 
-.blacklight-collection_name_ssi .panel-default > .panel-heading {
-	background-color: #0e76bc;
+.blacklight-collection_name_ssi .panel-heading {
+	background-color: #0e76bc !important;
 }
 
-.blacklight-keyword_ssim .panel-default > .panel-heading {
-	background-color: #a55e00;
+.blacklight-keyword_ssim .panel-heading {
+	background-color: #a55e00 !important;
 }
 
-.blacklight-physical_format_ssi .panel-default > .panel-heading {
-	background-color: #468031;
+.blacklight-physical_format_ssi .panel-heading {
+	background-color: #468031 !important;
 }
 
 .blacklight-collection_name_ssi .panel-heading.collapse-toggle .panel-title::after {
