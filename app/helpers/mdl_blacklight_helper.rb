@@ -36,4 +36,22 @@ module MdlBlacklightHelper
   def sidebar_classes
     'col-md-12 col-sm-12 col-lg-3'
   end
+
+  def link_to_document(doc, field_or_opts = nil, opts={:counter => nil})
+    if field_or_opts.is_a? Hash
+      opts = field_or_opts
+    else
+      field = field_or_opts
+    end
+
+    field ||= document_show_link_field(doc)
+
+    if field == :title_tesi
+      label = index_presenter(doc).field_value field
+    else
+      label = index_presenter(doc).label field
+    end
+
+    link_to raw(label), url_for_document(doc), document_link_params(doc, opts)
+  end
 end
