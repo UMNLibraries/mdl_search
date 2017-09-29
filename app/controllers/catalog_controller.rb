@@ -48,10 +48,6 @@ class CatalogController < ApplicationController
       end
     else
       @response, @document_list = run_search!
-      @document_list.map do |doc|
-        HighlightMapper.new(doc: doc,
-                            highlights: @response['highlighting']).highlighted
-      end
     end
     super
   end
@@ -175,10 +171,13 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_index_field 'creator_tesi', label: 'Creator',:highlight => true
     config.add_index_field 'dat_tesi', label: 'Date Created',:highlight => true
+    config.add_index_field 'keyword_tesi', label: 'Keywords',:highlight => true
     config.add_index_field 'description_ts', label: 'Description',:highlight => true
     config.add_index_field 'contributing_organization_tesi', label: 'Contributing Institution',:highlight => true
     config.add_index_field 'type_tesi', label: 'Type',:highlight => true
     config.add_index_field 'physical_format_tesi', label: 'Format',:highlight => true
+    config.add_index_field 'transcription_tesi', label: 'Transcription',:highlight => true
+
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
