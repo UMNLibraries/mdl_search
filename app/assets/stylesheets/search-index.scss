@@ -39,3 +39,17 @@
 .documents-list em {
   font-weight: bold;
 }
+
+.blacklight-catalog-index {
+  #sidebar {
+    .blacklight-topic_ssim {
+      display: none;
+    }
+    .blacklight-subject_ssim {
+      display: none;
+    }
+    .filter-contributing_organization_ssi {
+      display: none;
+    }
+  }
+}
