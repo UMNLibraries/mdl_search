@@ -83,9 +83,9 @@ module MDL
 
     def details_fields
       [
+        {key: 'contributor_ssim', label: 'Contributor', delimiter: ', ', facet: true},
         {key: 'title_ssi', label: 'Title'},
         {key: 'creator_ssim', label: 'Creator', delimiter: ', ', facet: true},
-        {key: 'contributor_ssim', label: 'Contributor', delimiter: ', ', facet: true},
         {key: 'contributing_organization_ssi', label: 'Contributing Institution', facet: true},
         {key: 'description_ts', label: 'Description'},
         {key: 'dat_ssi', label: 'Date Created'},
@@ -93,7 +93,7 @@ module MDL
         {key: 'dimensions_ssi', label: 'Dimensions', facet: true},
         {key: 'topic_ssim', label: 'Minnesota Reflections Topic', facet: true},
         {key: 'type_ssi', label: 'Type', facet: true},
-        {key: 'physical_format_ssi', label: 'Format', facet: true},
+        {key: 'physical_format_ssi', label: 'Physical Format', facet: true},
         {key: 'formal_subject_ssim', label: 'Library of Congress Subject Headings', facet: true},
         {key: 'subject_ssim', label: 'Keywords', facet: true},
         {key: 'city_ssim', delimiter: ', ', label: 'City/Township', facet: true},
@@ -107,7 +107,7 @@ module MDL
         {key: 'local_identifier_ssi', label: 'Local Identifier'},
         {key: 'identifier_ssi', label: 'MDL Identifier'},
         {key: 'fiscal_sponsor_ssi', label: 'Fiscal Sponsor'},
-        {key: 'collection_name_ssi', label: 'Collection Name', facet: true},
+        {key: 'parent_collection_name_ssi', label: 'Collection Name', facet: true},
         {key: 'contact_information_ssi', label: 'Contact information'},
         {key: 'rights_ssi', label: 'Rights'},
         {key: 'collection_description_tesi', label: 'Collection Description'}
