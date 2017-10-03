@@ -83,10 +83,10 @@ module MDL
 
     def details_fields
       [
-        {key: 'contributor_ssim', label: 'Contributor', delimiter: ', ', facet: true},
+        {key: 'contributing_organization_ssi', label: 'Contributing Institution', facet: true},
         {key: 'title_ssi', label: 'Title'},
         {key: 'creator_ssim', label: 'Creator', delimiter: ', ', facet: true},
-        {key: 'contributing_organization_ssi', label: 'Contributing Institution', facet: true},
+        {key: 'contributor_ssim', label: 'Contributor', delimiter: ', ', facet: true},
         {key: 'description_ts', label: 'Description'},
         {key: 'dat_ssi', label: 'Date Created'},
         {key: 'publishing_agency_ssi', label: 'Publishing Agency', facet: true},
