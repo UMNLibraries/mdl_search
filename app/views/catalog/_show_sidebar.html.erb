@@ -1,14 +1,4 @@
 <div class="panel feedback-panel"><a href="https://mndigital.org/about/contact-us"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Send us your feedback about our new website!</a></div>
-
-<% if @document['keyword_ssim'] %>
-  <div class="panel panel-default keywords-panel">
-    <div class="panel-heading">Keywords</div>
-    <div class="panel-body">
-      <%= facet_links 'keyword_ssim', @document['keyword_ssim'] %>
-    </div>
-  </div>
-<% end %>
-
 <% unless @document.more_like_this.empty? %>
   <div class="panel panel-default more-like-this">
     <div class="panel-heading">Related Items</div>
