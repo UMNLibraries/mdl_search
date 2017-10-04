@@ -97,7 +97,6 @@ module MDL
         {key: 'formal_subject_ssim', label: 'Library of Congress Subject Headings', facet: true},
         {key: 'subject_ssim', label: 'Keywords', facet: true},
         {key: 'city_ssim', delimiter: ', ', label: 'City/Township', facet: true},
-        {key: 'district_ssi', label: 'District', facet: true},
         {key: 'county_ssim', delimiter: ', ', label: 'County', facet: true},
         {key: 'state_ssi', label: 'State', facet: true},
         {key: 'country_ssi', label: 'Country', facet: true},
