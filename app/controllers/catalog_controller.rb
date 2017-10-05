@@ -251,12 +251,12 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
     config.add_sort_field 'score desc, dat_sort desc, title_sort asc', label: 'Relevance'
-    config.add_sort_field 'title_sort asc, dat_sort asc', label: 'Title-ascending'
-    config.add_sort_field 'title_sort desc, dat_sort desc', label: 'Title-descending'
-    config.add_sort_field 'creator_sort asc, title_sort asc', label: 'Creator-ascending'
-    config.add_sort_field 'creator_sort desc, title_sort desc', label: 'Creator-descending'
-    config.add_sort_field 'dat_ssi asc, title_sort asc', label: 'Date-ascending'
-    config.add_sort_field 'dat_ssi desc, title_sort desc', label: 'Date-descending'
+    config.add_sort_field 'title_sort asc, dat_sort asc', label: 'Title: A to Z'
+    config.add_sort_field 'title_sort desc, dat_sort desc', label: 'Title: Z to A'
+    config.add_sort_field 'creator_sort asc, title_sort asc', label: 'Creator: A to Z'
+    config.add_sort_field 'creator_sort desc, title_sort desc', label: 'Creator: Z to A'
+    config.add_sort_field 'dat_ssi asc, title_sort asc', label: 'Date: Oldest First'
+    config.add_sort_field 'dat_ssi desc, title_sort desc', label: 'Date: Newest First'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
