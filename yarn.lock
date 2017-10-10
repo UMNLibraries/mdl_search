@@ -1216,9 +1216,9 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-"borealis-pdf@git+https://github.com/UMNLibraries/borealis-pdf.git#6c74c8978c8102e":
+"borealis-pdf@git+https://github.com/UMNLibraries/borealis-pdf.git#bcb052a3e7660d0ac0387568":
   version "0.1.0"
-  resolved "git+https://github.com/UMNLibraries/borealis-pdf.git#6c74c8978c8102e"
+  resolved "git+https://github.com/UMNLibraries/borealis-pdf.git#bcb052a3e7660d0ac0387568"
   dependencies:
     history "^4.6.1"
     prop-types "^15.5.10"
@@ -4376,6 +4376,10 @@ openseadragon@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/openseadragon/-/openseadragon-2.2.1.tgz#5f8ef0fdb7e0aa79e0fb0d927701466cf816bb2f"
 
+openseadragon@^2.3.0:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/openseadragon/-/openseadragon-2.3.1.tgz#efdcfee19d8b3c46d00d7f7dda787c7057f68364"
+
 opn@4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/opn/-/opn-4.0.2.tgz#7abc22e644dff63b0a96d5ab7f2790c0f01abc95"
@@ -5224,18 +5228,18 @@ rc@^1.1.7:
   dependencies:
     immutable "^3.8.1"
 
-"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#f0df65568475":
+"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#588a4e5ed816":
   version "0.1.0"
-  resolved "git+https://github.com/UMNLibraries/react-borealis.git#f0df65568475"
+  resolved "git+https://github.com/UMNLibraries/react-borealis.git#588a4e5ed816"
   dependencies:
     babel-polyfill "^6.23.0"
-    borealis-pdf "git+https://github.com/UMNLibraries/borealis-pdf.git#6c74c8978c8102e"
+    borealis-pdf "git+https://github.com/UMNLibraries/borealis-pdf.git#bcb052a3e7660d0ac0387568"
     development "0.0.6"
     history "3.0.0"
     openseadragon "^2.2.1"
     prop-types "^15.5.10"
     react "^15.4.1"
-    react-openseadragon "git+https://github.com/UMNLibraries/react-openseadragon.git#b6805c1cc"
+    react-openseadragon "git+https://github.com/UMNLibraries/react-openseadragon.git#76d04c26a8a6a"
     react-router "4.1.1"
     react-router-dom "^4.1.1"
 
@@ -5265,13 +5269,13 @@ react-dom@^15.3.2, react-dom@^15.4.1:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
-"react-openseadragon@git+https://github.com/UMNLibraries/react-openseadragon.git#b6805c1cc":
+"react-openseadragon@git+https://github.com/UMNLibraries/react-openseadragon.git#76d04c26a8a6a":
   version "0.1.0"
-  resolved "git+https://github.com/UMNLibraries/react-openseadragon.git#b6805c1cc"
+  resolved "git+https://github.com/UMNLibraries/react-openseadragon.git#76d04c26a8a6a"
   dependencies:
     development "0.0.6"
     history "^4.6.1"
-    openseadragon "^2.2.1"
+    openseadragon "^2.3.0"
     react "^15.4.2"
     react-dom "^15.4.1"
     react-router "4.1.1"

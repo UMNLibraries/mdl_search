@@ -14,17 +14,23 @@ module MDL
         'label' => 'Image',
         'include_controls' => true,
         'sequenceMode' => true,
-        'showReferenceStrip' => true,
+        'showReferenceStrip' => false,
         'defaultZoomLevel' => 0,
         'minZoomLevel' => 0,
-        'tileSources' => assets.map { |img| img.src },
+        'containerColumns' => 9,
+        'sidebarColumns' => 3,
+        'tileSources' => assets.map(&:src),
+        'transcripts' => assets.map do |img|
+          img.transcripts if img.transcripts != ''
+        end.flatten.compact.uniq,
+        'thumbnails' => assets.map(&:thumbnail),
+        'pages' => assets.map(&:title),
         'transcript' => {
           'texts' => assets.map do |img|
             img.transcripts if img.transcripts != ''
           end.flatten.compact.uniq,
           'label' => 'Image'
-        },
-        'tocs' => assets.map { |img| img.title }
+        }
       }
     end
   end
