@@ -35,7 +35,7 @@
     "precss": "^2.0.0",
     "rails-erb-loader": "^5.1.0",
     "react": "15.4.1",
-    "react-borealis": "git+https://github.com/UMNLibraries/react-borealis.git#647049256f38",
+    "react-borealis": "git+https://github.com/UMNLibraries/react-borealis.git#c33a89becd96",
     "react-citation": "git+https://github.com/UMNLibraries/react-citation.git#51682c87e55b",
     "react-dom": "15.4.1",
     "react_ujs": "^2.2.1",
