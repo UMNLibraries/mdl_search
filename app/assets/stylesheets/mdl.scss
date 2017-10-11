@@ -1,7 +1,7 @@
 
 /* Scott */
 
-/*  Dark blue: #0e76bc
+/*  Dark blue: #005da3
   Medium blue: #30aed0
   Light blue: #88c2e6
   Dark green: #468031
@@ -277,8 +277,8 @@ a.remove:hover {
 }
 
 .btn-primary {
-	background-color: #0e76bc;
-	border-color: #0e76bc;
+	background-color: #005da3;
+	border-color: #005da3;
 }
 
 .btn-primary:hover {
@@ -289,7 +289,7 @@ a.remove:hover {
 }
 
 .btn-link {
-	color: #0e76bc;
+	color: #005da3;
 }
 
 .close {
@@ -316,7 +316,7 @@ a.remove:hover {
 }
 
 .nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus, .nav-pills>li>a.active, .nav-pills>li>a.active:hover, .nav-pills>li>a.active:focus {
-	background-color: #0e76bc;
+	background-color: #005da3;
 	color: #fff;
 	text-decoration: none;
 }
@@ -484,7 +484,7 @@ a.remove:hover {
 }
 
 .home-page .panel-default .blacklight-collection_name_ssi {
-	border-color: #0e76bc;
+	border-color: #005da3;
 }
 
 .home-page .panel-default .blacklight-keyword_ssim {
@@ -496,8 +496,8 @@ a.remove:hover {
 }
 
 .home-page .blacklight-collection_name_ssi .panel-heading {
-	background-color: #0e76bc;
-	border-color: #0e76bc;
+	background-color: #005da3;
+	border-color: #005da3;
 }
 
 .home-page .blacklight-keyword_ssim .panel-heading {
@@ -511,7 +511,7 @@ a.remove:hover {
 }
 
 .home-page .blacklight-collection_name_ssi .panel-heading.collapse-toggle .panel-title::after {
-	color: #0e76bc;
+	color: #005da3;
 	text-shadow: none;
 }
 
@@ -601,7 +601,7 @@ a.remove:hover {
 }
 
 #sort-dropdown .dropdown-toggle, #per_page-dropdown .dropdown-toggle {
-	color: #0e76bc;
+	color: #005da3;
 }
 
 .search-widgets {
@@ -661,7 +661,7 @@ h3.document-title-heading {
 
 .pagination > li > a {
 	border: 1px solid #d3d4d7;
-	color: #0e76bc;
+	color: #005da3;
 }
 
 .pagination > li > a:hover {
@@ -740,6 +740,22 @@ h3.document-title-heading {
 	padding: 0;
 }
 
+.osd-sidebar {
+	background-color: #fff;
+	border: 1px solid #d3d4d7;
+	color: #231f20;
+	padding: 8px 4px;
+}
+
+.osd-sidebar ul {
+	margin: 0 0 4px 0;
+}
+
+.page-button.active {
+	background-color: #fff1d2;
+	border-radius: 4px;
+}
+
 .kaltura-player {
 	padding-top: 16px;
 }
@@ -793,7 +809,7 @@ dt, dd {
 }
 
 .borealis-thumbnail .active {
-	border: 1px solid #0e76bc;
+	border: 1px solid #005da3;
 }
 
 .detail-field-collectiondescription > .field-label {
