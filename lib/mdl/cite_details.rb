@@ -83,7 +83,7 @@ module MDL
 
     def details_fields
       [
-        {key: 'contributing_organization_ssi', label: 'Contributing Institution', facet: true},
+        {key: 'contributing_organization_ssi', label: 'Contributing Organization', facet: true},
         {key: 'title_ssi', label: 'Title'},
         {key: 'creator_ssim', label: 'Creator', delimiter: ', ', facet: true},
         {key: 'contributor_ssim', label: 'Contributor', delimiter: ', ', facet: true},
@@ -96,7 +96,7 @@ module MDL
         {key: 'physical_format_ssi', label: 'Physical Format', facet: true},
         {key: 'formal_subject_ssim', label: 'Library of Congress Subject Headings', facet: true},
         {key: 'subject_ssim', label: 'Keywords', facet: true},
-        {key: 'city_ssim', delimiter: ', ', label: 'City/Township', facet: true},
+        {key: 'city_ssim', delimiter: ', ', label: 'City or Township', facet: true},
         {key: 'county_ssim', delimiter: ', ', label: 'County', facet: true},
         {key: 'state_ssi', label: 'State', facet: true},
         {key: 'country_ssi', label: 'Country', facet: true},
