@@ -24,15 +24,33 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row browse">
       <div class="col-lg-4 col-md-12">
-        <%= render_facet_partials ['collection_name_ssi'] %>
+        <div class="topic">
+			<a href="/catalog/facet/topic_ssim?facet.sort=index">
+				<span class="browse-text-container">
+					<span class="browse-text">Browse by Topic</span>
+				</span>
+			</a>
+		</div>
       </div>
       <div class="col-lg-4 col-md-12">
-        <%= render_facet_partials ['topic_ssim'] %>
+        <div class="contributor">
+			<a href="/catalog/facet/collection_name_ssi?facet.sort=index">
+				<span class="browse-text-container">
+					<span class="browse-text">Browse by Contributor</span>
+				</span>
+			</a>
+		</div>
       </div>
       <div class="col-lg-4 col-md-12">
-        <%= render_facet_partials ['physical_format_ssi'] %>
+        <div class="format">
+			<a href="/catalog/facet/physical_format_ssi?facet.sort=index">
+				<span class="browse-text-container">
+					<span class="browse-text">Browse by Format</span>
+				</span>
+			</a>
+		</div>
       </div>
     </div>
   </div>
