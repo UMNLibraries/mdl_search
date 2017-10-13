@@ -470,14 +470,17 @@ a.remove:hover {
 
 .browse .topic {
 	background: #005da3 url("//www.mndigital.org/files/images/reflections/homepage-topic-new.jpg");
+	border-radius: 4px;
 }
 
 .browse .contributor {
 	background: #a55e00 url("//www.mndigital.org/files/images/reflections/homepage-collection-new.jpg");
+	border-radius: 4px;
 }
 
 .browse .format {
 	background: #468031 url("//www.mndigital.org/files/images/reflections/homepage-format.jpg");
+	border-radius: 4px;
 }
 
 .browse a {
@@ -584,6 +587,11 @@ a.remove:hover {
 
 .panel-title {
 	font-size: 20px;
+}
+
+#home_map {
+	border-radius: 4px;
+	margin-top: 16px;
 }
 
 /* End homepage styles */
