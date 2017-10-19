@@ -4,26 +4,21 @@
       display: none;
     }
   </style>
-  <div class="row home-page">
-    <div class="">
-      <div class="col-md-12">
-        <div class="home-panel-wrapper">
-          <div class="home-panel">
-            <div class="home-wrapper">
-              <div id="home-search">
-                <%= render_search_bar  %>
-              </div>
-              <div class="home-desc">
-                <strong><%= record_count %></strong> items from <strong><%= facet_count('contributing_organization_ssi') %></strong>
-                historical societies, libraries, archives, and cultural organizations across Minnesota
-				<br /><br />
-				<strong><a href="/?utf8=✓&search_field=all_fields&q=" style="font-size:120%;">Browse All</a></strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+	<div class="row home-page">
+		<div class="col-md-12">
+			<div class="home-wrapper">
+				<div id="home-search">
+					<%= render_search_bar  %>
+				</div>
+				<div class="home-desc">
+					<strong><%= record_count %></strong> items from <strong><%= facet_count('contributing_organization_ssi') %></strong>
+					historical societies, libraries, archives, and cultural organizations across Minnesota
+					<br /><br />
+					<strong><a href="/?utf8=✓&search_field=all_fields&q=" style="font-size:120%;">Browse All</a></strong>
+				</div>
+			</div>
+		</div>
+	</div>
     <div class="row browse">
       <div class="col-lg-4 col-md-12">
         <div class="topic">
