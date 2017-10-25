@@ -322,15 +322,19 @@ a.remove:hover {
 }
 
 .panel-default {
-	border-color: #d3d4d7;
+	border-color: #468031;
 }
 
 .panel-default > .panel-heading {
-	background-color: #ecedf0;
-	border-color: #d3d4d7;
-	color: #231f20;
+	background-color: #468031;
+	border-color: #468031;
+	color: #fff;
 	font-weight: bold;
 	text-transform: uppercase;
+}
+
+.panel-heading.collapse-toggle .panel-title::after {
+	color: #fff !important;
 }
 
 .modal-dialog {
@@ -473,15 +477,21 @@ a.remove:hover {
 /* End homepage styles */
 
 /* Search results page styles */
+
+.panel-group {
+	margin: -15px 0 0 0 !important;
+}
+
 .facets .facets-heading {
-	background: #468031;
+	/* background: #468031;
 	border-radius: 4px;
 	color: #fff !important;
 	font-weight: bold !important;
 	margin: 0 -15px;
 	padding: 8px;
 	text-align: center;
-	text-transform: uppercase;
+	text-transform: uppercase; */
+	display: none;
 }
 
 .facet-label {
