@@ -531,6 +531,14 @@ a.remove:hover {
 	color: #005da3;
 }
 
+.page_links .page-previous {
+	display: none;
+}
+
+.page_links .page-next {
+	display: none;
+}
+
 .search-widgets {
 	float: right;
 	text-align: right;
