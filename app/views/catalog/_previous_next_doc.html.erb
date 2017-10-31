@@ -4,11 +4,11 @@
   <div id='previousNextDocument' class='pagination-search-widgets'>
   <% if (@previous_document || @next_document) && !@hide_previous_next%>
       <div class="page_links">
-        <%= link_to_previous_document @previous_document %> |
+        <span class="page-previous"><%= link_to_previous_document @previous_document %> |</span>
 
-        <%= item_page_entry_info %> |
+        <%= item_page_entry_info %> results<span class="page-next"> |
 
-        <%= link_to_next_document @next_document %>
+        <%= link_to_next_document @next_document %></span>
       </div>
     <% end %>
     <% if current_search_session %>
