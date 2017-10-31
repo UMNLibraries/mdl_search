@@ -40,6 +40,18 @@ class CatalogController < ApplicationController
     search_results(params)
   end
 
+  # get search results from the solr index
+  def index
+    if params == {"controller"=>"catalog", "action"=>"index"}
+      @response, @document_list = Rails.cache.fetch("home_search", expires_in: 12.hours) do
+        run_search!
+      end
+    else
+      @response, @document_list = run_search!
+    end
+    super
+  end
+
   # overrides /blacklight/controllers/concerns/blacklight/catalog
   # add a param to allow the search history to be cleared on an item click
   # get a single document from the index
