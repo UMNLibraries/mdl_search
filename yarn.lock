@@ -1970,6 +1970,10 @@ decimal.js@7.2.3:
   version "7.2.3"
   resolved "https://registry.yarnpkg.com/decimal.js/-/decimal.js-7.2.3.tgz#6434c3b8a8c375780062fc633d0d2bbdb264cc78"
 
+decode-uri-component@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.0.tgz#eb3913333458775cb84cd1a1fae062106bb87545"
+
 deep-equal@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/deep-equal/-/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
@@ -2550,6 +2554,18 @@ faye-websocket@~0.11.0:
 fbjs@^0.8.1, fbjs@^0.8.4:
   version "0.8.14"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.14.tgz#d1dbe2be254c35a91e09f31f9cd50a40b2a0ed1c"
+  dependencies:
+    core-js "^1.0.0"
+    isomorphic-fetch "^2.1.1"
+    loose-envify "^1.0.0"
+    object-assign "^4.1.0"
+    promise "^7.1.1"
+    setimmediate "^1.0.5"
+    ua-parser-js "^0.7.9"
+
+fbjs@^0.8.16:
+  version "0.8.16"
+  resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
   dependencies:
     core-js "^1.0.0"
     isomorphic-fetch "^2.1.1"
@@ -5119,6 +5135,14 @@ prop-types@^15.5.4, prop-types@^15.5.7, prop-types@~15.5.7:
   dependencies:
     fbjs "^0.8.9"
 
+prop-types@^15.6.0:
+  version "15.6.0"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
 proto-list@~1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/proto-list/-/proto-list-1.2.4.tgz#212d5bfe1318306a420f6402b8e26ff39647a849"
@@ -5175,6 +5199,14 @@ query-string@^4.1.0:
     object-assign "^4.1.0"
     strict-uri-encode "^1.0.0"
 
+query-string@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-5.0.1.tgz#6e2b86fe0e08aef682ecbe86e85834765402bd88"
+  dependencies:
+    decode-uri-component "^0.2.0"
+    object-assign "^4.1.0"
+    strict-uri-encode "^1.0.0"
+
 querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
@@ -5228,9 +5260,9 @@ rc@^1.1.7:
   dependencies:
     immutable "^3.8.1"
 
-"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#c33a89becd96":
+"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#cf84b9ffba87":
   version "0.1.0"
-  resolved "git+https://github.com/UMNLibraries/react-borealis.git#c33a89becd96"
+  resolved "git+https://github.com/UMNLibraries/react-borealis.git#cf84b9ffba87"
   dependencies:
     babel-polyfill "^6.23.0"
     borealis-pdf "git+https://github.com/UMNLibraries/borealis-pdf.git#bcb052a3e7660d0ac0387568"
@@ -5239,7 +5271,8 @@ rc@^1.1.7:
     openseadragon "^2.2.1"
     prop-types "^15.5.10"
     react "^15.4.1"
-    react-openseadragon "git+https://github.com/UMNLibraries/react-openseadragon.git#c188fc10f887f"
+    react-dom "15.4.1"
+    react-openseadragon "git+https://github.com/UMNLibraries/react-openseadragon.git#12d1dc12b5d"
     react-router "4.1.1"
     react-router-dom "^4.1.1"
 
@@ -5269,17 +5302,21 @@ react-dom@^15.3.2, react-dom@^15.4.1:
     object-assign "^4.1.0"
     prop-types "~15.5.7"
 
-"react-openseadragon@git+https://github.com/UMNLibraries/react-openseadragon.git#c188fc10f887f":
-  version "0.1.0"
-  resolved "git+https://github.com/UMNLibraries/react-openseadragon.git#c188fc10f887f"
+"react-openseadragon@git+https://github.com/UMNLibraries/react-openseadragon.git#12d1dc12b5d":
+  version "0.2.0"
+  resolved "git+https://github.com/UMNLibraries/react-openseadragon.git#12d1dc12b5d"
   dependencies:
     development "0.0.6"
     history "^4.6.1"
     openseadragon "^2.3.0"
+    prop-types "^15.6.0"
+    query-string "^5.0.1"
     react "^15.4.2"
     react-dom "^15.4.1"
     react-router "4.1.1"
     react-router-dom "^4.1.1"
+    screenfull "^3.3.2"
+    whatwg-fetch "^2.0.3"
 
 react-router-dom@^4.1.1:
   version "4.1.1"
@@ -5737,6 +5774,10 @@ schema-utils@^0.3.0:
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-0.3.0.tgz#f5877222ce3e931edae039f17eb3716e7137f8cf"
   dependencies:
     ajv "^5.0.0"
+
+screenfull@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-3.3.2.tgz#a6adf3b3f5556da812725385880600f5b39fbf25"
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"
@@ -6574,7 +6615,7 @@ websocket-extensions@>=0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.1.tgz#76899499c184b6ef754377c2dbb0cd6cb55d29e7"
 
-whatwg-fetch@>=0.10.0:
+whatwg-fetch@>=0.10.0, whatwg-fetch@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-2.0.3.tgz#9c84ec2dcf68187ff00bc64e1274b442176e1c84"
 
