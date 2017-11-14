@@ -21,7 +21,7 @@ module MDL
     end
 
     def to_viewer
-      viewer = {
+      {
         'viewerColumnsSmall' => 'col-md-8',
         'sidebarColumnsLarge' => 'col-md-4',
         'viewerColumnsLarge' => 'col-md-9',
@@ -50,8 +50,6 @@ module MDL
           'label' => 'Image'
         }
       }
-      File.open('/mdl_search/pages.json', 'w') { |file| file.write(viewer.to_json) }
-      viewer
     end
   end
 end
