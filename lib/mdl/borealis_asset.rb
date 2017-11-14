@@ -21,7 +21,7 @@ module MDL
         id: id,
         collection: collection,
         transcripts: transcripts,
-        transcript: transcripts.join("\n"),
+        transcript: "#{title} \n #{transcripts.join("\n")}",
         title: title,
         assets: assets,
         thumbnail: thumbnail
