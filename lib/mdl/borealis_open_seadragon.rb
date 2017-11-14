@@ -6,25 +6,43 @@ module MDL
       'image'
     end
 
+    def pages
+      assets.map.with_index do |page, id|
+        page.to_h.merge(
+          'id' => id,
+          'viewer' => 'OSD_VIEWER',
+          'cdmCollection' => page.collection,
+          'cdmIdentifier' => page.id,
+          'infoURL' => ['https://cdm16022.contentdm.oclc.org/digital/iiif/',
+                        "#{page.collection}/#{page.id}/",
+                        'info.json'].join
+        )
+      end
+    end
+
     def to_viewer
-      {
+      viewer = {
+        'viewerColumnsSmall' => 'col-md-8',
+        'sidebarColumnsLarge' => 'col-md-4',
+        'viewerColumnsLarge' => 'col-md-9',
+        'sidebarColumnsSmall' => 'col-md-3',
         'type' => type,
-        'basename' => '',
+        'basename' => 'image',
         'thumbnail' => assets.first.thumbnail,
         'label' => 'Image',
-        'include_controls' => true,
-        'sequenceMode' => true,
-        'showReferenceStrip' => false,
-        'defaultZoomLevel' => 0,
-        'minZoomLevel' => 0,
-        'containerColumns' => 9,
-        'sidebarColumns' => 3,
-        'tileSources' => assets.map(&:src),
         'transcripts' => assets.map do |img|
           img.transcripts if img.transcripts != ''
         end.flatten.compact.uniq,
         'thumbnails' => assets.map(&:thumbnail),
-        'pages' => assets.map(&:title),
+        'osdConfig' => {
+          'include_controls' => true,
+          'sequenceMode' => true,
+          'showReferenceStrip' => false,
+          'defaultZoomLevel' => 0,
+          'tileSources' => assets.map(&:src),
+        },
+        'getImageURL' => 'http://cdm16022.contentdm.oclc.org/utils/ajaxhelper',
+        'pages' => pages,
         'transcript' => {
           'texts' => assets.map do |img|
             img.transcripts if img.transcripts != ''
@@ -32,6 +50,8 @@ module MDL
           'label' => 'Image'
         }
       }
+      File.open('/mdl_search/pages.json', 'w') { |file| file.write(viewer.to_json) }
+      viewer
     end
   end
 end
