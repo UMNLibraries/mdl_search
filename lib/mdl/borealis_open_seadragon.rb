@@ -13,6 +13,7 @@ module MDL
           'viewer' => 'OSD_VIEWER',
           'cdmCollection' => page.collection,
           'cdmIdentifier' => page.id,
+          'sidebarThumbnail' => page.thumbnail,
           'infoURL' => ['https://cdm16022.contentdm.oclc.org/digital/iiif/',
                         "#{page.collection}/#{page.id}/",
                         'info.json'].join
@@ -33,7 +34,6 @@ module MDL
         'transcripts' => assets.map do |img|
           img.transcripts if img.transcripts != ''
         end.flatten.compact.uniq,
-        'thumbnails' => assets.map(&:thumbnail),
         'osdConfig' => {
           'include_controls' => true,
           'sequenceMode' => true,
