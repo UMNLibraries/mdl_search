@@ -1,52 +1,50 @@
-<% cache "home-page", expires_in: 1.day do %>
   <style type="text/css">
     .navbar .search-query-form {
       display: none;
     }
   </style>
-	<div class="row home-page">
-		<div class="col-md-12">
-			<div class="home-wrapper">
-				<div id="home-search">
-					<%= render_search_bar  %>
-				</div>
-				<div class="home-desc">
-					<a href="/?utf8=✓&search_field=all_fields&q=">Browse all</a> <strong><%= record_count %></strong> items from <strong><%= facet_count('contributing_organization_ssi') %></strong> historical societies, libraries, archives, and cultural organizations across Minnesota
-				</div>
-			</div>
-		</div>
-	</div>
-    <div class="row browse">
-      <div class="col-lg-4 col-md-12">
-        <div class="topic">
-			<a href="/catalog/facet/topic_ssim?facet.sort=index">
-				<span class="browse-text-container">
-					<span class="browse-text">Browse by Topic</span>
-				</span>
-			</a>
-		</div>
-      </div>
-      <div class="col-lg-4 col-md-12">
-        <div class="contributor">
-			<a href="/catalog/facet/collection_name_ssi?facet.sort=index">
-				<span class="browse-text-container">
-					<span class="browse-text">Browse by Contributor</span>
-				</span>
-			</a>
-		</div>
-      </div>
-      <div class="col-lg-4 col-md-12">
-        <div class="format">
-			<a href="/catalog/facet/physical_format_ssi?facet.sort=index">
-				<span class="browse-text-container">
-					<span class="browse-text">Browse by Format</span>
-				</span>
-			</a>
-		</div>
+  <div class="row home-page">
+    <div class="col-md-12">
+      <div class="home-wrapper">
+        <div id="home-search">
+          <%= render_search_bar  %>
+        </div>
+        <div class="home-desc">
+          <a href="/?utf8=✓&search_field=all_fields&q=">Browse all</a> <strong><%= record_count %></strong> items from <strong><%= facet_count('contributing_organization_ssi') %></strong> historical societies, libraries, archives, and cultural organizations across Minnesota
+        </div>
       </div>
     </div>
   </div>
-<% end %>
+    <div class="row browse">
+      <div class="col-lg-4 col-md-12">
+        <div class="topic">
+      <a href="/catalog/facet/topic_ssim?facet.sort=index">
+        <span class="browse-text-container">
+          <span class="browse-text">Browse by Topic</span>
+        </span>
+      </a>
+    </div>
+      </div>
+      <div class="col-lg-4 col-md-12">
+        <div class="contributor">
+      <a href="/catalog/facet/collection_name_ssi?facet.sort=index">
+        <span class="browse-text-container">
+          <span class="browse-text">Browse by Contributor</span>
+        </span>
+      </a>
+    </div>
+      </div>
+      <div class="col-lg-4 col-md-12">
+        <div class="format">
+      <a href="/catalog/facet/physical_format_ssi?facet.sort=index">
+        <span class="browse-text-container">
+          <span class="browse-text">Browse by Format</span>
+        </span>
+      </a>
+    </div>
+      </div>
+    </div>
+  </div>
 <div class="row">
     <%= render partial: 'map_view',
       locals: {
