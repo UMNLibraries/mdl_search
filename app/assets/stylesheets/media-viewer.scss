@@ -104,4 +104,67 @@
   padding-right: 0;
 }
 
+.osd-sidebar  img {
+      max-width: 150px;
+    }
+
+  .osd-sidebar {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  .nav > li > a  {
+    padding: 5px 5px;
+  }
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    border: 1px solid #ecedf0;
+  }
+
+.easer {
+  -webkit-transition: width 0.5s ease;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.showViewer {
+
+}
+
+.hideViewer {
+  margin: -100000px;
+}
+
+.osd .ocr-text {
+    height: 500px;
+}
+
+.osd .ocr-text.fullscreen,
+.osd .ocr-text-image.fullscreen {
+  height: 100vh;
+  width: 50vw;
+  padding: 20px;
+}
+
+.osd .ocr-text-image {
+  overflow-y: scroll;
+  height: 500px;
+  text-align: center;
+}
+
+.ocr-text {
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.highlighted-text {
+  overflow-y: scroll;
+  height: 490px;
+}
+
+.openseadragon {
+  height: 500px;
+}
+
 
