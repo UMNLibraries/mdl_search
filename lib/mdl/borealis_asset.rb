@@ -16,6 +16,18 @@ module MDL
       @assets       = assets
     end
 
+    def to_h
+      {
+        id: id,
+        collection: collection,
+        transcripts: transcripts,
+        transcript: transcripts.join("\n"),
+        title: title,
+        assets: assets,
+        thumbnail: thumbnail
+      }
+    end
+
     def thumbnail
       "/thumbnails/#{collection}:#{id}"
     end
