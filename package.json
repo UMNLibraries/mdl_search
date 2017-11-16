@@ -33,6 +33,8 @@
     "path-complete-extname": "^0.1.0",
     "postcss-loader": "^2.0.8",
     "postcss-smart-import": "^0.7.5",
+    "preact": "^8.2.6",
+    "preact-compat": "^3.17.0",
     "precss": "^2.0.0",
     "prop-types": "^15.6.0",
     "rails-erb-loader": "^5.2.1",
