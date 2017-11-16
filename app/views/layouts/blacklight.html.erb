@@ -37,7 +37,7 @@
     <%= javascript_include_tag "application" %>
     <%=
       if request.env['PATH_INFO'] != '/'
-        javascript_pack_tag 'fullRecord'
+        javascript_pack_tag 'application'
       end
     %>
     <%= javascript_pack_tag 'drawMap' %>

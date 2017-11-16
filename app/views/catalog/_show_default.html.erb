@@ -8,10 +8,26 @@
    config = config.map { |item| (!item.empty?) ? item : nil }.compact
 %>
 
-<%= react_component('MDLfullRecord',
-                    base_path: request.path,
-                    borealis_config: borealis_doc.to_viewer,
-                    citation_config: config) %>
+<div class="row">
+  <div class="col-md-12">
+    <%= react_component('Viewer',
+                        config: borealis_doc.to_viewer,
+                        prerender: true) %>
+    <div className="addthis_inline_share_toolbox" />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-9">
+    <%= react_component('Metadata',
+                        config: config) %>
+  </div>
+  <div class="col-md-3">
+    <div id="sidebar">
+       <%= render_document_sidebar_partial %>
+    </div>
+  </div>
+</div>
 
 <div class="metadata" data-metadata='<%= document.to_json %>' ></div>
 
