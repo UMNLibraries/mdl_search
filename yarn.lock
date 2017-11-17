@@ -5413,15 +5413,17 @@ rc@^1.1.7:
   dependencies:
     immutable "^3.8.1"
 
-"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#c95eb0016e848993760406ddb9b3cb86af22229e":
+"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#66736a40bfee":
   version "0.1.0"
-  resolved "git+https://github.com/UMNLibraries/react-borealis.git#c95eb0016e848993760406ddb9b3cb86af22229e"
+  resolved "git+https://github.com/UMNLibraries/react-borealis.git#66736a40bfee"
   dependencies:
     babel-polyfill "^6.23.0"
     borealis-pdf "git+https://github.com/UMNLibraries/borealis-pdf.git#bcb052a3e7660d0ac0387568"
     development "0.0.6"
     history "3.0.0"
     openseadragon "^2.2.1"
+    preact "^8.2.6"
+    preact-compat "^3.17.0"
     prop-types "^15.5.10"
     react "^15.4.1"
     react-dom "15.4.1"
