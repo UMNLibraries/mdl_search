@@ -1,40 +1,41 @@
-<%
-   borealis_doc = MDL::BorealisDocument.new(document: document)
-   config = []
-   config << MDL::CiteDetails.new(solr_doc: document).to_hash
-   config << MDL::CiteCitation.new(solr_doc: document, base_url: request.base_url).to_hash
-   config << MDL::CiteDownload.new(assets: borealis_doc.assets).to_hash
-   config << MDL::CiteTranscript.new(solr_doc: document).to_hash
-   config = config.map { |item| (!item.empty?) ? item : nil }.compact
-%>
+<% cache "record=#{document.id}" do %>
+  <%
+     borealis_doc = MDL::BorealisDocument.new(document: document)
+     config = []
+     config << MDL::CiteDetails.new(solr_doc: document).to_hash
+     config << MDL::CiteCitation.new(solr_doc: document, base_url: request.base_url).to_hash
+     config << MDL::CiteDownload.new(assets: borealis_doc.assets).to_hash
+     config << MDL::CiteTranscript.new(solr_doc: document).to_hash
+     config = config.map { |item| (!item.empty?) ? item : nil }.compact
+  %>
 
-<div class="row">
-  <div class="col-md-12">
-    <%= react_component('Viewer',
-                        config: borealis_doc.to_viewer,
-                        prerender: true) %>
-    <div className="addthis_inline_share_toolbox" />
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-9">
-    <%= react_component('Metadata',
-                        config: config) %>
-  </div>
-  <div class="col-md-3">
-    <div id="sidebar">
-       <%= render_document_sidebar_partial %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= react_component('Viewer',
+                          config: borealis_doc.to_viewer) %>
+      <div className="addthis_inline_share_toolbox" />
     </div>
   </div>
-</div>
 
-<div class="metadata" data-metadata='<%= document.to_json %>' ></div>
+  <div class="row">
+    <div class="col-md-9">
+      <%= react_component('Metadata',
+                          config: config) %>
+    </div>
+    <div class="col-md-3">
+      <div id="sidebar">
+         <%= render_document_sidebar_partial %>
+      </div>
+    </div>
+  </div>
 
-<%= render partial: 'map_view',
-  locals: {
-    coordinates: @document['coordinates_llsi'],
-    map_id: 'full_record_map',
-    with_popup: true
-  }
-%>
+  <div class="metadata" data-metadata='<%= document.to_json %>' ></div>
+
+  <%= render partial: 'map_view',
+    locals: {
+      coordinates: @document['coordinates_llsi'],
+      map_id: 'full_record_map',
+      with_popup: true
+    }
+  %>
+<% end %>
