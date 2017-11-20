@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'mdl-fonts';
-  src: font-url('mdl-fonts.eot?84791786');
-  src: font-url('mdl-fonts.eot?84791786#iefix') format('embedded-opentype'),
-       font-url('mdl-fonts.woff2?84791786') format('woff2'),
-       font-url('mdl-fonts.woff?84791786') format('woff'),
-       font-url('mdl-fonts.ttf?84791786') format('truetype'),
-       font-url('mdl-fonts.svg?84791786#mdl-fonts') format('svg');
+  src: font-url('mdl-fonts.eot?41906348');
+  src: font-url('mdl-fonts.eot?41906348#iefix') format('embedded-opentype'),
+       font-url('mdl-fonts.woff2?41906348') format('woff2'),
+       font-url('mdl-fonts.woff?41906348') format('woff'),
+       font-url('mdl-fonts.ttf?41906348') format('truetype'),
+       font-url('mdl-fonts.svg?41906348#mdl-fonts') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'mdl-fonts';
-    src: font-url('mdl-fonts.svg?84791786#mdl-fonts') format('svg');
+    src: font-url('mdl-fonts.svg?41906348#mdl-fonts') format('svg');
   }
 }
 */
@@ -64,6 +64,11 @@
 %icon-sheet-music:before { @extend %icon-base; content: '\e806'; } /* '' */
 %icon-link:before { @extend %icon-base; content: '\e807'; } /* '' */
 %icon-json:before { @extend %icon-base; content: '\e808'; } /* '' */
+%icon-home:before { @extend %icon-base; content: '\e809'; } /* '' */
+%icon-ccw:before { @extend %icon-base; content: '\e80a'; } /* '' */
+%icon-zoom-in:before { @extend %icon-base; content: '\e80b'; } /* '' */
+%icon-zoom-out:before { @extend %icon-base; content: '\e80c'; } /* '' */
+%icon-resize-full:before { @extend %icon-base; content: '\e80d'; } /* '' */
 %icon-text:before { @extend %icon-base; content: '\f0f6'; } /* '' */
 %icon-archive:before { @extend %icon-base; content: '\f187'; } /* '' */
 %icon-bank:before { @extend %icon-base; content: '\f19c'; } /* '' */
@@ -78,6 +83,11 @@
 .icon-sheet-music { @extend %icon-sheet-music; }
 .icon-link { @extend %icon-link; }
 .icon-json { @extend %icon-json; }
+.icon-home { @extend %icon-home; }
+.icon-ccw { @extend %icon-ccw; }
+.icon-zoom-in { @extend %icon-zoom-in; }
+.icon-zoom-out { @extend %icon-zoom-out; }
+.icon-resize-full { @extend %icon-resize-full; }
 .icon-text { @extend %icon-text; }
 .icon-archive { @extend %icon-archive; }
 .icon-bank { @extend %icon-bank; }
