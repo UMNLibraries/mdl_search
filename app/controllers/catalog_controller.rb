@@ -152,17 +152,12 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
-    config.add_facet_field 'physical_format_ssi', label: 'Format', show: true, index_range: 'A'..'Z', collapse: false, index: true, limit: 5
     config.add_facet_field 'type_ssi', label: 'Type', show: true, collapse: false, limit: 10
+    config.add_facet_field 'physical_format_ssi', label: 'Physical Format', show: true, index_range: 'A'..'Z', collapse: false, index: true, limit: 5
     config.add_facet_field 'dat_ssi', label: 'Date Created', collapse: false, limit: 5
-    config.add_facet_field 'county_ssim', label: 'County', show: true, limit: 5, index_range: 'A'..'Z', collapse: false, index: true
-    # Topics have been incorporated into keywords
-    config.add_facet_field 'formal_subject_ssim', label: 'Library of Congress Subject Headings', show: true, index_range: 'A'..'Z', collapse: false, limit: 5, index: true
-    config.add_facet_field 'subject_ssim', label: 'Keywords', show: true, limit: 5
-    config.add_facet_field 'topic_ssim', label: 'Minnesota Reflections Topic', show: true, index_range: 'A'..'Z', collapse: false, limit: 5, index: true
-    config.add_facet_field 'collection_name_ssi', label: 'Collection', index_range: 'A'..'Z', collapse: false, limit: 5, index: true
     config.add_facet_field 'placename_ssim', label: 'Location', index_range: 'A'..'Z', collapse: false, limit: 5, index: true
-    config.add_facet_field 'contributing_organization_ssi', label: 'Contributing Institution', index_range: 'A'..'Z', collapse: false, limit: 5, index: true
+    config.add_facet_field 'formal_subject_ssim', label: 'Subject Headings', show: true, index_range: 'A'..'Z', collapse: false, limit: 5, index: true
+    config.add_facet_field 'collection_name_ssi', label: 'Contributor', index_range: 'A'..'Z', collapse: false, limit: 5, index: true
 
 
     # Have BL send all facet field names to Solr, which has been the default
