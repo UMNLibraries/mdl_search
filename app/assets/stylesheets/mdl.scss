@@ -20,19 +20,19 @@
 	a[href]:after {
 		content: none;
 	}
-	
+
 	#sidebar {display:none;}
-	
+
 	#sortAndPerPage {display:none;}
-	
+
 	#previousNextDocument {display:none;}
-	
+
 	.citation-navigation {display:none;}
-	
+
 	.pagination {display:none;}
-	
+
 	.field-label {border:none;}
-	
+
 	.footer {display:none;}
 }
 
@@ -46,7 +46,7 @@ body {
 	.home-wrapper {
 		padding: 0 8px 20px !important;
 	}
-	
+
 	#documents .document .document-thumbnail {
 		float: none !important;
 		padding-left: 0 !important;
@@ -58,15 +58,15 @@ body {
 		border-top-left-radius: 4px !important;
 		border-bottom-left-radius: 4px !important;
 	}
-	
+
 	.input-group-addon {
 		display: none !important;
 	}
-	
+
 	.home-desc {
 		margin: 0 8px !important;
 	}
-	
+
 	.dl-horizontal dt {
 		width: auto !important;
 		text-align: left !important;
@@ -76,11 +76,11 @@ body {
 		clear: left !important;
 		margin-left: 0 !important;
 	}
-	
+
 	#sortAndPerPage, .pagination-search-widgets, .page_links {
 		text-align: center !important;
 	}
-	
+
 	.search-widgets {
 		float: none !important;
 		margin-top: 8px !important;
@@ -99,20 +99,20 @@ body {
 	.icon-json {
 		display: none !important;
 	}
-	
+
 	.home-wrapper {
 		margin: 0 8px !important;
 		width: auto !important;
 	}
-	
+
 	.input-group {
 		margin: 0 auto !important;
 	}
-	
+
 	.toc-select {
 		display: none !important;
 	}
-	
+
 	.footer-links, .footer-social, .footer-contact {
 		text-align: center !important;
 	}
@@ -136,7 +136,7 @@ body {
 			min-height: 0 !important;
 		}
 	}
-	
+
 	#sidebar {
 		margin-top: 20px !important;
 	}
@@ -418,17 +418,17 @@ a.remove:hover {
 }
 
 .browse .topic {
-	background: #005da3 url("//www.mndigital.org/files/images/reflections/homepage-topic-new.jpg");
+	background: #005da3 image-url("homepage-topic-new.jpg");
 	border-radius: 4px;
 }
 
 .browse .contributor {
-	background: #a55e00 url("//www.mndigital.org/files/images/reflections/homepage-collection-new.jpg");
+	background: #a55e00 image-url("homepage-collection-new.jpg");
 	border-radius: 4px;
 }
 
 .browse .format {
-	background: #468031 url("//www.mndigital.org/files/images/reflections/homepage-format.jpg");
+	background: #468031 image-url("homepage-format.jpg");
 	border-radius: 4px;
 }
 
