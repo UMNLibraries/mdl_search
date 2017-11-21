@@ -94,7 +94,7 @@ GEM
     capybara-webkit (1.14.0)
       capybara (>= 2.3.0, < 2.14.0)
       json
-    cdmbl (0.8.0)
+    cdmbl (0.10.0)
       activesupport (>= 4.2)
       contentdm_api (~> 0.3.11)
       hash_at_path (~> 0.1)
