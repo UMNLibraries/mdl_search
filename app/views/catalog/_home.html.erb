@@ -46,11 +46,12 @@
     </div>
   </div>
 <div class="row">
+  <%= javascript_pack_tag 'drawMap' %>
     <%= render partial: 'map_view',
       locals: {
         coordinates: random_coordinates,
         map_id: 'home_map',
         with_popup: false
       }
-    %>
+  %>
 </div>

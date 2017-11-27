@@ -35,12 +35,6 @@
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
-    <%=
-      if request.env['PATH_INFO'] != '/'
-        javascript_pack_tag 'application'
-      end
-    %>
-    <%= javascript_pack_tag 'drawMap' %>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
 </head>
