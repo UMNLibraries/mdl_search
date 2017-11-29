@@ -239,6 +239,8 @@ a.remove:hover {
 .form-control {
 	border: 1px solid #fff;
 	border-radius: 0;
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
 	color: #231f20;
 	font-size: 16px;
 	height: auto;
@@ -287,14 +289,14 @@ a.remove:hover {
 .nav>li>a {
 	background-color: #d3d4d7;
 	display: block;
-	padding: 10px 15px;
+	padding: 10px 15px !important;
 	position: relative;
 	text-decoration: none;
 }
 
 .nav>li>a:hover, .nav>li>a:focus {
 	background-color: #ecedf0;
-	border: none;
+	border: none !important;
 	text-decoration: none;
 }
 
@@ -302,6 +304,10 @@ a.remove:hover {
 	background-color: #005da3;
 	color: #fff;
 	text-decoration: none;
+}
+
+.nav-tabs, .nav-tabs>li>a, .nav-tabs>li>a:hover, .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+	border: none !important;
 }
 
 .pagination-search-widgets {
@@ -660,7 +666,7 @@ h3.document-title-heading {
 }
 
 .image-nav {
-	margin: 12px 0;
+	margin: 12px 0 !important;
 }
 
 .image-nav ul {
@@ -680,15 +686,27 @@ h3.document-title-heading {
 	padding: 0;
 }
 
-.osd-sidebar {
-	background-color: #fff !important;
-	border: 1px solid #d3d4d7;
-	color: #231f20 !important;
-	padding: 8px 4px !important;
+.osd-sidebar-header {
+	background-color: #ecedf0 !important;
+	height: auto !important;
+	margin: 15px 0 0;
+	padding: 8px 8px 0 !important;
 }
 
-.osd-sidebar ul {
-	margin: 0 0 4px 0;
+.osd-sidebar {
+	background-color: #fff !important;
+	color: #231f20 !important;
+	margin: 0 0 15px;
+	padding: 0 !important;
+}
+
+.sidebar-list-item .btn.active {
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+}
+
+.sidebar-list-item {
+	padding: 16px 0 0 !important;
 }
 
 .page-button.active {
@@ -778,6 +796,7 @@ dt, dd {
 	background: #a3bf5b;
 	font-size: 20px;
 	font-weight: bold;
+	margin-top: -107px;
 	text-align: center;
 }
 
