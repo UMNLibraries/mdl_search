@@ -663,6 +663,18 @@ h3.document-title-heading {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.glyphicon-zoom-in::before {
+	content: "\e80b" !important;
+	font-family: "mdl-fonts" !important;
+	vertical-align: top !important;
+}
+
+.glyphicon-zoom-out::before {
+	content: "\e80c" !important;
+	font-family: "mdl-fonts" !important;
+	vertical-align: top !important;
+}
+
 .keywords-panel a {
 	line-height: 2 !important;
 }
