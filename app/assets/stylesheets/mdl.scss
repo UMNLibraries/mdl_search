@@ -625,14 +625,14 @@ h3.document-title-heading {
 /* End search results item page styles */
 
 /* Item page styles */
-.back-search-link {
+.back-search-link:before {
 	content: '\e80a';
 	font-family: "mdl-fonts";
 	font-style: normal;
 	font-weight: normal;
 	speak: none;
 	display: inline-block;
-	text-decoration: inherit;
+	text-decoration: none;
 	width: 1em;
 	margin-right: .2em;
 	text-align: center;
@@ -644,14 +644,14 @@ h3.document-title-heading {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.start-over-link {
+.start-over-link:before {
 	content: '\e809';
 	font-family: "mdl-fonts";
 	font-style: normal;
 	font-weight: normal;
 	speak: none;
 	display: inline-block;
-	text-decoration: inherit;
+	text-decoration: none;
 	width: 1em;
 	margin-right: .2em;
 	text-align: center;
