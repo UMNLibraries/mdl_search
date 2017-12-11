@@ -644,7 +644,7 @@ h3.document-title-heading {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.start-over-link:before {
+.start-over-link:before, .catalog_startOverLink:before {
 	content: '\e809';
 	font-family: "mdl-fonts";
 	font-style: normal;
