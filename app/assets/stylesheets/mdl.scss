@@ -364,6 +364,19 @@ a.remove:hover {
   margin-top: 15px;
 }
 
+.glossary {
+	background: #ecedf0;
+	border: 1px solid #d3d4d7;
+	border-radius: 4px;
+	margin: 8px 0;
+	padding: 12px;
+}
+
+.glossary img {
+	float: left;
+	margin: 0 12px 12px 0;
+}
+
 /* Non-modal filter landing pages */
 #main-container .facet_pagination.top {
 	margin: 60px 0 0 0;
@@ -377,6 +390,10 @@ a.remove:hover {
 
 #main-container .alpha-filter .pagination {
 	margin: 6px 0 0 0;
+}
+
+.modal-header .alpha-filter {
+	margin: 8px -14px 0;
 }
 
 /* Homepage styles */
