@@ -873,6 +873,23 @@ dt, dd {
 	padding: 12px;
 	text-decoration: none;
 }
+
+a.view-text {
+	background-color: #005da3 !important;
+	border-color: #005da3 !important;
+}
+
+a.view-text:hover {
+	background-color: #468031 !important;
+	border-color: #468031 !important;
+	color: #fff;
+}
+
+.osd-search-highlight {
+	background-color: #fad980;
+	font-weight: bold !important;
+	padding: 3px;
+}
 /* End item page styles */
 
 /* Footer styles */
