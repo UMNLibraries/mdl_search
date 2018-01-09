@@ -1,18 +1,29 @@
-<% cache "record=#{document.id}" do %>
-  <%
-     borealis_doc = MDL::BorealisDocument.new(document: document)
-     config = []
-     config << MDL::CiteDetails.new(solr_doc: document).to_hash
-     config << MDL::CiteCitation.new(solr_doc: document, base_url: request.base_url).to_hash
-     config << MDL::CiteDownload.new(assets: borealis_doc.assets).to_hash
-     config << MDL::CiteTranscript.new(solr_doc: document).to_hash
-     config = config.map { |item| (!item.empty?) ? item : nil }.compact
-  %>
 
+  <%
+    borealis_doc = MDL::BorealisDocument.new(document: document)
+    config = []
+    config << MDL::CiteDetails.new(solr_doc: document).to_hash
+    config << MDL::CiteCitation.new(solr_doc: document, base_url: request.base_url).to_hash
+    config << MDL::CiteDownload.new(assets: borealis_doc.assets).to_hash
+    config << MDL::CiteTranscript.new(solr_doc: document).to_hash
+    config = config.map { |item| (!item.empty?) ? item : nil }.compact
+    viewer = borealis_doc.to_viewer
+
+    if viewer.fetch('image', false)
+      initial_path = MDL::BorealisImagePath.new(
+        titles: viewer['image'].fetch('pages', []).map { |page| page[:title] },
+        transcripts: viewer['image'].fetch('transcripts', []),
+        search_text: current_search_session.query_params.fetch('q', '')).path
+    else
+      initial_path = ''
+    end
+
+  %>
 
   <%= content_tag :div,
     id: "viewer_data",
-    viewerConfig: borealis_doc.to_viewer.to_json,
+    initialPath: "#{initial_path}",
+    viewerConfig: viewer.to_json,
     citationConfig: config.to_json do %>
   <% end %>
 
@@ -46,4 +57,3 @@
       with_popup: true
     }
   %>
-<% end %>
