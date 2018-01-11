@@ -681,13 +681,25 @@ h3.document-title-heading {
 }
 
 .glyphicon-zoom-in::before {
-	content: "\e80b" !important;
+	content: "\e813" !important;
 	font-family: "mdl-fonts" !important;
 	vertical-align: top !important;
 }
 
 .glyphicon-zoom-out::before {
-	content: "\e80c" !important;
+	content: "\e814" !important;
+	font-family: "mdl-fonts" !important;
+	vertical-align: top !important;
+}
+
+.glyphicon-home::before {
+	content: "\e812" !important;
+	font-family: "mdl-fonts" !important;
+	vertical-align: top !important;
+}
+
+.glyphicon-resize-full::before {
+	content: "\f0b2" !important;
 	font-family: "mdl-fonts" !important;
 	vertical-align: top !important;
 }
