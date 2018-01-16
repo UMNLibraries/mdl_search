@@ -9,7 +9,7 @@
     config = config.map { |item| (!item.empty?) ? item : nil }.compact
     viewer = borealis_doc.to_viewer
 
-    if viewer.fetch('image', false)
+    if viewer.fetch('image', false) && current_search_session != nil
       initial_path = MDL::BorealisImagePath.new(
         titles: viewer['image'].fetch('pages', []).map { |page| page[:title] },
         transcripts: viewer['image'].fetch('transcripts', []),
