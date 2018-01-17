@@ -98,7 +98,7 @@ module MDL
         {key: 'subject_ssim', label: 'Keywords', facet: true},
         {key: 'city_ssim', delimiter: ', ', label: 'City or Township', facet: true},
         {key: 'county_ssim', delimiter: ', ', label: 'County', facet: true},
-        {key: 'state_ssi', label: 'State', facet: true},
+        {key: 'state_ssi', label: 'State or Province', facet: true},
         {key: 'country_ssi', label: 'Country', facet: true},
         {key: 'geographic_feature_ssim', label: 'Geographic Feature', facet: true},
         {key: 'geonam_ssi', label: 'GeoNames URI', facet: true},
@@ -107,7 +107,7 @@ module MDL
         {key: 'identifier_ssi', label: 'MDL Identifier'},
         {key: 'fiscal_sponsor_ssi', label: 'Fiscal Sponsor'},
         {key: 'parent_collection_name_ssi', label: 'Collection Name', facet: true},
-        {key: 'contact_information_ssi', label: 'Contact information'},
+        {key: 'contact_information_ssi', label: 'Contact Information'},
         {key: 'rights_ssi', label: 'Rights'},
         {key: 'collection_description_tesi', label: 'Collection Description'}
       ]
