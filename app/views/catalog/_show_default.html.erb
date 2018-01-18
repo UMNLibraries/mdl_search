@@ -1,5 +1,4 @@
-
-  <%
+<%
     borealis_doc = MDL::BorealisDocument.new(document: document)
     config = []
     config << MDL::CiteDetails.new(solr_doc: document).to_hash
@@ -10,14 +9,10 @@
     viewer = borealis_doc.to_viewer
 
     if viewer.fetch('image', false) && current_search_session != nil
-      initial_path = MDL::BorealisImagePath.new(
-        titles: viewer['image'].fetch('pages', []).map { |page| page[:title] },
-        transcripts: viewer['image'].fetch('transcripts', []),
-        search_text: current_search_session.query_params.fetch('q', '')).path
+      initial_path = "image/0?searchText=#{search_text}&redirect=true"
     else
       initial_path = ''
     end
-
   %>
 
   <%= content_tag :div,
@@ -26,7 +21,6 @@
     viewerConfig: viewer.to_json,
     citationConfig: config.to_json do %>
   <% end %>
-
 
   <div class="row">
     <div class="col-md-12">
@@ -47,7 +41,6 @@
       </div>
     </div>
   </div>
-
 
   <%= javascript_pack_tag 'drawMap' %>
   <%= render partial: 'map_view',

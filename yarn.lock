@@ -1551,7 +1551,7 @@ clap@^1.0.9:
   dependencies:
     chalk "^1.1.3"
 
-classnames@^2.1.2:
+classnames@^2.1.2, classnames@^2.2.3:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -3786,6 +3786,10 @@ loader-utils@^1.0.0, loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1
     emojis-list "^2.0.0"
     json5 "^0.5.0"
 
+loaders.css@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/loaders.css/-/loaders.css-0.1.2.tgz#3a9fb43726c73334a38142af9d0629019b658743"
+
 locate-path@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/locate-path/-/locate-path-2.0.0.tgz#2b568b265eec944c6d9c0de9c3dbbbca0354cd8e"
@@ -5454,9 +5458,9 @@ rc@^1.1.7:
   dependencies:
     immutable "^3.8.1"
 
-"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#03b2e9dedf22":
+"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#348ef097a2c4":
   version "0.1.0"
-  resolved "git+https://github.com/UMNLibraries/react-borealis.git#03b2e9dedf22"
+  resolved "git+https://github.com/UMNLibraries/react-borealis.git#348ef097a2c4"
   dependencies:
     babel-polyfill "^6.23.0"
     borealis-pdf "git+https://github.com/UMNLibraries/borealis-pdf.git#bcb052a3e7660d0ac0387568"
@@ -5468,7 +5472,7 @@ rc@^1.1.7:
     prop-types "^15.5.10"
     react "^15.4.1"
     react-dom "15.4.1"
-    react-openseadragon "git+https://github.com/UMNLibraries/react-openseadragon.git#a45f3609228"
+    react-openseadragon "git+https://github.com/UMNLibraries/react-openseadragon.git#cb3b5e301d0"
     react-router "4.1.1"
     react-router-dom "^4.1.1"
 
@@ -5507,9 +5511,9 @@ react-lazy-load@^3.0.12:
     lodash.throttle "^4.0.0"
     prop-types "^15.5.8"
 
-"react-openseadragon@git+https://github.com/UMNLibraries/react-openseadragon.git#a45f3609228":
+"react-openseadragon@git+https://github.com/UMNLibraries/react-openseadragon.git#cb3b5e301d0":
   version "0.2.0"
-  resolved "git+https://github.com/UMNLibraries/react-openseadragon.git#a45f3609228"
+  resolved "git+https://github.com/UMNLibraries/react-openseadragon.git#cb3b5e301d0"
   dependencies:
     development "0.0.6"
     history "^4.6.1"
@@ -5546,6 +5550,15 @@ react-router@4.1.1, react-router@^4.1.1:
     path-to-regexp "^1.5.3"
     prop-types "^15.5.4"
     warning "^3.0.0"
+
+react-spinkit@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-spinkit/-/react-spinkit-3.0.0.tgz#31fdaf4e18177766c57d1b1f3330290f8492a85a"
+  dependencies:
+    classnames "^2.2.3"
+    loaders.css "^0.1.2"
+    object-assign "^4.1.0"
+    prop-types "^15.5.8"
 
 react@15.4.1:
   version "15.4.1"
