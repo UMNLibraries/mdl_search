@@ -35,6 +35,7 @@ module MDL
           img.transcripts if img.transcripts != ''
         end.flatten.compact.uniq,
         'osdConfig' => {
+          'setStrings' => [{name: 'Tooltips.Home', value: 'Reset'}],
           'include_controls' => true,
           'sequenceMode' => true,
           'showReferenceStrip' => false,
