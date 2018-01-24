@@ -54,11 +54,6 @@ body {
 }
 
 @media (max-width: 599px) {
-	.search_q {
-		border-top-left-radius: 4px !important;
-		border-bottom-left-radius: 4px !important;
-	}
-
 	.input-group-addon {
 		display: none !important;
 	}
@@ -93,6 +88,10 @@ body {
 		background: transparent image-url("reflections-icon-blacklight.png") no-repeat top left !important;
 		width: 74px !important;
 	}
+	
+	.footer-links, .footer-social, .footer-contact {
+		text-align: center !important;
+	}
 }
 
 @media (max-width: 799px) {
@@ -104,10 +103,6 @@ body {
 		margin: 36px 0 8px !important;
 		width: auto !important;
 	}
-	
-	.browse .topic, .browse .contributor, .browse .format {
-		margin: 0 0 8px;
-	}
 
 	.input-group {
 		margin: 0 auto !important;
@@ -116,15 +111,20 @@ body {
 	.toc-select {
 		display: none !important;
 	}
-
-	.footer-links, .footer-social, .footer-contact {
-		text-align: center !important;
-	}
 }
 
 @media (max-width: 991px) {
+	.search_q {
+		border-top-left-radius: 4px !important;
+		border-bottom-left-radius: 4px !important;
+	}
+	
 	.input-group-addon:first-child {
 		display: none;
+	}
+	
+	.browse .topic, .browse .contributor, .browse .format {
+		margin: 0 0 8px;
 	}
 }
 
@@ -143,10 +143,6 @@ body {
 
 	#sidebar {
 		margin-top: 20px !important;
-	}
-	
-	.feedback-panel {
-		margin-top: -67px !important;
 	}
 }
 
@@ -883,11 +879,14 @@ dt, dd {
 	margin: 0 -15px;
 }
 
+.document #sidebar {
+	margin-top: 0 !important;
+}
+
 .feedback-panel {
 	background: #a3bf5b;
 	font-size: 20px;
 	font-weight: bold;
-	margin-top: -107px;
 	text-align: center;
 }
 
