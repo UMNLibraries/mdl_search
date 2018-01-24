@@ -23,10 +23,10 @@ module MDL
 
     def to_viewer
       {
-        'viewerColumnsSmall' => 'col-md-8',
-        'sidebarColumnsLarge' => 'col-md-4',
-        'viewerColumnsLarge' => 'col-md-9',
-        'sidebarColumnsSmall' => 'col-md-3',
+        'viewerColumnsSmall' => 'col-xs-12 col-sm-8',
+        'sidebarColumnsLarge' => 'col-xs-12 col-sm-4',
+        'viewerColumnsLarge' => 'col-xs-12 col-sm-9',
+        'sidebarColumnsSmall' => 'col-xs-12 col-sm-3',
         'type' => type,
         'basename' => 'image',
         'thumbnail' => assets.first.thumbnail,
