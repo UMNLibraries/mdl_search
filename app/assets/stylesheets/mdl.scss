@@ -126,6 +126,10 @@ body {
 	.browse .topic, .browse .contributor, .browse .format {
 		margin: 0 0 8px;
 	}
+	
+	#sidebar {
+		margin-top: 20px !important;
+	}
 }
 
 @media (min-width: 1024px) {
@@ -139,10 +143,6 @@ body {
 		.facet-content {
 			min-height: 0 !important;
 		}
-	}
-
-	#sidebar {
-		margin-top: 20px !important;
 	}
 }
 
@@ -479,7 +479,7 @@ a.remove:hover {
 
 .browse-text {
 	color: #fff;
-	font-size: 160%;
+	font-size: 150%;
 	font-weight: bold;
 	text-shadow: 2px 2px #231f20;
 }
@@ -776,6 +776,11 @@ h3.document-title-heading {
 	padding: 8px 8px 0 !important;
 }
 
+.list-inline {
+	margin-left: 0;
+	padding: 0 0 8px;
+}
+
 .osd-sidebar {
 	background-color: #fff !important;
 	color: #231f20 !important;
@@ -880,13 +885,14 @@ dt, dd {
 }
 
 .document #sidebar {
-	margin-top: 0 !important;
+	margin-top: 16px;
 }
 
 .feedback-panel {
 	background: #a3bf5b;
 	font-size: 20px;
 	font-weight: bold;
+	margin-top: 18px;
 	text-align: center;
 }
 
