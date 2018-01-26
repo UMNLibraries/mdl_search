@@ -43,6 +43,10 @@ body {
 }
 
 @media (max-width: 479px) {
+	.navbar-form {
+		margin-left: -36px;
+	}
+	
 	.home-wrapper {
 		padding: 0 8px 20px !important;
 	}
@@ -72,10 +76,6 @@ body {
 		margin-left: 0 !important;
 	}
 
-	#sortAndPerPage, .pagination-search-widgets, .page_links {
-		text-align: center !important;
-	}
-
 	.search-widgets {
 		float: none !important;
 		margin-top: 8px !important;
@@ -87,6 +87,10 @@ body {
 	.navbar-brand {
 		background: transparent image-url("reflections-icon-blacklight.png") no-repeat top left !important;
 		width: 74px !important;
+	}
+	
+	#sortAndPerPage, .pagination-search-widgets, .page_links {
+		text-align: center !important;
 	}
 	
 	.footer-links, .footer-social, .footer-contact {
@@ -126,10 +130,6 @@ body {
 	.browse .topic, .browse .contributor, .browse .format {
 		margin: 0 0 8px;
 	}
-	
-	#sidebar {
-		margin-top: 20px !important;
-	}
 }
 
 @media (min-width: 1024px) {
@@ -143,6 +143,10 @@ body {
 		.facet-content {
 			min-height: 0 !important;
 		}
+	}
+	
+	#sidebar {
+		margin-top: 0 !important;
 	}
 }
 
@@ -227,7 +231,7 @@ a.remove:hover {
 }
 
 .navbar-form {
-	margin: 8px 0 !important;
+	margin: 8px 0;
 	padding: 25px 0 0 0 !important;
 }
 
@@ -892,7 +896,6 @@ dt, dd {
 	background: #a3bf5b;
 	font-size: 20px;
 	font-weight: bold;
-	margin-top: 18px;
 	text-align: center;
 }
 
