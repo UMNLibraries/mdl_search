@@ -44,7 +44,7 @@ body {
 
 @media (max-width: 479px) {
 	.navbar-form {
-		margin-left: -36px;
+		margin-left: -36px !important;
 	}
 	
 	.home-wrapper {
@@ -75,12 +75,6 @@ body {
 		clear: left !important;
 		margin-left: 0 !important;
 	}
-
-	.search-widgets {
-		float: none !important;
-		margin-top: 8px !important;
-		text-align: center !important;
-	}
 }
 
 @media (max-width: 767px) {
@@ -90,6 +84,12 @@ body {
 	}
 	
 	#sortAndPerPage, .pagination-search-widgets, .page_links {
+		text-align: center !important;
+	}
+	
+	.search-widgets {
+		float: none !important;
+		margin-top: 8px !important;
 		text-align: center !important;
 	}
 	
@@ -130,6 +130,10 @@ body {
 	.browse .topic, .browse .contributor, .browse .format {
 		margin: 0 0 8px;
 	}
+	
+	#sidebar {
+		margin-top: 0 !important;
+	}
 }
 
 @media (min-width: 1024px) {
@@ -143,10 +147,6 @@ body {
 		.facet-content {
 			min-height: 0 !important;
 		}
-	}
-	
-	#sidebar {
-		margin-top: 0 !important;
 	}
 }
 
