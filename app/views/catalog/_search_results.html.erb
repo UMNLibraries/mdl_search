@@ -11,7 +11,7 @@
 
 <%= render 'search_header' %>
 
-<%= render partial: 'results_pagination', locals: {show_json_link: false}%>
+<div class="top-pagination"><%= render partial: 'results_pagination', locals: {show_json_link: false}%></div>
 
 <h2 class="sr-only"><%= t('blacklight.search.search_results') %></h2>
 
