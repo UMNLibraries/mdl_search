@@ -3399,7 +3399,7 @@ inflight@^1.0.4, inflight@~1.0.1:
     once "^1.3.0"
     wrappy "1"
 
-inherits@*, inherits@2, inherits@2.0.3, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, inherits@~2.0.3:
+inherits@2, inherits@2.0.3, inherits@^2.0.1, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.1, inherits@~2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
 
@@ -5629,9 +5629,9 @@ rc@^1.1.7:
   dependencies:
     immutable "^3.8.1"
 
-"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#d3942cc5e922":
+"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#7c2d5bb6f35e":
   version "0.1.0"
-  resolved "git+https://github.com/UMNLibraries/react-borealis.git#d3942cc5e9228374e5511a681dff21e0c597c49d"
+  resolved "git+https://github.com/UMNLibraries/react-borealis.git#7c2d5bb6f35e9cb7353631129c9883566c99056c"
   dependencies:
     babel-polyfill "^6.23.0"
     borealis-pdf "git+https://github.com/UMNLibraries/borealis-pdf.git#20ee0fcee70a3343d1d7c0"
@@ -5643,7 +5643,7 @@ rc@^1.1.7:
     prop-types "^15.5.10"
     react "^15.4.1"
     react-dom "15.4.1"
-    react-openseadragon "git+https://github.com/UMNLibraries/react-openseadragon.git#c7bb3fb6e03"
+    react-openseadragon "git+https://github.com/UMNLibraries/react-openseadragon.git#3b738ae2bb"
     react-router "4.1.1"
     react-router-dom "^4.1.1"
 
@@ -5691,9 +5691,9 @@ react-lazy-load@^3.0.12:
     lodash.throttle "^4.0.0"
     prop-types "^15.5.8"
 
-"react-openseadragon@git+https://github.com/UMNLibraries/react-openseadragon.git#c7bb3fb6e03":
+"react-openseadragon@git+https://github.com/UMNLibraries/react-openseadragon.git#3b738ae2bb":
   version "0.2.0"
-  resolved "git+https://github.com/UMNLibraries/react-openseadragon.git#c7bb3fb6e0372360508fd4e0e88632cb4d97f016"
+  resolved "git+https://github.com/UMNLibraries/react-openseadragon.git#3b738ae2bb7ea7c1381ae9c22032af7e9a75518a"
   dependencies:
     development "0.0.6"
     history "^4.6.1"
