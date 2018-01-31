@@ -20,3 +20,5 @@ set :sidekiq_processes, 4
 
 set :keep_releases, 2
 set :passenger_restart_with_touch, true
+
+set :branch, 'development'
