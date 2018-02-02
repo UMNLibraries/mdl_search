@@ -600,6 +600,10 @@ a.remove:hover {
 	margin: 0 4px !important;
 }
 
+#documents.documents-gallery .document .title {
+	overflow: auto !important;
+}
+
 #documents.documents-gallery .panel {
 	margin: 0 0 20px 0 !important;
 }
