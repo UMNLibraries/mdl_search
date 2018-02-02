@@ -5633,9 +5633,9 @@ rc@^1.1.7:
   dependencies:
     immutable "^3.8.1"
 
-"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#7ece933014ba":
+"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#6c8a0e416b00":
   version "0.1.0"
-  resolved "git+https://github.com/UMNLibraries/react-borealis.git#7ece933014bab0462820af9d8bcd4e258bdc71b7"
+  resolved "git+https://github.com/UMNLibraries/react-borealis.git#6c8a0e416b00c91e14aa4648c73dc86ad6835faa"
   dependencies:
     babel-polyfill "^6.23.0"
     borealis-pdf "git+https://github.com/UMNLibraries/borealis-pdf.git#20ee0fcee70a3343d1d7c0"
@@ -5647,7 +5647,7 @@ rc@^1.1.7:
     prop-types "^15.5.10"
     react "^15.4.1"
     react-dom "15.4.1"
-    react-openseadragon "git+https://github.com/UMNLibraries/react-openseadragon.git#9830b9115f"
+    react-openseadragon "git+https://github.com/UMNLibraries/react-openseadragon.git#10df16245"
     react-router "4.1.1"
     react-router-dom "^4.1.1"
 
@@ -5695,9 +5695,9 @@ react-lazy-load@^3.0.12:
     lodash.throttle "^4.0.0"
     prop-types "^15.5.8"
 
-"react-openseadragon@git+https://github.com/UMNLibraries/react-openseadragon.git#9830b9115f":
+"react-openseadragon@git+https://github.com/UMNLibraries/react-openseadragon.git#10df16245":
   version "0.2.0"
-  resolved "git+https://github.com/UMNLibraries/react-openseadragon.git#9830b9115f9477fc746430b4a9620ab9af7afa75"
+  resolved "git+https://github.com/UMNLibraries/react-openseadragon.git#10df16245f23bc74c8fe3fd3a31e50b12635d5cf"
   dependencies:
     development "0.0.6"
     history "^4.6.1"
