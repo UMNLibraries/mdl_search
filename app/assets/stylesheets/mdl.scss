@@ -50,6 +50,10 @@ body {
 	.home-wrapper {
 		padding: 0 8px 20px !important;
 	}
+	
+	.home-wrapper .input-group {
+		width: 60% !important;
+	}
 
 	#documents .document .document-thumbnail {
 		float: none !important;
@@ -592,6 +596,10 @@ a.remove:hover {
 	padding: 3px;
 }
 
+#documents.documents-gallery .document {
+	margin: 0 4px !important;
+}
+
 #documents.documents-gallery .panel {
 	margin: 0 0 20px 0 !important;
 }
@@ -785,8 +793,18 @@ h3.document-title-heading {
 }
 
 .list-inline {
+	font-size: 24px;
 	margin-left: 0;
 	padding: 0 0 8px;
+}
+
+.list-inline>li {
+	padding-left: 12px !important;
+    padding-right: 12px !important;
+}
+
+.prev-next a {
+	text-decoration: none;
 }
 
 .osd-sidebar {
