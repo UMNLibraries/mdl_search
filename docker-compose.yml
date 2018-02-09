@@ -6,7 +6,7 @@ services:
     volumes:
       - .:/mdl_search
   solr:
-    image: solr
+    image: solr:6.6.0
     ports:
       - "8983:8983"
     volumes:
