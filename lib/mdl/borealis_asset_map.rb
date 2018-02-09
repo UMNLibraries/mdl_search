@@ -37,6 +37,7 @@ module MDL
         'tif' => image_klass,
         'jp2' => image_klass,
         'jpg' => image_klass,
+        'audio/mp3' => audio_klass,
         'mp3' => audio_klass,
         'mp4' => video_klass,
         'video/dv' => video_klass,
