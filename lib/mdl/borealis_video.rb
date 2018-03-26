@@ -14,7 +14,11 @@ module MDL
     end
 
     def video_id
-      document['kaltura_video_ssi']
+      document.fetch('kaltura_video_ssi', false)
+    end
+
+    def video_playlist_id
+      document.fetch('kaltura_video_playlist_ssi', false)
     end
 
     def viewer
