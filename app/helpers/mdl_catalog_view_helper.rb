@@ -45,4 +45,8 @@ module MdlCatalogViewHelper
   def facet_link(text, field)
     link_to text, URI.escape("/catalog/?f[#{field}][]=#{text}")
   end
+
+  def search_text
+    current_search_session.query_params.fetch('q', '')
+  end
 end

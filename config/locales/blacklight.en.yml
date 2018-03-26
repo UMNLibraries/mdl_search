@@ -3,4 +3,5 @@ en:
     application_name: 'Minnesota Reflections'
     search:
       fields:
-        table_ssim: "Table of Contents"
+        table_ssim: "Page Titles"
+      start_over: 'Home'

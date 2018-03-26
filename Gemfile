@@ -69,7 +69,6 @@ gem 'blacklight', '~> 6.10.1'
 gem 'rsolr', '~> 2.0.2'
 gem 'globalid'
 gem 'webpacker'
-gem 'react-rails'
 
 # # CONTENTdm ETL
 gem 'devise'

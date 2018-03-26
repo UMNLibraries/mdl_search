@@ -1,24 +1,54 @@
 <%
-   borealis_doc = MDL::BorealisDocument.new(document: document)
-   config = []
-   config << MDL::CiteDetails.new(solr_doc: document).to_hash
-   config << MDL::CiteCitation.new(solr_doc: document, base_url: request.base_url).to_hash
-   config << MDL::CiteDownload.new(assets: borealis_doc.assets).to_hash
-   config << MDL::CiteTranscript.new(solr_doc: document).to_hash
-   config = config.map { |item| (!item.empty?) ? item : nil }.compact
-%>
+    borealis_doc = MDL::BorealisDocument.new(document: document)
+    config = []
+    config << MDL::CiteDetails.new(solr_doc: document).to_hash
+    config << MDL::CiteCitation.new(solr_doc: document, base_url: request.base_url).to_hash
+    config << MDL::CiteDownload.new(assets: borealis_doc.assets).to_hash
+    config << MDL::CiteTranscript.new(solr_doc: document).to_hash
+    config = config.map { |item| (!item.empty?) ? item : nil }.compact
+    viewer = borealis_doc.to_viewer
 
-<%= react_component('MDLfullRecord',
-                    base_path: request.path,
-                    borealis_config: borealis_doc.to_viewer,
-                    citation_config: config) %>
+    if viewer.fetch('image', false) && current_search_session != nil
+      initial_path = "image/0?searchText=#{search_text}&redirect=true"
+    else
+      initial_path = ''
+    end
+  %>
 
-<div class="metadata" data-metadata='<%= document.to_json %>' ></div>
+  <div class="metadata" data-metadata='<%= viewer.to_json %>' ></div>
 
-<%= render partial: 'map_view',
-  locals: {
-    coordinates: @document['coordinates_llsi'],
-    map_id: 'full_record_map',
-    with_popup: true
-  }
-%>
+  <%= content_tag :div,
+    id: "viewer_data",
+    initialPath: "#{initial_path}",
+    viewerConfig: viewer.to_json,
+    citationConfig: config.to_json do %>
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <%= javascript_pack_tag 'viewer' %>
+      <div id="react-borealis-viewer" ></div>
+      <div class="addthis_inline_share_toolbox"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <%= javascript_pack_tag 'citation' %>
+      <div id="react-citation-viewer" ></div>
+    </div>
+    <div class="col-md-3">
+      <div id="sidebar">
+         <%= render_document_sidebar_partial %>
+      </div>
+    </div>
+  </div>
+
+  <%= javascript_pack_tag 'drawMap' %>
+  <%= render partial: 'map_view',
+    locals: {
+      coordinates: @document['coordinates_llsi'],
+      map_id: 'full_record_map',
+      with_popup: true
+    }
+  %>

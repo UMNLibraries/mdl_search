@@ -1,12 +1,9 @@
 #react-borealis {
+  margin-bottom: 15px;
   .panel-footer {
     padding-top: 15px;
   }
-  margin-bottom: 15px;
 }
-
-
-
 
 #react-borealis video {
   width: 100%;
@@ -14,84 +11,160 @@
 }
 
 .thumbnail img {
-      max-height: 100px;
+  max-height: 100px;
+}
+
+.borealis-tray {
+  padding-top: 15px;
+  margin-top: 15px;
+  clear: both;
+}
+
+.borealis-tray div {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.navigator-wrapper {
+  background:#000; overflow:hidden;
+  width:166px;
+  height:178px;
+  border:solid 0px #ffffff;
+}
+.osd {
+  position: relative;
+  background-color: black;
+}
+
+.osd-toolbar {
+  padding:0;
+  position: absolute;
+  top: 0;
+}
+
+.osd-toolbar li {
+  display: inline-block;
+}
+
+.osd-toolbar > li {
+  list-style:none;
+}
+.osd-toolbar a {
+  z-index: 1;
+  width:30px;
+  height:30px;
+  font-height:30px;
+  background:rgba(0,0,0,.6);
+  color:#fff;
+  margin-right:1px;
+  cursor:pointer;
+  text-align:center
+}
+
+.osd-toolbar a:hover {
+  background: rgba(158, 46, 0, 0.6); text-decoration:none
+}
+
+.osd-toolbar a > i {
+  width:30px;
+  height:30px;
+  line-height:30px;
+  font-size:15px;
+  padding-top:2px
+}
+
+
+.openseadragon-container, .openseadragon {
+  height: 500px;
+}
+
+.image-nav {
+  margin-bottom: 10px;
+  ul {
+    margin-left: 15px;
+  }
+}
+
+.osd-sidebar {
+  img {
+    max-width: 150px;
+  }
+  overflow-y: scroll;
+  overflow-x: hidden;
+  .nav > li > a  {
+    padding: 5px 5px;
+  }
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    border: 1px solid #ecedf0;
+  }
+}
+
+.openseadragon {
+  padding-right: 0;
+}
+
+.osd-sidebar  img {
+      max-width: 150px;
     }
 
-    .borealis-tray {
-      padding-top: 15px;
-      margin-top: 15px;
-      clear: both;
-    }
+  .osd-sidebar {
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
 
-    .borealis-tray div {
-      display: inline-block;
-      margin-right: 15px;
-    }
+  .nav > li > a  {
+    padding: 5px 5px;
+  }
+  .nav > li > a:hover,
+  .nav > li > a:focus {
+    border: 1px solid #ecedf0;
+  }
 
-    .navigator-wrapper {
-      background:#000; overflow:hidden;
-      width:166px;
-      height:178px;
-      border:solid 0px #ffffff;
-    }
-    .osd {
-      position: relative;
-      background-color: black;
-    }
+.easer {
+  -webkit-transition: width 0.5s ease;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+}
 
-    .osd-toolbar {
-      padding:0;
-      position: absolute;
-      top: 0;
-    }
+.showViewer {
 
-    .osd-toolbar li {
-      display: inline-block;
-    }
+}
 
-    .osd-toolbar > li {
-      list-style:none;
-    }
-    .osd-toolbar a {
-      z-index: 1;
-      width:30px;
-      height:30px;
-      font-height:30px;
-      background:rgba(0,0,0,.6);
-      color:#fff;
-      margin-right:1px;
-      cursor:pointer;
-      text-align:center
-    }
+.hideViewer {
+  margin: -100000px;
+}
 
-    .osd-toolbar a:hover {
-      background: rgba(158, 46, 0, 0.6); text-decoration:none
-    }
+.osd .ocr-text {
+    height: 500px;
+}
 
-    .osd-toolbar a > i {
-      width:30px;
-      height:30px;
-      line-height:30px;
-      font-size:15px;
-      padding-top:2px
-    }
+.osd .ocr-text.fullscreen,
+.osd .ocr-text-image.fullscreen {
+  height: 100vh;
+  width: 50vw;
+  padding: 20px;
+}
+
+.osd .ocr-text-image {
+  overflow-y: scroll;
+  height: 500px;
+  text-align: center;
+}
+
+.ocr-text {
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.highlighted-text {
+  overflow-y: scroll;
+  height: 490px;
+}
+
+.openseadragon {
+  height: 500px;
+}
 
 
-    .openseadragon-container, .openseadragon {
-      height: 500px;
-      width: 100%;
-    }
-
-    .image-nav {
-      margin-bottom: 10px;
-      ul {
-        margin-left: 15px;
-      }
-    }
-
-    .toc-select {
-      margin-top: 10px;
-      label {
-        margin-right: 5px;
-      }
-    }

@@ -6,16 +6,16 @@
       <div class="page_links">
         <%= link_to_previous_document @previous_document %> |
 
-        <%= item_page_entry_info %> |
+        <%= item_page_entry_info %> results |
 
         <%= link_to_next_document @next_document %>
       </div>
     <% end %>
     <% if current_search_session %>
       <div class="pull-right search-widgets">
-        <%= link_back_to_catalog class: 'btn' %>
+        <%= link_back_to_catalog class: 'btn back-search-link' %>
 
-        <%=link_to t('blacklight.search.start_over'), start_over_path(current_search_session.try(:query_params) || {}), id: 'startOverLink', class: 'btn' %>
+        <%=link_to t('blacklight.search.start_over'), start_over_path(current_search_session.try(:query_params) || {}), id: 'startOverLink', class: 'btn start-over-link' %>
       </div>
   <% end %>
   </div>

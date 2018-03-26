@@ -45,10 +45,6 @@ GEM
     arel (8.0.0)
     autoprefixer-rails (7.1.2.2)
       execjs
-    babel-source (5.8.35)
-    babel-transpiler (0.7.0)
-      babel-source (>= 4.0, < 6)
-      execjs (~> 2.0)
     bcrypt (3.1.11)
     bindex (0.5.0)
     binding_of_caller (0.7.2)
@@ -94,7 +90,7 @@ GEM
     capybara-webkit (1.14.0)
       capybara (>= 2.3.0, < 2.14.0)
       json
-    cdmbl (0.8.0)
+    cdmbl (0.10.0)
       activesupport (>= 4.2)
       contentdm_api (~> 0.3.11)
       hash_at_path (~> 0.1)
@@ -250,12 +246,6 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rdoc (4.3.0)
-    react-rails (2.2.1)
-      babel-transpiler (>= 0.7.0)
-      connection_pool
-      execjs
-      railties (>= 3.2)
-      tilt
     redis (3.3.3)
     ref (2.0.0)
     responders (2.4.0)
@@ -423,7 +413,6 @@ DEPENDENCIES
   mysql2 (~> 0.3.18)
   puma (~> 3.7)
   rails (~> 5.1.2)
-  react-rails
   rinku
   rsolr (~> 2.0.2)
   rspec-rails

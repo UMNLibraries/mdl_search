@@ -18,7 +18,7 @@ module MDL
     end
 
     def details
-      details_fields.map do |field|
+      details_with_actual_collections.map do |field|
         val = solr_doc[field[:key]]
         vals = field_values([val].flatten, field[:key], field[:facet])
         map_details(vals, field[:label], field[:delimiter])
@@ -26,6 +26,27 @@ module MDL
     end
 
     private
+
+    # Many users add Contributing org details in the OAI collection name field.
+    # We don't want to show these collections, because they are redundant with
+    # contributing org. So, remove collection if these two field values are the same
+    def details_with_actual_collections()
+      details_fields.select do |field|
+        good_collection(field, solr_doc) || !is_collection(field)
+      end
+    end
+
+    def is_collection(field)
+      field[:key] == 'collection_name_ssi'
+    end
+
+    def good_collection(field, doc)
+      is_collection(field) && !same_contrib_and_collection?(doc)
+    end
+
+    def same_contrib_and_collection?(doc)
+      doc['collection_name_ssi'] == doc['contributing_organization_ssi']
+    end
 
     def map_details(values, label, delimiter = nil, facet = nil)
       if values != [{}]
@@ -62,30 +83,32 @@ module MDL
 
     def details_fields
       [
+        {key: 'contributing_organization_ssi', label: 'Contributing Organization', facet: true},
         {key: 'title_ssi', label: 'Title'},
         {key: 'creator_ssim', label: 'Creator', delimiter: ', ', facet: true},
-        {key: 'dat_ssi', label: 'Date'},
-        {key: 'table_ssim', label: 'Table of Contents', facet: true},
-        {key: 'description_ts', label: 'Description'},
-        {key: 'contributing_organization_ssi', label: 'Contributing Organization', facet: true},
-        {key: 'type_ssi', label: 'Type', facet: true},
-        {key: 'physical_format_ssi', label: 'Format', facet: true},
         {key: 'contributor_ssim', label: 'Contributor', delimiter: ', ', facet: true},
+        {key: 'description_ts', label: 'Description'},
+        {key: 'dat_ssi', label: 'Date Created'},
         {key: 'publishing_agency_ssi', label: 'Publishing Agency', facet: true},
         {key: 'dimensions_ssi', label: 'Dimensions', facet: true},
-        {key: 'country_ssi', label: 'Country', facet: true},
-        {key: 'state_ssi', label: 'State', facet: true},
+        {key: 'topic_ssim', label: 'Minnesota Reflections Topic', facet: true},
+        {key: 'type_ssi', label: 'Type', facet: true},
+        {key: 'physical_format_ssi', label: 'Physical Format', facet: true},
+        {key: 'formal_subject_ssim', label: 'Library of Congress Subject Headings', facet: true},
+        {key: 'subject_ssim', label: 'Keywords', facet: true},
+        {key: 'city_ssim', delimiter: ', ', label: 'City or Township', facet: true},
         {key: 'county_ssim', delimiter: ', ', label: 'County', facet: true},
-        {key: 'city_ssim', delimiter: ', ', label: 'City/Township', facet: true},
-        {key: 'district_ssi', label: 'District', facet: true},
+        {key: 'state_ssi', label: 'State or Province', facet: true},
+        {key: 'country_ssi', label: 'Country', facet: true},
+        {key: 'geographic_feature_ssim', label: 'Geographic Feature', facet: true},
         {key: 'geonam_ssi', label: 'GeoNames URI', facet: true},
         {key: 'language_ssi', label: 'Language'},
-        {key: 'rights_ssi', label: 'Rights'},
         {key: 'local_identifier_ssi', label: 'Local Identifier'},
         {key: 'identifier_ssi', label: 'MDL Identifier'},
-        {key: 'collection_name_ssi', label: 'Collection Name', facet: true},
-        {key: 'contact_information_ssi', label: 'Contact information'},
         {key: 'fiscal_sponsor_ssi', label: 'Fiscal Sponsor'},
+        {key: 'parent_collection_name_ssi', label: 'Collection Name', facet: true},
+        {key: 'contact_information_ssi', label: 'Contact Information'},
+        {key: 'rights_ssi', label: 'Rights'},
         {key: 'collection_description_tesi', label: 'Collection Description'}
       ]
     end

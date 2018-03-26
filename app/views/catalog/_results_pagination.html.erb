@@ -4,9 +4,9 @@
     <div class="pagination">
       <%= paginate @response, :outer_window => 2, :theme => 'blacklight' %>
     </div>
-    <%= json_result_link %>
+    <%= json_result_link if show_json_link %>
   </div>
  </div>
 <% else %>
-  <%= json_result_link %>
+  <%= json_result_link if show_json_link %>
 <% end %>

@@ -85,7 +85,10 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
       rows: 20,
-      fl: '*'
+      fl: '*',
+      hl: 'on',
+      'hl.fl': '*',
+      'hl.fragsize': 0
     }
 
     config.default_per_page = 25
@@ -118,7 +121,7 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.title_field = 'title_ssi'
+    config.index.title_field = 'title_tesi'
     config.index.display_type_field = 'type_ssi'
 
     # solr field configuration for document/show views
@@ -149,15 +152,14 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
-    config.add_facet_field 'physical_format_ssi', label: 'Format', show: true, index_range: 'A'..'Z', collapse: false, index: true, limit: 5
+    config.add_facet_field 'topic_ssim', label: 'Topic'
     config.add_facet_field 'type_ssi', label: 'Type', show: true, collapse: false, limit: 10
+    config.add_facet_field 'physical_format_ssi', label: 'Physical Format', show: true, index_range: 'A'..'Z', collapse: false, index: true, limit: 5
     config.add_facet_field 'dat_ssi', label: 'Date Created', collapse: false, limit: 5
-    config.add_facet_field 'county_ssim', label: 'County', show: true, limit: 5, index_range: 'A'..'Z', collapse: false, index: true
-    # Topics have been incorporated into keywords
-    # config.add_facet_field 'topic_ssim', label: 'Topic', show: true, index_range: 'A'..'Z', collapse: false, limit: 5, index: true
-    config.add_facet_field 'keyword_ssim', label: 'Keyword', show: true, index_range: 'A'..'Z', collapse: false, limit: 5, index: true
-    config.add_facet_field 'collection_name_ssi', label: 'Collection', index_range: 'A'..'Z', collapse: false, limit: 5, index: true
     config.add_facet_field 'placename_ssim', label: 'Location', index_range: 'A'..'Z', collapse: false, limit: 5, index: true
+    config.add_facet_field 'formal_subject_ssim', label: 'Subject Headings', show: true, index_range: 'A'..'Z', collapse: false, limit: 5, index: true
+    config.add_facet_field 'collection_name_ssi', label: 'Contributor', index_range: 'A'..'Z', collapse: false, limit: 5, index: true
+
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -166,12 +168,13 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'creator_ssim', label: 'Creator'
-    config.add_index_field 'dat_ssi', label: 'Date Created'
-    config.add_index_field 'description_ts', label: 'Description'
-    config.add_index_field 'contributing_organization_ssi', label: 'Contributing Institution'
-    config.add_index_field 'type_ssi', label: 'Type'
-    config.add_index_field 'physical_format_ssi', label: 'Format'
+    config.add_index_field 'creator_tesi', label: 'Creator',:highlight => true
+    config.add_index_field 'dat_tesi', label: 'Date Created',:highlight => true
+    config.add_index_field 'description_ts', label: 'Description',:highlight => true
+    config.add_index_field 'contributing_organization_tesi', label: 'Contributing Institution',:highlight => true
+    config.add_index_field 'type_tesi', label: 'Type',:highlight => true
+    config.add_index_field 'physical_format_tesi', label: 'Format',:highlight => true
+
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
@@ -241,10 +244,13 @@ class CatalogController < ApplicationController
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case).
-    config.add_sort_field 'score desc, dat_sort desc, title_sort asc', label: 'relevance'
-    config.add_sort_field 'title_sort asc, dat_sort desc', label: 'title'
-    config.add_sort_field 'creator_sort asc, title_sort asc', label: 'creator'
-    config.add_sort_field 'dat_ssi desc, title_sort asc', label: 'date'
+    config.add_sort_field 'score desc, dat_sort desc, title_sort asc', label: 'Relevance'
+    config.add_sort_field 'title_sort asc, dat_sort asc', label: 'Title: A to Z'
+    config.add_sort_field 'title_sort desc, dat_sort desc', label: 'Title: Z to A'
+    config.add_sort_field 'creator_sort asc, title_sort asc', label: 'Creator: A to Z'
+    config.add_sort_field 'creator_sort desc, title_sort desc', label: 'Creator: Z to A'
+    config.add_sort_field 'dat_ssi asc, title_sort asc', label: 'Date: Oldest First'
+    config.add_sort_field 'dat_ssi desc, title_sort desc', label: 'Date: Newest First'
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
