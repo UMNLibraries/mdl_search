@@ -37,7 +37,7 @@ module MDL
         },
         'wrapper_height' => '100%',
         'wrapper_width' => '100%',
-        'thumbnail' => "https://d1kue88aredzk1.cloudfront.net/audio-3.png"
+        'thumbnail' => "https://d1kue88aredzk1.cloudfront.net/video-1.png"
       }
     end
   end
