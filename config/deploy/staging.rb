@@ -16,7 +16,7 @@ set :rails_env, "production"
 set :bundle_flags, '--deployment'
 
 set :sidekiq_concurrency, 2
-set :sidekiq_processes, 4
+set :sidekiq_processes, 2
 
 set :keep_releases, 2
 set :passenger_restart_with_touch, true
