@@ -19,7 +19,7 @@ $( document ).on('turbolinks:load', function() {
     ga_event('Full Record', 'View', metadata['id']);
 
     var pageSearchText = $('#page-search').val();
-    if (pageSearchText !== '') {
+    if (pageSearchText !== '' && typeof pageSearchText !== 'undefined') {
       var numFound = $(".osd-num-found").text();
       var recordSearchResult = (numFound != '0 found') ? 'success' : 'failure';
       if (recordSearchResult == 'success') {
