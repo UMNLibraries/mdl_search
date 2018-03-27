@@ -10,7 +10,7 @@ module MDL
     end
 
     def type
-      'kaltura_video'
+      (video_playlist_id) ? 'kaltura_video_playlist' : 'kaltura_video'
     end
 
     def video_id

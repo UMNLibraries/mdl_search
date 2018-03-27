@@ -10,7 +10,7 @@ module MDL
     end
 
     def type
-      'kaltura_audio'
+      (audio_playlist_id) ? 'kaltura_audio_playlist' : 'kaltura_audio'
     end
 
     def audio_playlist_id
