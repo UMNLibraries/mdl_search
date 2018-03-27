@@ -18,8 +18,17 @@ $( document ).on('turbolinks:load', function() {
     var metadata = JSON.parse($('.metadata').attr('data-metadata'));
     ga_event('Full Record', 'View', metadata['id']);
 
+    var pageSearchText = $('#page-search').val();
+    var numFound = $(".osd-num-found").text();
+    var recordSearchResult = (numFound != '0 found') ? 'success' : 'failure'
+    if (recordSearchResult == 'success') {
+      ga_event('Full Record', 'Viewer Search Success', pageSearchText);
+    } else {
+      ga_event('Full Record', 'Viewer Search Failure', pageSearchText);
+    }
+    ga_event('Viewer Search Result', recordSearchResult, pageSearchText);
+
     $('a.json-link').click(function() {
-      console.log($(this).attr('href'));
       ga_event('Full Record', 'JSON Click', metadata['id']);
     });
 
