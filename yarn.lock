@@ -5403,9 +5403,9 @@ rc@^1.1.7:
   dependencies:
     immutable "^3.8.1"
 
-"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#9df51ef73c55":
+"react-borealis@git+https://github.com/UMNLibraries/react-borealis.git#60ee3f4709e8":
   version "0.1.0"
-  resolved "git+https://github.com/UMNLibraries/react-borealis.git#9df51ef73c55f9745a2e81838776fff5c740a2f5"
+  resolved "git+https://github.com/UMNLibraries/react-borealis.git#60ee3f4709e8508fb065bf7b67a88e55e8c1725b"
   dependencies:
     babel-polyfill "^6.23.0"
     borealis-pdf "git+https://github.com/UMNLibraries/borealis-pdf.git#20ee0fcee70a3343d1d7c0"
