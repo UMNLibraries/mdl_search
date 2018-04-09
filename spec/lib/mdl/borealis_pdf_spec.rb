@@ -10,7 +10,7 @@ module MDL
                                collection: 'foo', id: '124').downloads).to eq(
           [
             {
-              src: 'http://cdm16022.contentdm.oclc.org/utils/getfile/collection/foo/id/124/filename',
+              src: 'https://cdm16022.contentdm.oclc.org/utils/getfile/collection/foo/id/124/filename',
               label: 'Download'
             }
           ]
@@ -24,7 +24,7 @@ module MDL
                                collection: 'foo', id: '123').downloads).to eq(
           [
             {
-              src: 'http://cdm16022.contentdm.oclc.org/utils/getfile/collection/foo/id/123/filename/123',
+              src: 'https://cdm16022.contentdm.oclc.org/utils/getfile/collection/foo/id/123/filename/123',
               label: 'Download'
             }
           ]

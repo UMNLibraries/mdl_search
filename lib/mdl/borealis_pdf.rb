@@ -2,9 +2,9 @@ module MDL
   class BorealisPDF <  BorealisAsset
      def src
       if is_child?
-        "http://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{collection}/id/#{id}/filename"
+        "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{collection}/id/#{id}/filename"
       else
-        "http://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{collection}/id/#{parent_id}/filename/#{id}"
+        "https://cdm16022.contentdm.oclc.org/utils/getfile/collection/#{collection}/id/#{parent_id}/filename/#{id}"
       end
     end
 
