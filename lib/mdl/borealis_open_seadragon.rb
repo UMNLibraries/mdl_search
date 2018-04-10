@@ -43,7 +43,7 @@ module MDL
           'minZoomLevel': 0,
           'tileSources' => assets.map(&:src),
         },
-        'getImageURL' => 'http://cdm16022.contentdm.oclc.org/utils/ajaxhelper',
+        'getImageURL' => 'https://cdm16022.contentdm.oclc.org/utils/ajaxhelper',
         'pages' => pages,
         'transcript' => {
           'texts' => assets.map do |img|

@@ -23,7 +23,7 @@ module MDL
       when :video
         'https://d1kue88aredzk1.cloudfront.net/video-1.png'
       when :contentdm
-        "http://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/#{collection}/id/#{id}"
+        "https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/#{collection}/id/#{id}"
       end
     end
 

@@ -18,7 +18,7 @@ module MDL
     end
 
     def default_url
-      "http://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/#{collection}/id/#{id}"
+      "https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/#{collection}/id/#{id}"
     end
 
     def filename
