@@ -39,7 +39,7 @@ export default class Needle {
   }
 
   _tileIt() {
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       Needle.config(this.coordinates)).addTo(this.map);
   }
 
