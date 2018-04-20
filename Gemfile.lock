@@ -90,7 +90,7 @@ GEM
     capybara-webkit (1.14.0)
       capybara (>= 2.3.0, < 2.14.0)
       json
-    cdmbl (0.10.1)
+    cdmbl (0.11.0)
       activesupport (>= 4.2)
       contentdm_api (~> 0.3.11)
       hash_at_path (~> 0.1)
@@ -142,7 +142,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.8.3)
       i18n (~> 0.5)
-    faraday (0.14.0)
+    faraday (0.15.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.18)
     fontello_rails_converter (0.4.6)
