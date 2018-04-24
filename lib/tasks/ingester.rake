@@ -24,9 +24,9 @@ namespace :mdl_ingester do
 
   desc 'Index MDL Content base on setSpec pattern matching'
   task :by_collections, [:pattern, :inclusive, :batch_size] => :environment  do |t, args|
-    #TODO: encapsulate some of this logic in a CDMBL class
+    # TODO: encapsulate some of this logic in a CDMBL class
     pattern    = args.fetch(:pattern, false)
-    inclusive  = (args.fetch(:inclusive, 'true') == 'true') ?  true : false
+    inclusive  = args.fetch(:inclusive, 'true') == 'true'
     oai_endpoint = 'http://cdm16022.contentdm.oclc.org/oai/oai.php'
     class DefaultFilterCallback
       def valid?(set: {})
@@ -35,12 +35,15 @@ namespace :mdl_ingester do
     end
     set_specs =
       if pattern
-        filter = CDMBL::SetSpecFilterCallback.new(pattern: Regexp.new(pattern))
+        filter = CDMBL::RegexFilterCallback.new(field: 'setName',
+                                                pattern: Regexp.new(pattern),
+                                                inclusive: inclusive)
         CDMBL::FilteredSetSpecs.new(oai_base_url: oai_endpoint,
                                     callback: filter).set_specs
       else
         CDMBL::FilteredSetSpecs.new(oai_base_url: oai_endpoint,
-                                    callback: DefaultFilterCallback.new).set_specs
+                                    callback: DefaultFilterCallback.new)
+                               .set_specs
       end
     puts "Indexing Sets: '#{set_specs.join(', ')}'"
     etl_config  = {
