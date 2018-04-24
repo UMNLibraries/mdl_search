@@ -26,7 +26,7 @@ namespace :mdl_ingester do
   task :by_collections, [:pattern, :inclusive, :batch_size] => :environment  do |t, args|
     #TODO: encapsulate some of this logic in a CDMBL class
     pattern    = args.fetch(:pattern, false)
-    inclusive  = args.fetch(:inclusive, true)
+    inclusive  = (args.fetch(:inclusive, 'true') == 'true') ?  true : false
     oai_endpoint = 'http://cdm16022.contentdm.oclc.org/oai/oai.php'
     class DefaultFilterCallback
       def valid?(set: {})
