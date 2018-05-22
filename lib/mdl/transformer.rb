@@ -3,6 +3,11 @@
 module MDL
   # CDMBL field mappings
   class Transformer
+    class RemoveHashFormatter
+      def self.format(values)
+        values unless values.is_a?(Hash)
+      end
+    end
     def self.field_mappings
       [
         {dest_path: 'location_llsi', origin_path: '/', formatters: [CDMBL::LocationFormatter]},
@@ -85,7 +90,7 @@ module MDL
         {dest_path: 'digspi_ssi', origin_path: 'digspi'},
         {dest_path: 'digspj_ssi', origin_path: 'digspj'},
         {dest_path: 'digspk_ssi', origin_path: 'digspk'},
-        {dest_path: 'transcription_tesi', origin_path: 'transc', formatters: [CDMBL::StripFormatter]},
+        {dest_path: 'transcription_tesi', origin_path: 'transc', formatters: [RemoveHashFormatter, CDMBL::StripFormatter]},
         {dest_path: 'translation_tesi', origin_path: 'transl', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'fullrs_tesi', origin_path: 'fullrs', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'find_ssi', origin_path: 'find', formatters: [CDMBL::StripFormatter]},
