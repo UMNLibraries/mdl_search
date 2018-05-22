@@ -12,7 +12,7 @@ namespace :mdl_ingester do
 
   desc 'Index All MDL Collections'
   task collections: [:environment] do
-    run_etl!(etl.set_specs, etl.config)
+    run_etl!(etl.set_specs)
   end
 
   desc "delete batches of unpublished records"
