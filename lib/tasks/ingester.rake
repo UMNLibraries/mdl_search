@@ -1,7 +1,7 @@
 namespace :mdl_ingester do
   desc "ingest batches of records"
   desc 'Index a single collection'
-  task :batch, [:set_spec] => :environment  do |t, args|
+  task :collection, [:set_spec] => :environment  do |t, args|
     run_etl!([args[:set_spec]])
   end
 
@@ -12,7 +12,7 @@ namespace :mdl_ingester do
 
   desc 'Index All MDL Collections'
   task collections: [:environment] do
-    run_etl!(umedia_etl.set_specs, etl.config)
+    run_etl!(etl.set_specs, etl.config)
   end
 
   desc "delete batches of unpublished records"
