@@ -16,4 +16,19 @@ namespace :solr do
   task :setup_dev do
   	SolrCore.new(dir: '/mdl_search/cores', name: 'mdl', repo: 'mdl-solr-core', org: 'UMNLibraries', version: 'master', example_data_uri: 'https://s3.amazonaws.com/mdl.indexes/latest-data.tar.gz').run!
   end
+
+  desc "commit changes"
+  task commit: [:environment]  do
+  	SolrClient.new.client.commit
+  end
+
+  desc "optimize core"
+  task optimize: [:environment]  do
+  	SolrClient.new.client.optimize
+  end
+
+  desc "delete core index"
+  task delete_index: [:environment]  do
+  	SolrClient.new.delete_index
+  end
 end
