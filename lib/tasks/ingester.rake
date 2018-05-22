@@ -1,5 +1,4 @@
 namespace :mdl_ingester do
-
   desc "ingest batches of records"
   desc 'Index a single collection'
   task :batch, [:set_spec] => :environment  do |t, args|
