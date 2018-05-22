@@ -20,7 +20,7 @@ module MDL
     def config
       {
         oai_endpoint: oai_endpoint,
-        extract_compounds: true,
+        extract_compounds: false,
         field_mappings: field_mappings,
         cdm_endpoint: 'https://server16022.contentdm.oclc.org/dmwebservices/index.php',
         max_compounds: 1,
