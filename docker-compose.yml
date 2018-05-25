@@ -41,17 +41,5 @@ services:
       - GEONAMES_TOKEN
   redis:
     image: redis:latest
-  sidekiq2:
-    build: .
-    command: bundle exec sidekiq  -c 10 -r /mdl_search
-    volumes:
-      - .:/mdl_search
-    links:
-      - redis
-    env_file:
-      - .env
-    environment:
-      - GEONAMES_USER
-      - GEONAMES_TOKEN
   redis:
     image: redis:latest
