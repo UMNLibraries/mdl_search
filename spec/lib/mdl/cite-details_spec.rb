@@ -6,6 +6,23 @@ describe MDL::CiteDetails do
    JSON.parse(File.read(Rails.root.join('spec', 'fixtures', 'solr_doc.json')))
   end
   subject { MDL::CiteDetails.new(solr_doc: solr_doc) }
+  describe 'when both a rights and a rights_uri field exist' do
+    it 'ignores the rights field' do
+      solr_doc_with_rights_uri = solr_doc.merge('rights_uri_ssi' => 'http://rights.org/blah')
+      cite = MDL::CiteDetails.new(solr_doc: solr_doc_with_rights_uri)
+      has_rights = cite.to_hash[:fields].any? { |field| field[:label] == 'Rights'}
+      expect(has_rights).to eq false
+    end
+  end
+
+  describe 'when a rights field exists but a rights_uri field does not exist' do
+    it 'ignores includes the rights field' do
+      solr_doc_with_rights_uri = solr_doc.merge('rights_uri_ssi' => 'http://rights.org/blah')
+      cite = MDL::CiteDetails.new(solr_doc: solr_doc)
+      has_rights = cite.to_hash[:fields].any? { |field| field[:label] == 'Rights'}
+      expect(has_rights).to eq true
+    end
+  end  
   describe "when transforming records" do
     it 'transforms the title field' do
       expect(subject.to_hash[:fields][0]).to eq({:label=>"Title", :field_values=>[{:text=>"Aeromagnetic map of Minnesota, central region, Plate 1"}]})
