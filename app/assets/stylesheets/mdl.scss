@@ -840,8 +840,19 @@ h3.document-title-heading {
 	padding-top: 16px;
 }
 
+.rights-link {
+	/*float: right;*/
+	margin: 12px 0 0;
+	width: 25%;
+}
+
+.rights-block {
+	margin-top: -12px;
+}
+
 .addthis_inline_share_toolbox {
-	margin: 20px 0 0 -2px;
+	margin: 0 0 12px 0;
+	text-align: center;
 }
 
 .citation {
@@ -851,6 +862,7 @@ h3.document-title-heading {
 
 .citation-navigation {
 	border-top: none;
+	clear: none;
 	padding-top: 16px;
 }
 

@@ -120,7 +120,9 @@ module MDL
         {dest_path: 'placename_ssim', origin_path: 'geonam', formatters: [CDMBL::GeoNameID, CDMBL::GeoNameIDToJson, CDMBL::GeoNameToPlaceName]},
         {dest_path: 'placename_unstem_search', origin_path: 'geonam', formatters: [CDMBL::GeoNameID, CDMBL::GeoNameIDToJson, CDMBL::GeoNameToPlaceName]},
         {dest_path: 'table_ssim', origin_path: 'table', formatters: [CDMBL::StripFormatter, CDMBL::SplitFormatter, CDMBL::StripFormatter]},
-        {dest_path: 'umedia_ssi', origin_path: 'umedia', formatters: [CDMBL::StripFormatter]}
+        {dest_path: 'umedia_ssi', origin_path: 'umedia', formatters: [CDMBL::StripFormatter]},
+        {dest_path: 'rights_uri_ssi', origin_path: 'rights', formatters: [CDMBL::StripFormatter]},
+        {dest_path: 'public_ssi', origin_path: 'public', formatters: [CDMBL::StripFormatter]}
       ]
     end
   end

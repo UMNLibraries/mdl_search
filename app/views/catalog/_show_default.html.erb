@@ -28,14 +28,16 @@
     <div class="col-md-12">
       <%= javascript_pack_tag 'viewer' %>
       <div id="react-borealis-viewer" ></div>
-      <div class="addthis_inline_share_toolbox"></div>
     </div>
   </div>
 
   <div class="row">
     <div class="col-md-9">
+      
+      <%= render 'rights_statement', config: MDL::RightsConfig.new(url: document['rights_uri_ssi']) %>
       <%= javascript_pack_tag 'citation' %>
       <div id="react-citation-viewer" ></div>
+      <%= render 'rights_block', config: MDL::RightsConfig.new(url: document['rights_uri_ssi']) %>
     </div>
     <div class="col-md-3">
       <div id="sidebar">

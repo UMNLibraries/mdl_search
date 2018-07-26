@@ -22,7 +22,7 @@ describe MDL::CiteDetails do
       has_rights = cite.to_hash[:fields].any? { |field| field[:label] == 'Rights'}
       expect(has_rights).to eq true
     end
-  end  
+  end
   describe "when transforming records" do
     it 'transforms the title field' do
       expect(subject.to_hash[:fields][0]).to eq({:label=>"Title", :field_values=>[{:text=>"Aeromagnetic map of Minnesota, central region, Plate 1"}]})

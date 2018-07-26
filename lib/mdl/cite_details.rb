@@ -119,6 +119,8 @@ module MDL
         {key: 'parent_collection_name_ssi', label: 'Collection Name', facet: true},
         {key: 'contact_information_ssi', label: 'Contact Information'},
         {key: 'rights_ssi', label: 'Rights'},
+        # {key: 'rights_uri_ssi', label: 'Rights Statement URI'},
+        {key: 'public_ssi', label: 'Public Domain Year of Entry'},
         {key: 'collection_description_tesi', label: 'Collection Description'}
       ]
     end
