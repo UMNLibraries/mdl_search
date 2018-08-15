@@ -56,7 +56,9 @@ class SolrDocument
     mlt.inject([]) do |sum, v|
       collection, id = v['id'].split(':')
       sum <<  {
+                solr_doc: v,
                 id: id,
+                item_id: v['id'],
                 collection: collection,
                 title: v['title_ssi'],
                 type: v['type_ssi']

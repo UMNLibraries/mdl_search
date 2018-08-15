@@ -1,6 +1,10 @@
 <li class="more_like_this_document" data-turbolinks="false">
-  <span class="mlt_title"><%= link_to image_tag(thumbnail_path("#{doc[:collection]}:#{doc[:id]}", type: doc[:type])),
-                                                "/catalog/#{doc[:collection]}:#{doc[:id]}#{doc[:fragment]}?pn=false",
+  <span class="mlt_title"><%= link_to image_tag(thumbnail_path("#{doc[:item_id]}", type: doc[:type])),
+                                                url_for(controller: 'catalog',
+                                                        action: 'show',
+                                                        id: "#{doc[:item_id]}",
+                                                        pn: false,
+                                                        anchor: "#{doc_anchor(doc[:solr_doc])}"),
                                                 alt: doc[:title],
                                                 title: doc[:title] %>
                                                 </span>
