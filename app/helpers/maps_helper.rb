@@ -5,7 +5,19 @@ module MapsHelper
   end
 
   def nearby_json(coordinates)
-    raw Nearby.search(q: '*:*', pt: coordinates, d: 25).to_json
+    raw nearbys_with_anchors(coordinates).to_json
+  end
+
+  def nearbys_with_anchors(coordinates)
+    nearbys(coordinates).map { |nearby| nearby.merge(anchor: nearby_anchor(nearby)) }
+  end
+
+  def nearby_anchor(doc)
+    MDL::DocumentAnchor.new(doc: doc).anchor
+  end
+
+  def nearbys(coordinates)
+    Nearby.search(q: '*:*', pt: coordinates, d: 25)
   end
 
   def title

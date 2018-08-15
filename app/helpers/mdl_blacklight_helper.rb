@@ -52,6 +52,17 @@ module MdlBlacklightHelper
       label = index_presenter(doc).label field
     end
 
-    link_to raw(label), url_for_document(doc), document_link_params(doc, opts)
+    link_to raw(label),
+            url_for(controller: 'catalog', action: 'show', id: doc.id, anchor: doc_anchor(doc)),
+            document_link_params(doc, opts).merge(data: { turbolinks: false })
+  end
+
+
+  def doc_anchor(doc)
+    if current_search_session != nil
+      MDL::DocumentAnchor.new(doc: doc).anchor
+    else
+      initial_path = ''
+    end
   end
 end

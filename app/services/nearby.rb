@@ -5,7 +5,7 @@ class Nearby
       :params => { :q => "#{q} -coordinates_llsi:\"#{pt}\"",
         :d => d,
         :pt => pt,
-        :fl => 'title_ssi, id, coordinates_llsi',
+        :fl => 'title_ssi, id, coordinates_llsi, format_tesi',
         :fq => '{!bbox sfield=coordinates_llsi}',
         :defType => 'edismax',
         :rows => 150

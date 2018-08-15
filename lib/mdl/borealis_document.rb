@@ -11,6 +11,9 @@ module MDL
       @to_viewers_klass = to_viewers_klass
     end
 
+    def first_key
+      to_viewer.keys.first
+    end
 
     def to_viewer
       to_viewers_klass.new(assets: assets).viewers

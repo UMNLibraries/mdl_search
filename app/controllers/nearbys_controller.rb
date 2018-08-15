@@ -2,8 +2,21 @@ class NearbysController < ApplicationController
   protect_from_forgery except: :show
 
   def show
-    render json: Nearby.search(pt: coords, d: distance), :callback => params[:callback]
+    render json: nearbys_with_anchors, :callback => params[:callback]
   end
+
+  def nearbys_with_anchors
+    nearbys.map { |nearby| nearby.merge(anchor: doc_anchor(nearby)) }
+  end
+
+  def doc_anchor(doc)
+    MDL::DocumentAnchor.new(doc: doc).anchor
+  end
+
+  def nearbys
+    @nearbys ||= Nearby.search(pt: coords, d: distance)
+  end
+
 
   def coords
     params[:coordinates].gsub /\+/, '.'

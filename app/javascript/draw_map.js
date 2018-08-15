@@ -4,7 +4,8 @@ import LinkedThumbnail from './linked_thumbnail.js';
 function pinHTML(location) {
   return (new LinkedThumbnail(location.title_ssi,
                               location.id,
-                              location.type_ssi)).toHtml();
+                              location.type_ssi,
+                              location.anchor)).toHtml();
 }
 
 function reDrawMap(coordinates, needle) {
