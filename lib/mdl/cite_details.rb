@@ -117,10 +117,12 @@ module MDL
         {key: 'identifier_ssi', label: 'MDL Identifier'},
         {key: 'fiscal_sponsor_ssi', label: 'Fiscal Sponsor'},
         {key: 'parent_collection_name_ssi', label: 'Collection Name', facet: true},
-        {key: 'contact_information_ssi', label: 'Contact Information'},
         {key: 'rights_ssi', label: 'Rights'},
-        # {key: 'rights_uri_ssi', label: 'Rights Statement URI'},
-        {key: 'public_ssi', label: 'Public Domain Year of Entry'},
+        {key: 'rights_status_ssi', label: 'Rights'},
+        {key: 'rights_statement_ssi', label: 'Rights Statement'},
+        {key: 'rights_uri_ssi', label: 'Rights Statement URI'},
+        {key: 'public_ssi', label: 'Expected Public Domain Entry Year'},
+        {key: 'contact_information_ssi', label: 'Contact Information'},
         {key: 'collection_description_tesi', label: 'Collection Description'}
       ]
     end

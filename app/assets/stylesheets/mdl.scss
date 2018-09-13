@@ -904,7 +904,11 @@ dt, dd {
 	border: 1px solid #005da3;
 }
 
-.detail-field-collectiondescription > .field-label {
+.detail-field-rightsstatement > .field-definition, .detail-field-rightsstatementuri > .field-definition {
+	margin-top: -14px;
+}
+
+.detail-field-rightsstatement > .field-label, .detail-field-rightsstatementuri > .field-label, .detail-field-collectiondescription > .field-label {
 	position: absolute;
 	width: 1px;
 	height: 1px;
