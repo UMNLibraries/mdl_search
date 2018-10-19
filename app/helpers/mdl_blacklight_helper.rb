@@ -57,12 +57,13 @@ module MdlBlacklightHelper
             document_link_params(doc, opts).merge(data: { turbolinks: false })
   end
 
-
   def doc_anchor(doc)
-    if current_search_session != nil
-      MDL::DocumentAnchor.new(doc: doc).anchor
-    else
-      initial_path = ''
+    Rails.cache.fetch("doc_anchor-#{doc['id']}") do
+      if current_search_session != nil
+        MDL::DocumentAnchor.new(doc: doc).anchor
+      else
+        initial_path = ''
+      end
     end
   end
 end
