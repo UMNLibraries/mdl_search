@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
+  ##
+  # Determine whether to render the bookmarks control
+  def render_bookmarks_control?
+    false
+  end
+
+  ##
+  # Determine whether to render the saved searches link
+  def render_saved_searches?
+    false
+  end
+
   include Blacklight::Catalog
 
 
