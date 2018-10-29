@@ -19,13 +19,23 @@ module MDL
 
     def details
       details_with_actual_collections.map do |field|
-        val = solr_doc[field[:key]]
-        vals = field_values([val].flatten, field[:key], field[:facet])
-        map_details(vals, field[:label], field[:delimiter])
+        if !redundant_rights_field?(field)
+          val = solr_doc[field[:key]]
+          vals = field_values([val].flatten, field[:key], field[:facet])
+          map_details(vals, field[:label], field[:delimiter])
+        end
       end.compact
     end
 
     private
+
+    def redundant_rights_field?(field)
+      has_rights_uri? && field[:key] == 'rights_ssi'
+    end
+
+    def has_rights_uri?
+      solr_doc.fetch('rights_uri_ssi', false) != false
+    end
 
     # Many users add Contributing org details in the OAI collection name field.
     # We don't want to show these collections, because they are redundant with
@@ -107,8 +117,12 @@ module MDL
         {key: 'identifier_ssi', label: 'MDL Identifier'},
         {key: 'fiscal_sponsor_ssi', label: 'Fiscal Sponsor'},
         {key: 'parent_collection_name_ssi', label: 'Collection Name', facet: true},
-        {key: 'contact_information_ssi', label: 'Contact Information'},
         {key: 'rights_ssi', label: 'Rights'},
+        {key: 'rights_status_ssi', label: 'Rights'},
+        {key: 'rights_statement_ssi', label: 'Rights Statement'},
+        {key: 'rights_uri_ssi', label: 'Rights Statement URI'},
+        {key: 'public_ssi', label: 'Expected Public Domain Entry Year'},
+        {key: 'contact_information_ssi', label: 'Contact Information'},
         {key: 'collection_description_tesi', label: 'Collection Description'}
       ]
     end

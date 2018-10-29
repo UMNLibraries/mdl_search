@@ -1,0 +1,6 @@
+<% if config.exists? %>
+  <div class="rights-block">
+    <label class="label label-default">Standardized Rights Statement:</label>
+    <%= rights_block(config.mapping) %>
+  </div>
+<% end %>

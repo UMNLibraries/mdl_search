@@ -40,7 +40,7 @@
     "rails-erb-loader": "^5.2.1",
     "react": "15.4.1",
     "react-borealis": "git+https://github.com/UMNLibraries/react-borealis.git#cd3aa11a017c",
-    "react-citation": "git+https://github.com/UMNLibraries/react-citation.git#51682c87e55b",
+    "react-citation": "git+https://github.com/UMNLibraries/react-citation.git#52091d617b5d",
     "react-dom": "15.4.1",
     "react-spinkit": "^3.0.0",
     "react_ujs": "^2.4.2",
@@ -49,7 +49,8 @@
     "style-loader": "^0.19.0",
     "webpack": "^3.8.1",
     "webpack-manifest-plugin": "^1.3.2",
-    "webpack-merge": "^4.1.1"
+    "webpack-merge": "^4.1.1",
+    "yarn": "^1.7.0"
   },
   "engines": {
     "node": ">= 0.10"

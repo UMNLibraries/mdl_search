@@ -840,8 +840,19 @@ h3.document-title-heading {
 	padding-top: 16px;
 }
 
+.rights-link {
+	/*float: right;*/
+	margin: 12px 0 0;
+	width: 25%;
+}
+
+.rights-block {
+	margin-top: -12px;
+}
+
 .addthis_inline_share_toolbox {
-	margin: 20px 0 0 -2px;
+	margin: 0 0 12px 0;
+	text-align: center;
 }
 
 .citation {
@@ -851,6 +862,7 @@ h3.document-title-heading {
 
 .citation-navigation {
 	border-top: none;
+	clear: none;
 	padding-top: 16px;
 }
 
@@ -892,7 +904,11 @@ dt, dd {
 	border: 1px solid #005da3;
 }
 
-.detail-field-collectiondescription > .field-label {
+.detail-field-rightsstatement > .field-definition, .detail-field-rightsstatementuri > .field-definition {
+	margin-top: -14px;
+}
+
+.detail-field-rightsstatement > .field-label, .detail-field-rightsstatementuri > .field-label, .detail-field-collectiondescription > .field-label {
 	position: absolute;
 	width: 1px;
 	height: 1px;
