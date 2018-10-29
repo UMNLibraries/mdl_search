@@ -8,6 +8,15 @@ module MDL
         values unless values.is_a?(Hash)
       end
     end
+
+    # Calculating the Borealis fragment is expensive, so it is precalculated
+    # here
+    class BorealisFragmentFormatter
+      def self.format(doc)
+        MDL::DocumentAnchor.new(doc: doc).anchor
+      end
+    end
+
     def self.field_mappings
       [
         {dest_path: 'location_llsi', origin_path: '/', formatters: [CDMBL::LocationFormatter]},
@@ -124,7 +133,8 @@ module MDL
         {dest_path: 'rights_uri_ssi', origin_path: 'rights', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'rights_status_ssi', origin_path: 'rightc', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'rights_statement_ssi', origin_path: 'rightd', formatters: [CDMBL::StripFormatter]},
-        {dest_path: 'public_ssi', origin_path: 'public', formatters: [CDMBL::StripFormatter]}
+        {dest_path: 'public_ssi', origin_path: 'public', formatters: [CDMBL::StripFormatter]},
+        {dest_path: 'borealis_fragment_ssi', origin_path: '/', formatters: [BorealisFragmentFormatter]}
       ]
     end
   end
