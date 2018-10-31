@@ -53,17 +53,7 @@ module MdlBlacklightHelper
     end
 
     link_to raw(label),
-            url_for(controller: 'catalog', action: 'show', id: doc.id, anchor: doc_anchor(doc)),
+            url_for(controller: 'catalog', action: 'show', id: doc.id, anchor: doc['borealis_fragment_ssi']),
             document_link_params(doc, opts).merge(data: { turbolinks: false })
-  end
-
-  def doc_anchor(doc)
-    Rails.cache.fetch("doc_anchor-#{doc['id']}") do
-      if current_search_session != nil
-        MDL::DocumentAnchor.new(doc: doc).anchor
-      else
-        initial_path = ''
-      end
-    end
   end
 end

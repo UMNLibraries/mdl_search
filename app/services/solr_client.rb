@@ -2,7 +2,7 @@ require 'rsolr'
 
 class SolrClient
  def more_like_this(query)
-    client.get 'select', :params => {q: query, start: 0, rows:  9, fl: 'title_ssi, id, type_ssi, format_ssi, format_tesi, compound_objects_ts', mm: '0%'}.merge(mlt_config)
+    client.get 'select', :params => {q: query, start: 0, rows:  9, fl: 'title_ssi, id, type_ssi, format_ssi, format_tesi, compound_objects_ts, borealis_fragment_ssi', mm: '0%'}.merge(mlt_config)
   end
 
   def mlt_config
