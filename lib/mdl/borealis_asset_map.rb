@@ -44,6 +44,7 @@ module MDL
         'video/dv' => video_klass,
         'video/mp4' => video_klass,
         'video/dv video/mp4' => video_klass,
+        'video/mpeg4' => video_klass,
         'pdf' => pdf_klass,
         'pdfpage' => pdf_klass,
         'application/pdf' => pdf_klass,
