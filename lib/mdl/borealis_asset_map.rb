@@ -27,13 +27,14 @@ module MDL
     end
 
     def sanitized_format
-      format_field.gsub(/;/, '').downcase
+      format_field.gsub(/;|\n|\s/, '').downcase
     end
 
     def mapping
       {
         'image/jpeg' => image_klass,
         'image/jp2' => image_klass,
+        'image/jpg' => image_klass,
         'tif' => image_klass,
         'jp2' => image_klass,
         'jpg' => image_klass,
@@ -43,6 +44,7 @@ module MDL
         'video/dv' => video_klass,
         'video/mp4' => video_klass,
         'video/dv video/mp4' => video_klass,
+        'video/mpeg4' => video_klass,
         'pdf' => pdf_klass,
         'pdfpage' => pdf_klass,
         'application/pdf' => pdf_klass,

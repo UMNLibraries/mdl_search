@@ -58,6 +58,7 @@ class SolrDocument
       sum <<  {
                 solr_doc: v,
                 id: id,
+                borealis_fragment: v['borealis_fragment_ssi'],
                 item_id: v['id'],
                 collection: collection,
                 title: v['title_ssi'],

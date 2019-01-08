@@ -39,6 +39,13 @@ services:
     environment:
       - GEONAMES_USER
       - GEONAMES_TOKEN
+  webpacker:
+    build: .
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/app
+    ports:
+      - '8080:8080'
   redis:
     image: redis:latest
   redis:
