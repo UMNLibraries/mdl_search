@@ -1,10 +1,5 @@
 version: '2'
 services:
-  solr_setup:
-    build: .
-    command: bundle exec rake solr:setup_dev
-    volumes:
-      - .:/mdl_search
   solr:
     image: reflections_solr:dev
     ports:
@@ -17,23 +12,38 @@ services:
       - .env
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - .:/mdl_search
+      - .:/app
     ports:
       - "3000:3000"
     links:
       - solr
+      - db
+      - db_test
     depends_on:
       - solr
     environment:
       - GEONAMES_USER
       - GEONAMES_TOKEN
+  db:
+    image: library/mysql:5.7
+    env_file:
+      - .env
+    volumes:
+      - reflections-db-test-data-mysql-5-7:/var/lib/mysql
+  db_test:
+    env_file:
+      - .env
+    image: library/mysql:5.7
+    volumes:
+      - reflections-db-test-data-mysql-5-7:/var/lib/mysql
   sidekiq:
     build: .
-    command: bundle exec sidekiq  -c 10 -r /mdl_search
+    command: bundle exec sidekiq  -c 10 -r /app
     volumes:
-      - .:/mdl_search
+      - .:/app
     links:
       - redis
+      - db
     env_file:
       - .env
     environment:
@@ -41,5 +51,9 @@ services:
       - GEONAMES_TOKEN
   redis:
     image: redis:latest
-  redis:
-    image: redis:latest
+volumes:
+  reflections-db-data-mysql-5-7:
+    driver: local
+  reflections-db-test-data-mysql-5-7:
+    driver: local
+
