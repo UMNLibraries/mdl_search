@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   solr:
     image: reflections_solr:dev
@@ -18,7 +18,6 @@ services:
     links:
       - solr
       - db
-      - db_test
     depends_on:
       - solr
     environment:
@@ -28,12 +27,6 @@ services:
     image: library/mysql:5.7
     env_file:
       - .env
-    volumes:
-      - reflections-db-test-data-mysql-5-7:/var/lib/mysql
-  db_test:
-    env_file:
-      - .env
-    image: library/mysql:5.7
     volumes:
       - reflections-db-test-data-mysql-5-7:/var/lib/mysql
   sidekiq:
