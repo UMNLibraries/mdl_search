@@ -12,3 +12,5 @@ docker-compose down;
 docker-compose run web rake db:migrate
 docker-compose exec db mysql -uroot -ppassword -e "CREATE DATABASE IF NOT EXISTS mdl_test; GRANT ALL PRIVILEGES ON mdl_test.* TO 'mdl'@'%'"
 docker-compose exec -e "RAILS_ENV=test" web rake db:migrate
+docker-compose run web yarn install
+sudo chown -R $(whoami) node_modules
