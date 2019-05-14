@@ -6,11 +6,11 @@ services:
     volumes:
       - .:/mdl_search
   solr:
-    image: solr:6.6.0
+    image: reflections_solr:dev
     ports:
       - "8983:8983"
     volumes:
-      - ./cores:/opt/solr/server/solr/cores
+      - ./snapshots:/snapshots
   web:
     build: .
     env_file:
@@ -39,13 +39,6 @@ services:
     environment:
       - GEONAMES_USER
       - GEONAMES_TOKEN
-  webpacker:
-    build: .
-    command: ./bin/webpack-dev-server
-    volumes:
-      - .:/app
-    ports:
-      - '8080:8080'
   redis:
     image: redis:latest
   redis:
