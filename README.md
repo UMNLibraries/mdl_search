@@ -26,11 +26,20 @@ alias drm='docker rm $(docker ps -a | grep Exited | awk '\''BEGIN { FS=" " } ; {
 alias drmi='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
 ```
 
-## Working with composed images
+## Ingest Some Content
+
+`docker-compose exec web rake 'mdl_ingester:collection[p16022coll27]`
+
+Once the ingester has completed:
+
+`docker-compose exec web rake solr:commit`
+
+## Shelling Into The App
 
 Enter an interactive session with the application:
 
 `$ docker-compose exec web /bin/bash`
+
 
 
 ## Troubleshooting
