@@ -2,26 +2,16 @@
 
 An implementation of the [Blacklight Search](http://projectblacklight.org/) platform.
 
-**Note:** tested only on Ubuntu 16.04. Please file an issue if this build does not work for you.
-
 # Developer Quickstart
 
-* [Install Docker](https://docs.docker.com/engine/installation)
-* [Install Docker Group](https://docs.docker.com/engine/installation/linux/ubuntulinux/#/create-a-docker-group)
+* [Install Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 * [Install Docker Compose](https://docs.docker.com/compose/)
-* `$ git clone https://github.com/UMNLibraries/mdl_search.git`
-* `$ cd mdl_search`
-* `$ mkdir thumbnails`
-* `$ docker-compose run solr_setup`
-* `$ docker-compose build web`
-* `$ docker-compose up`
 
-Open another tab in your teminal and enter:
+Initialize and start the local dev environment:
 
-* `$ docker-compose run web rake db:migrate`
+`./local-dev-init.sh`
 
-# Handy-Dandy Docker Commands
-
+# Handy Docker Commands
 
 ## Some aliases for your shell
 
@@ -43,4 +33,7 @@ Enter an interactive session with the application:
 `$ docker-compose exec web /bin/bash`
 
 
+## Troubleshooting
 
+* [MySQL] If you run into issues with the database, try nuking the db volumes and restarting:
+  * `docker-compose down -v; docker-compose up`
