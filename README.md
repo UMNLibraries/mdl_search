@@ -39,6 +39,9 @@ Enter an interactive session with the application:
 # Show all docker images
 alias dps='docker ps -a'
 
+# Remove all MDL images
+docker rmi $(docker images -q --filter="reference=mdl*")
+
 # Remove all inactive Docker images (ones that have "Exited")
 alias drm='docker rm $(docker ps -a | grep Exited | awk '\''BEGIN { FS=" " } ; {print $1;}'\'')'
 
