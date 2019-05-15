@@ -13,9 +13,11 @@ Initialize and start the local dev environment:
 
 ## Ingest Some Content
 
+Once the app is up and running, open another container and run the following command to ingest and index some content:
+
 `docker-compose exec web rake 'mdl_ingester:collection[p16022coll27]`
 
-Once the ingester has completed:
+Once the ingest sidekiq jobs have completed:
 
 `docker-compose exec web rake solr:commit`
 
