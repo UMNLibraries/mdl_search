@@ -5,7 +5,7 @@ services:
     ports:
       - "8983:8983"
     volumes:
-      - ./snapshots:/snapshots
+      - ./solr_snapshots:/solr_snapshots
   web:
     build: .
     env_file:
