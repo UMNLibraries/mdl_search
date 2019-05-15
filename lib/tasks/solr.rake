@@ -17,4 +17,14 @@ namespace :solr do
   task delete_index: [:environment]  do
   	SolrClient.new.delete_index
   end
+
+  desc "backup core index"
+  task backup: [:environment]  do
+  	SolrClient.new.backup
+  end
+
+  desc "backup core index"
+  task restore: [:environment]  do
+  	SolrClient.new.restore
+  end
 end
