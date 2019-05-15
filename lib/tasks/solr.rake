@@ -1,8 +1,4 @@
-require "#{Rails.root}/lib/sunrise/lib/sunrise"
-
 namespace :solr do
-  include Sunrise::SetupHelper
-
   desc "commit changes"
   task commit: [:environment]  do
   	SolrClient.new.client.commit

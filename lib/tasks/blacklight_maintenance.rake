@@ -1,5 +1,3 @@
-require "#{Rails.root}/lib/sunrise/lib/sunrise"
-
 namespace :blacklight_maintenance do
   # Search sessionsn build-up over time. This task should be fired periodically
   # from a cron job
