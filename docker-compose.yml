@@ -1,7 +1,7 @@
 version: '3'
 services:
   solr:
-    image: reflections_solr:dev
+    image: mdl_solr:dev
     ports:
       - "8983:8983"
     volumes:
