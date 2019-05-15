@@ -15,7 +15,7 @@ Initialize and start the local dev environment:
 
 Once the app is up and running, open another container and run the following command to ingest and index some content:
 
-`docker-compose exec web rake 'mdl_ingester:collection[p16022coll27]`
+`docker-compose exec web rake 'mdl_ingester:collection[p16022coll27]'`
 
 Once the ingest sidekiq jobs have completed:
 
@@ -41,8 +41,8 @@ Enter an interactive session with the application:
 # Show all docker images
 alias dps='docker ps -a'
 
-# Remove all MDL images
-docker rmi $(docker images -q --filter="reference=mdl*")
+# Force Remove all MDL images
+docker-compose stop; docker rmi -f $(docker images -q --filter="reference=mdl*")
 
 # Remove all inactive Docker images (ones that have "Exited")
 alias drm='docker rm $(docker ps -a | grep Exited | awk '\''BEGIN { FS=" " } ; {print $1;}'\'')'
