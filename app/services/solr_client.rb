@@ -30,7 +30,7 @@ class SolrClient
   def backup(number_to_keep: 1)
     client.get 'replication', params: {
       command: 'backup',
-      location: ENV['SOLR_BACKUP_LOCATION'],
+      location: '/solr_snapshots',
       numberToKeep: number_to_keep
     }
   end
@@ -38,7 +38,7 @@ class SolrClient
   def restore
     client.get 'replication', params: {
       command: 'restore',
-      location: ENV['SOLR_BACKUP_LOCATION']
+      location: '/solr_snapshots'
     }
   end
 end
