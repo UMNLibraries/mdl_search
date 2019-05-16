@@ -7,11 +7,24 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'vcr'
 
-Capybara.javascript_driver = :webkit
+#### CAPYBARA / SELENIUM
+# Capybara config with docker-compose environment vars
+require 'capybara/rails'
+require 'capybara/rspec'
+Capybara.app_host = "http://#{ENV['TEST_APP_HOST']}:#{ENV['TEST_APP_PORT']}"
+Capybara.javascript_driver = :selenium
+Capybara.run_server = false
 
-Capybara::Webkit.configure do |config|
-  # Allow pages to make requests to any URL without issuing a warning.
-  config.allow_unknown_urls
+# Configure the Chrome driver capabilities & register
+args = ['--no-default-browser-check', '--start-maximized', '--disable-gpu']
+caps = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" => {"args" => args})
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(
+      app,
+      browser: :remote,
+      url: "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}/wd/hub",
+      desired_capabilities: caps
+  )
 end
 
 VCR.configure do |config|

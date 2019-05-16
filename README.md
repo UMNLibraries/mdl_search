@@ -46,13 +46,22 @@ Execute a task in the Rails Test Environment (e.g. run some tests):
 `docker-compose exec -e "RAILS_ENV=test" web respec`
 
 
-
-
 ## Troubleshooting
 
 * [MySQL] If you run into issues with the database, try nuking the db volumes and restarting:
   * `docker-compose down -v; docker-compose up`
 
+# Testing
+
+A complete test environment comes package with `mdl_search`. This includes a test Solr instance as well as a separate running web application test instance.
+
+To run the test suite: `./docker-compose-test rspec`
+
+Note: The `./docker-compose-test` simply executes commands against the `web` service running in your app and sets the Rails Environment to "test". If, for some reason, you wanted to index content against the test solr instance (there is a test solr instance), you can
+
+### Watching Your Functional Tests (Helpful for Debugging)
+
+The Reflections `docker-compose.yml` comes equipped with a selenium server running VNC. To watch Selenium as it drives the test browser, install a [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) and connect it to `http://localhost:5900` with the password "`secret`".
 
 # Docker Help
 
