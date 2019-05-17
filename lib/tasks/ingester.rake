@@ -40,7 +40,7 @@ namespace :mdl_ingester do
       config[:cdm_endpoint],
       config[:oai_endpoint],
       config[:field_mappings],
-      true
+      false
     )
   end
 
