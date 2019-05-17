@@ -22,6 +22,10 @@ class SolrClient
     Blacklight.default_index.connection
   end
 
+  def delete_by_query(query)
+    client.delete_by_query query
+  end
+
   def delete_index
     client.delete_by_query '*:*'
     client.commit

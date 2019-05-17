@@ -14,6 +14,11 @@ namespace :solr do
   	SolrClient.new.delete_index
   end
 
+  desc "delete by query"
+  task :delete_by_query, [:query] => :environment  do |t, args|
+  	SolrClient.new.delete_by_query(args[:query])
+  end
+
   desc "backup core index"
   task backup: [:environment]  do
   	SolrClient.new.backup
