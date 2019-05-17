@@ -57,7 +57,9 @@ A complete test environment comes package with `mdl_search`. This includes a tes
 
 To run the test suite: `./docker-compose-test rspec`
 
-Note: The `./docker-compose-test` simply executes commands against the `web` service running in your app and sets the Rails Environment to "test". If, for some reason, you wanted to index content against the test solr instance (there is a test solr instance), you can
+Note: The `./docker-compose-test` simply executes commands against the `web` service running in your app and sets the Rails Environment to "test".
+
+There is a single, standardized Solr test instance (temporarily) stored on [Dockerhub](https://cloud.docker.com/repository/registry-1.docker.io/cfennell/mdl_solr/tags). Any container storage system (e.g. Artifactory docker) could store this container. This instance contains a handful of representative records and can be updated as new test cases are identified.
 
 ### Watching Your Functional Tests (Helpful for Debugging)
 
@@ -80,3 +82,9 @@ alias drm='docker rm $(docker ps -a | grep Exited | awk '\''BEGIN { FS=" " } ; {
 # Scorched earth! remove all Docker images
 alias drmi='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
 ```
+
+## Usefull Tools
+
+* [Docker Dive](https://github.com/wagoodman/dive)
+
+This is especially useful for analyzing containers to see why they are the size that they are and finding ways to slim them down.
