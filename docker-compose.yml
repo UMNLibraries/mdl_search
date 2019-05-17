@@ -7,9 +7,11 @@ services:
     volumes:
       - ./solr_snapshots:/solr_snapshots
   solr_test:
-    image: mdl_solr:test
+    image: cfennell/mdl_solr:test
     ports:
       - "8984:8983"
+    volumes:
+      - ./solr_snapshots:/solr_snapshots
   web:
     build: .
     env_file:
