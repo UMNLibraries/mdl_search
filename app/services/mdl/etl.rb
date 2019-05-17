@@ -47,11 +47,7 @@ module MDL
     end
 
     def solr_config
-      { url: "#{base_url}:8983/solr/mdl-1" }
-    end
-
-    def base_url
-      (ENV['RAILS_ENV'] == 'production') ? 'http://localhost' : 'http://solr'
+      { url: Blacklight.default_index.connection.options[:url] }
     end
   end
 end
