@@ -2,6 +2,7 @@
   "id":"mgs:598",
   "title_ssi":"Aeromagnetic map of Minnesota, central region, Plate 1",
   "creator_ssim":["Chandler, Val W."],
+  "contributor_ssim":["Somebody"],
   "description_ts":"Total magnetic intensity anomaly (relative to the earth's magnetic field), color coded, scale 1:250,000.  Interpretation of magnetic data collected from airborne surveys, the map colors indicate the distribution and concentration of magnetic minerals (primarily iron-bearing) within the upper crust of the earth. Electronic file available at: ftp://mgssun6.mngs.umn.edu/map_catalog/pdf/umn21100.pdf",
   "dat_ssi":"1985",
   "publishing_agency_ssi":"Minnesota Geological Survey",
@@ -15,8 +16,13 @@
   "subject_ssim":["Aeromagnetics",
   "Minnesota geology"],
   "district_ssi":"central region",
+  "city_ssim": "city of foo",
+  "county_ssim": "schmounty",
+  "geographic_feature_ssim": "mountain",
   "state_ssi":"Minnesota",
   "country_ssi":"United States",
+  "geonam_ssi": "http://example.com",
+  "parent_collection_name_ssi": "collection here",
   "language_ssi":"English",
   "contributing_organization_ssi":"Minnesota Geological Survey",
   "contact_information_ssi":"Minnesota Geological Survey, 2642 University Avenue, St. Paul, MN 55114",
@@ -52,5 +58,6 @@
   "cdmisnewspaper_is":0,
   "record_type_ssi":"single",
   "timestamp":"2016-04-08T16:55:33.018Z",
-  "fiscal_sponsor_ssi": "Mom and Dad"
+  "fiscal_sponsor_ssi": "Mom and Dad",
+  "collection_description_tesi": "foo collection"
 }
