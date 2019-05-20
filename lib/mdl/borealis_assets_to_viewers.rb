@@ -1,21 +1,44 @@
 module MDL
   class BorealisAssetsToViewers
-    attr_reader :assets, :to_viewer_klass
-    def initialize(assets: [], to_viewer_klass: MDL::BorealisAssetToViewer)
+    attr_reader :assets
+    def initialize(assets: [])
       @assets          = assets
-      @to_viewer_klass = to_viewer_klass
     end
 
     def viewers
-      assets.inject({}) do |memo, asset|
-        memo.merge(to_viewer(asset))
-      end
+      grouped_assets.map do |klass, assets|
+        to_viewer(assets.first, assets)
+      end.reduce({}, :merge)
     end
 
     private
 
-    def to_viewer(asset)
-      to_viewer_klass.new(asset: asset, assets: assets).to_viewer
+    # Convert a set of assets into a viewer
+    #
+    # A viewer is a single thing that is comprised of one or more assets.
+    # Naming conventions and class model could be a *lot* better here.
+    #
+    # Each asset knows what kind of viewer it belongs to. So, once we have
+    # a list of assets (see grouped_assets below), grab the first asset,
+    # instantiate its viewer, and convert the list of assets to a viewer
+    def to_viewer(asset, assets)
+      {
+        asset.type => asset.viewer.new(assets: assets).to_viewer
+      }
+    end
+
+
+    # Sort assets into a hash keyed by asset type
+    #
+    # Compound items can have different kinds of children - videos, images, etc
+    # React Borealis expects to get a json object brokent down into these
+    # different kinds of things. e.g.:
+    # {
+    #   "image" => {type"=>"image", "tileSources"=>["info?id=p1...
+    #   "kaltura_video" => {"type"=>"kaltura_video", "targetId"=>"blah"...
+    # }
+    def grouped_assets
+      assets.group_by { |asset| asset.class }
     end
   end
 end
