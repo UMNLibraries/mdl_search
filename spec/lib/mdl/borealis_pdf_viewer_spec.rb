@@ -15,6 +15,7 @@ module MDL
 
     it 'produces a configuration for PDFs' do
       expect(pdf).to receive(:thumbnail)
+      expect(pdf).to receive(:collection)
       expect(pdf).to receive(:src)
       expect(pdf).to receive(:transcripts)
       expect(viewer(pdf)).to be_kind_of(Hash)
