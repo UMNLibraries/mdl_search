@@ -24,7 +24,6 @@ module MDL
 
     context 'when the document is a single item' do
       it 'correctly serializes the document' do
-        puts BorealisDocument.new(document: document).to_viewer.inspect
         expect(BorealisDocument.new(document: document).to_viewer).to eq (
           {"image"=>{"viewerColumnsSmall"=>"col-xs-12 col-sm-8", "sidebarColumnsLarge"=>"col-xs-12 col-sm-4", "viewerColumnsLarge"=>"col-xs-12 col-sm-9", "sidebarColumnsSmall"=>"col-xs-12 col-sm-3", "type"=>"image", "basename"=>"image", "thumbnail"=>"/thumbnails/foo:123", "label"=>"Image", "transcripts"=>[], "osdConfig"=>{"setStrings"=>[{:name=>"Tooltips.Home", :value=>"Reset"}], "include_controls"=>true, "sequenceMode"=>true, "showReferenceStrip"=>false, "defaultZoomLevel"=>0, :minZoomLevel=>0, "tileSources"=>["/contentdm-images/info?id=foo:123"]}, "getImageURL"=>"https://cdm16022.contentdm.oclc.org/utils/ajaxhelper", "pages"=>[{:id=>"123", :collection=>"foo", :transcripts=>[], :transcript=>"blerg \n ", :title=>"blerg", :assets=>[], :thumbnail=>"/thumbnails/foo:123", "id"=>0, "viewer"=>"OSD_VIEWER", "cdmCollection"=>"foo", "cdmIdentifier"=>"123", "sidebarThumbnail"=>"/thumbnails/foo:123", "infoURL"=>"https://cdm16022.contentdm.oclc.org/digital/iiif/foo/123/info.json"}], "transcript"=>{"texts"=>[], "label"=>"Image"}}}
         )
