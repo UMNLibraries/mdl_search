@@ -26,7 +26,7 @@ describe MDL::Thumbnail do
 
   it 'returns a filepath' do
     thumb = MDL::Thumbnail.new(collection:'mpls', id: '13128', cache_dir: tmpdir, type: 'Moving Image')
-    expect(thumb.file_path).to eq '/mdl_search/tmp/mpls_13128.jpg'
+    expect(thumb.file_path).to eq '/app/tmp/mpls_13128.jpg'
   end
 
   it 'returns a filename' do
