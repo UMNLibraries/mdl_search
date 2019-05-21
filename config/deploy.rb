@@ -37,6 +37,8 @@ set :default_environment, {
   'PATH' => "/swadm/bin/ruby:$PATH"
 }
 
+set :passenger_restart_with_touch, true
+
 namespace :deploy do
 
   desc 'Restart application'

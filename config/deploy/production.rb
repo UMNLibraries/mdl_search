@@ -19,6 +19,5 @@ set :sidekiq_concurrency, 2
 set :sidekiq_processes, 2
 
 set :keep_releases, 2
-set :passenger_restart_with_touch, true
 
 set :branch, 'develop'
