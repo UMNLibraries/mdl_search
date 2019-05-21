@@ -24,6 +24,8 @@ Initialize and start the local dev environment:
 
 `./local-dev-init.sh`
 
+__Note__: you will be prompted for a password. Use your `sudo` / machine admin password here.
+
 You'll see something like the following eventually appear in your terminal:
 
 ```
