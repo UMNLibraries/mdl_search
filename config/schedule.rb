@@ -20,12 +20,23 @@
 # Learn more: http://github.com/javan/whenever
 
 # Prevent search sessions from bloating our DB
-every 1.day do
+every 1.day, at: '12:15am' do
   rake "blacklight_maintenance:truncate_searches"
 end
 
 # Pick up new CDM records daily
-every 1.day do
-  rake "mdl_ingester:batch"
+every :friday, at: '11pm' do
+  runner 'Index All Items (from all collections)'
+  rake 'ingest:collections'
+end
+
+every 1.day, at: '12:00am' do
+  runner 'Ensure content is commited daily (e.g. one-off indexn runs)'
+  rake 'solr:commit'
+end
+
+every 1.day, at: '12:30am' do
+  runner 'Optimize index daily'
+  rake 'solr:optimize'
 end
 
