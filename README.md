@@ -9,6 +9,17 @@ An implementation of the [Blacklight Search](http://projectblacklight.org/) plat
 * [Install Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
 * [Install Docker Compose](https://docs.docker.com/compose/)
 
+Clone this repository and copy in the .env file
+
+`cp .env-example .env`
+
+Configure the GeoNames credentials in the `.env` file:
+
+```
+GEONAMES_USER=<ADD USER HERE>
+GEONAMES_TOKEN=<ADD TOKEN HERE>
+```
+
 Initialize and start the local dev environment:
 
 `./local-dev-init.sh`

@@ -30,3 +30,4 @@ data.tar
 public/assets/**
 
 mdl-solr-core/
+.env

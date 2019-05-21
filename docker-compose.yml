@@ -31,9 +31,6 @@ services:
       - selenium
     depends_on:
       - solr
-    environment:
-      - GEONAMES_USER=${GEONAMES_USER}
-      - GEONAMES_TOKEN=${GEONAMES_TOKEN}
   db:
     image: library/mysql:5.7
     env_file:
@@ -50,9 +47,6 @@ services:
       - db
     env_file:
       - .env
-    environment:
-      - GEONAMES_USER=${GEONAMES_USER}
-      - GEONAMES_TOKEN=${GEONAMES_TOKEN}
   redis:
     image: redis:latest
   webpacker:
