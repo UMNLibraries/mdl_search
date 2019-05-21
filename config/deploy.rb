@@ -1,7 +1,7 @@
 # config valid only for Capistrano 3.1
 
 set :application, 'mdl'
-set :repo_url, 'git@github.com:UMNLibraries/mdl_search.git'
+set :repo_url, 'https://github.com/UMNLibraries/mdl_search.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
