@@ -64,6 +64,21 @@ Execute a task in the Rails Test Environment (e.g. run some tests):
 * [MySQL] If you run into issues with the database, try nuking the db volumes and restarting:
   * `docker-compose down -v; docker-compose up`
 
+# Updating React Components
+
+The two React dependencies associated with this project are included in the `package.json` file and tied to specific commits:
+
+```json
+  ...
+    "react-borealis": "git+https://github.com/UMNLibraries/react-borealis.git#e305e7fd6f4c",
+    "react-citation": "git+https://github.com/UMNLibraries/react-citation.git#52091d617b5d",
+  ...
+```
+
+After running the production build process on one of these projects and pushing the new files to GitHub, include the new commit hash in the `mdl_search` project `package.json` file and run the following command (located in the root directory of this repo): `./yarn_rebuild.sh`.
+
+For more details on how to develop and build these React components, see the [React Borealis project page](https://github.com/UMNLibraries/react-borealis).
+
 # Testing
 
 A complete test environment comes package with `mdl_search`. This includes a test Solr instance as well as a separate running web application test instance.
