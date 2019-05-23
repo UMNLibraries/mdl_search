@@ -11,7 +11,7 @@ An implementation of the [Blacklight Search](http://projectblacklight.org/) plat
 
 Clone this repository and copy in the .env file
 
-`cp .env-example .env`
+`$ cp .env-example .env`
 
 Configure the GeoNames credentials in the `.env` file:
 
@@ -22,7 +22,7 @@ GEONAMES_TOKEN=<ADD TOKEN HERE>
 
 Initialize and start the local dev environment:
 
-`./local-dev-init.sh`
+`$ ./local-dev-init.sh`
 
 __Note__: you will be prompted for a password. Use your `sudo` / machine admin password here.
 
@@ -40,11 +40,11 @@ Once the rails server has booted, open [http://localhost:3000/](http://localhost
 
 Once the app is up and running, open another container and run the following command to ingest and index some content:
 
-`docker-compose exec web rake 'mdl_ingester:collection[p16022coll27]'`
+`$ docker-compose exec web rake 'mdl_ingester:collection[p16022coll27]'`
 
 Once the ingest sidekiq jobs have completed:
 
-`docker-compose exec web rake solr:commit`
+`$ docker-compose exec web rake solr:commit`
 
 ## Interacting with the App on the Command Line
 
@@ -56,13 +56,13 @@ Replace `/bin/bash` with `rails console` to skip right to a Rails console sessio
 
 Execute a task in the Rails Test Environment (e.g. run some tests):
 
-`docker-compose exec -e "RAILS_ENV=test" web respec`
+`$ docker-compose exec -e "RAILS_ENV=test" web respec`
 
 
 ## Troubleshooting
 
 * [MySQL] If you run into issues with the database, try nuking the db volumes and restarting:
-  * `docker-compose down -v; docker-compose up`
+  * `$ docker-compose down -v; docker-compose up`
 
 # Updating React Components
 
@@ -93,22 +93,31 @@ There is a single, standardized Solr test instance (temporarily) stored on [Dock
 
 The Reflections `docker-compose.yml` comes equipped with a selenium server running VNC. To watch Selenium as it drives the test browser, install a [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) and connect it to `http://localhost:5900` with the password "`secret`".
 
+
+# Developer Tips
+
+* "How to I add/remove/change X feature in the UI?"
+  * MDL Search makes use of a [Rails Engine](https://guides.rubyonrails.org/engines.html) called "[Blacklight](https://github.com/projectblacklight/blacklight)". Rails engines are like little Rails apps that you override within your own app. If there is a UI feature you want to alter or remove, you may need to hunt around a bit in Blacklight to find it. Tip: browse the HTML source of the feature you are looking for and search the Blacklight view codebase (for your [specific version](https://github.com/projectblacklight/blacklight/tree/v6.10.1/app/views)) for small unique html snippets from the interface; sometimes you'll get lucky. Other times, you may have to browse through template render calls until you find what you are looking for.
+
 # Docker Help
 
 ## Some aliases for your shell
 
-```
+```bash
+# Note: you might consider adding aliases (shortcuts) in your shell env to make it easier to run these commands. e.g.:
+# alias dps='docker ps -a'
+
 # Show all docker images
-alias dps='docker ps -a'
+$ docker ps -a
 
 # Force Remove all MDL images
-docker-compose stop; docker rmi -f $(docker images -q --filter="reference=mdl*")
+$ docker-compose stop; docker rmi -f $(docker images -q --filter="reference=mdl*")
 
 # Remove all inactive Docker images (ones that have "Exited")
-alias drm='docker rm $(docker ps -a | grep Exited | awk '\''BEGIN { FS=" " } ; {print $1;}'\'')'
+$ docker rm $(docker ps -a | grep Exited | awk '\''BEGIN { FS=" " } ; {print $1;}'\'')
 
-# Scorched earth! remove all Docker images
-alias drmi='docker rmi $(docker images | grep "^<none>" | awk "{print $3}")'
+# CAREFUL! Scorched earth! remove all Docker images
+$ docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 ```
 
 ## Usefull Tools
