@@ -8,7 +8,7 @@ end
 gem 'mysql2', '~> 0.3.18'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.2'
+gem 'rails', '~> 5.1.7'
 # # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # # Use Uglifier as compressor for JavaScript assets
@@ -82,3 +82,4 @@ gem 'whenever', :require => false
 
 # Autmatically link URLs in citation details
 gem 'rinku'
+gem 'redis-rails'
