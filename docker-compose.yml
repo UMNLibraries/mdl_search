@@ -39,7 +39,7 @@ services:
       - reflections-db-test-data-mysql-5-7:/var/lib/mysql
   sidekiq:
     build: .
-    command: bundle exec sidekiq  -c 10 -r /app
+    command: bundle exec sidekiq -q critical,2 -c 1 -q default -c 2 -r /app
     volumes:
       - .:/app
     links:
@@ -49,6 +49,12 @@ services:
       - .env
   redis:
     image: redis:latest
+  redis_cache:
+    image: redis:4.0.10
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+        - ./docker/redis-cache.conf:/usr/local/etc/redis/redis.conf
+
   webpacker:
       build: .
       command: ./bin/webpack-dev-server
