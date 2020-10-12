@@ -23,7 +23,7 @@ jobs:
     - name: Setup Ruby
       uses: actions/setup-ruby@v1
       with:
-        ruby-version: '2.4.5'
+        ruby-version: '2.5'
 
     - name: Setup Brakeman
       env:
