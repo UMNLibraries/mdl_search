@@ -40,7 +40,8 @@ Once the rails server has booted, open [http://localhost:3000/](http://localhost
 
 Once the app is up and running, open another container and run the following command to ingest and index some content:
 
-`$ docker-compose exec web rake 'mdl_ingester:collection[p16022coll27]'`
+`$ docker-compose exec web rake 'mdl_ingester:collection[p15160coll13]'`
+`$ docker-compose exec web rake 'mdl_ingester:collection[p16022coll10]'`
 
 Once the ingest sidekiq jobs have completed:
 
