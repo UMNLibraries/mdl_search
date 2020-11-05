@@ -4,50 +4,7 @@ An implementation of the [Blacklight Search](http://projectblacklight.org/) plat
 
 # Developer Quickstart
 
-## Install The App
-
-* [Install Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-* [Install Docker Compose](https://docs.docker.com/compose/)
-
-Clone this repository and copy in the .env file
-
-`$ cp .env-example .env`
-
-Configure the GeoNames credentials in the `.env` file:
-
-```
-GEONAMES_USER=<ADD USER HERE>
-GEONAMES_TOKEN=<ADD TOKEN HERE>
-```
-
-Initialize and start the local dev environment:
-
-`$ ./local-dev-init.sh`
-
-__Note__: you will be prompted for a password. Use your `sudo` / machine admin password here.
-
-You'll see something like the following eventually appear in your terminal:
-
-```
-=> Booting Puma
-web_1        | => Rails 5.1.2 application starting in development on http://0.0.0.0:3000
-web_1        | => Run `rails server -h` for more startup options
-```
-
-Once the rails server has booted, open [http://localhost:3000/](http://localhost:3000/) in yourbrowser.
-
-## Ingest Some Content
-
-Once the app is up and running, open another container and run the following command to ingest and index some content:
-
-```
-$ docker-compose exec web rake 'mdl_ingester:collection[p15160coll13]'
-$ docker-compose exec web rake 'mdl_ingester:collection[p16022coll10]'
-```
-
-Once the ingest sidekiq jobs have completed:
-
-`$ docker-compose exec web rake solr:commit`
+Follow the [development environment setup](https://github.com/Minitex/mdl_search/wiki/Development-Environment-Setup) instructions.
 
 ## Interacting with the App on the Command Line
 
