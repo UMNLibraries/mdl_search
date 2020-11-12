@@ -46,11 +46,11 @@ body {
 	.navbar-form {
 		margin-left: -36px !important;
 	}
-	
+
 	.home-wrapper {
 		padding: 0 8px 20px !important;
 	}
-	
+
 	.home-wrapper .input-group {
 		width: 60% !important;
 	}
@@ -86,21 +86,21 @@ body {
 		background: transparent image-url("reflections-icon-blacklight.png") no-repeat top left !important;
 		width: 74px !important;
 	}
-	
+
 	#sortAndPerPage, .pagination-search-widgets, .page_links {
 		text-align: center !important;
 	}
-	
+
 	.top-pagination {
 		display: none;
 	}
-	
+
 	.search-widgets {
 		float: none !important;
 		margin-top: 8px !important;
 		text-align: center !important;
 	}
-	
+
 	.footer-links, .footer-social, .footer-contact {
 		text-align: center !important;
 	}
@@ -130,15 +130,15 @@ body {
 		border-top-left-radius: 4px !important;
 		border-bottom-left-radius: 4px !important;
 	}
-	
+
 	.input-group-addon:first-child {
 		display: none;
 	}
-	
+
 	.browse .topic, .browse .contributor, .browse .format {
 		margin: 0 0 8px;
 	}
-	
+
 	#sidebar {
 		margin-top: 0 !important;
 	}
@@ -238,6 +238,19 @@ a.remove:hover {
 	width: 60%;
 }
 
+.advanced-search-btn {
+	display: inline-block;
+	margin-left: 1rem;
+}
+
+.advanced-search-btn .advanced-search {
+	text-decoration: none;
+}
+
+.limit-criteria-heading {
+	margin-bottom: 2rem;
+}
+
 .navbar-form {
 	margin: 8px 0;
 	padding: 25px 0 0 0 !important;
@@ -252,7 +265,7 @@ a.remove:hover {
 	border-right: 1px solid #ecedf0;
 }
 
-.form-control {
+.search_q.form-control {
 	border: 1px solid #fff;
 	border-radius: 0;
 	box-shadow: none !important;

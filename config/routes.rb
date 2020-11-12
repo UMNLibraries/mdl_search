@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   mount Blacklight::Engine => '/'
+  mount BlacklightAdvancedSearch::Engine => '/'
+
 
   get "nearbys/:coordinates/(:distance)" => "nearbys#show"
 

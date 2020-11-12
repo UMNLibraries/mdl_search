@@ -40,7 +40,7 @@ module FacetsHelper
   def render_facet_value(facet_field, item, options ={})
     path = path_for_facet(facet_field, item)
     val = facet_display_value(facet_field, item)
-    content_tag(:li, :class => "facet-label #{type_class(val)}") do
+    content_tag(options.fetch(:tag_name, :li), :class => "facet-label #{type_class(val)}") do
       link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path, :class=>"facet_select")
     end + render_facet_count(item.hits)
   end

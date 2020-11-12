@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
+  include BlacklightAdvancedSearch::Controller
   ##
   # Determine whether to render the bookmarks control
   def render_bookmarks_control?
@@ -85,6 +86,13 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    # default advanced config values
+    config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+    # config.advanced_search[:qt] ||= 'advanced'
+    config.advanced_search[:url_key] ||= 'advanced'
+    config.advanced_search[:query_parser] ||= 'dismax'
+    config.advanced_search[:form_solr_parameters] ||= {}
+
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
@@ -164,13 +172,81 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
-    config.add_facet_field 'topic_ssim', label: 'Topic'
-    config.add_facet_field 'type_ssi', label: 'Type', show: true, collapse: false, limit: 10
-    config.add_facet_field 'physical_format_ssi', label: 'Physical Format', show: true, index_range: 'A'..'Z', collapse: false, index: true, limit: 5
-    config.add_facet_field 'dat_ssi', label: 'Date Created', collapse: false, limit: 5
-    config.add_facet_field 'placename_ssim', label: 'Location', index_range: 'A'..'Z', collapse: false, limit: 5, index: true
-    config.add_facet_field 'formal_subject_ssim', label: 'Subject Headings', show: true, index_range: 'A'..'Z', collapse: false, limit: 5, index: true
-    config.add_facet_field 'collection_name_ssi', label: 'Contributor', index_range: 'A'..'Z', collapse: false, limit: 5, index: true
+    config.add_facet_field 'topic_ssim' do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = true
+
+      field.label = 'Topic'
+    end
+    config.add_facet_field 'type_ssi' do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = true
+
+      field.label = 'Type'
+      field.show = true
+      field.collapse = false
+      field.limit = 10
+    end
+    config.add_facet_field 'physical_format_ssi' do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = true
+
+      field.label = 'Physical Format'
+      field.show = true
+      field.index_range = 'A'..'Z'
+      field.collapse = false
+      field.index = true
+      field.limit = 5
+    end
+    config.add_facet_field 'dat_ssi' do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = true
+
+      field.label = 'Date Created'
+      field.collapse = false
+      field.limit = 5
+    end
+    config.add_facet_field 'placename_ssim' do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = true
+
+      field.label = 'Location'
+      field.index_range = 'A'..'Z'
+      field.collapse = false
+      field.limit = 5
+      field.index = true
+    end
+    config.add_facet_field 'formal_subject_ssim' do |field|
+      field.include_in_advanced_search = false
+      field.include_in_simple_select = true
+
+      field.label = 'Subject Headings'
+      field.show = true
+      field.index_range = 'A'..'Z'
+      field.collapse = false
+      field.limit = 5
+      field.index = true
+    end
+    config.add_facet_field 'collection_name_ssi' do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = true
+
+      field.label = 'Contributor'
+      field.index_range = 'A'..'Z'
+      field.collapse = false
+      field.limit = 5
+      field.index = true
+    end
+    config.add_facet_field 'rights_status_ssi' do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = false
+
+      field.label = 'Rights Status'
+      field.index_range = 'A'..'Z'
+      field.collapse = false
+      field.limit = 5
+      field.index = true
+    end
 
 
     # Have BL send all facet field names to Solr, which has been the default
@@ -244,11 +320,32 @@ class CatalogController < ApplicationController
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
     config.add_search_field('subject') do |field|
+      field.include_in_advanced_search = false
       field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
       field.qt = 'search'
       field.solr_local_parameters = {
         qf: '$subject_qf',
         pf: '$subject_pf'
+      }
+    end
+
+    config.add_search_field('description') do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$description_qf',
+        pf: '$description_pf'
+      }
+    end
+
+    config.add_search_field('city_or_township') do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$city_or_township_qf',
+        pf: '$city_or_township_pf'
       }
     end
 

@@ -12,7 +12,13 @@
  *
  *= require_tree .
  *= require_self
- */
+ 
+ *= require 'blacklight_advanced_search'
 
-/* Fontello Fonts */
+*/
+
+/* Fontello Fonts 
+ *= require 'blacklight_advanced_search'
+
+*/
 @import 'mdl-fonts';
