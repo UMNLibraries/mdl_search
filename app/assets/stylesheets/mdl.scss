@@ -236,6 +236,16 @@ a.remove:hover {
 	border: 0;
 }
 
+.advanced-search-start-over, .query-criteria-heading {
+	font-family: Roboto;
+}
+
+.advanced-search-field {
+	.form-control {
+		border: 1px solid $light-gray;
+	}
+}
+
 .advanced-search-btn {
 	display: inline-block;
 	margin-left: 1rem;
@@ -243,7 +253,7 @@ a.remove:hover {
 
 .advanced-search-btn .advanced-search {
 	text-decoration: none;
-}
+} 
 
 .limit-criteria-heading {
 	margin-bottom: 2rem;
