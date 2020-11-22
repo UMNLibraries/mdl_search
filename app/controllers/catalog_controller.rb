@@ -184,7 +184,6 @@ class CatalogController < ApplicationController
 
       field.label = 'Type'
       field.show = true
-      field.collapse = false
       field.limit = 10
     end
     config.add_facet_field 'physical_format_ssi' do |field|
@@ -194,7 +193,6 @@ class CatalogController < ApplicationController
       field.label = 'Physical Format'
       field.show = true
       field.index_range = 'A'..'Z'
-      field.collapse = false
       field.index = true
       field.limit = 5
     end
@@ -203,16 +201,14 @@ class CatalogController < ApplicationController
       field.include_in_simple_select = true
 
       field.label = 'Date Created'
-      field.collapse = false
       field.limit = 5
     end
     config.add_facet_field 'placename_ssim' do |field|
-      field.include_in_advanced_search = true
+      field.include_in_advanced_search = false
       field.include_in_simple_select = true
 
       field.label = 'Location'
       field.index_range = 'A'..'Z'
-      field.collapse = false
       field.limit = 5
       field.index = true
     end
@@ -223,17 +219,6 @@ class CatalogController < ApplicationController
       field.label = 'Subject Headings'
       field.show = true
       field.index_range = 'A'..'Z'
-      field.collapse = false
-      field.limit = 5
-      field.index = true
-    end
-    config.add_facet_field 'collection_name_ssi' do |field|
-      field.include_in_advanced_search = true
-      field.include_in_simple_select = true
-
-      field.label = 'Contributor'
-      field.index_range = 'A'..'Z'
-      field.collapse = false
       field.limit = 5
       field.index = true
     end
@@ -243,7 +228,15 @@ class CatalogController < ApplicationController
 
       field.label = 'Rights Status'
       field.index_range = 'A'..'Z'
-      field.collapse = false
+      field.limit = 5
+      field.index = true
+    end
+    config.add_facet_field 'collection_name_ssi' do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = true
+
+      field.label = 'Contributor'
+      field.index_range = 'A'..'Z'
       field.limit = 5
       field.index = true
     end
@@ -346,6 +339,16 @@ class CatalogController < ApplicationController
       field.solr_local_parameters = {
         qf: '$city_or_township_qf',
         pf: '$city_or_township_pf'
+      }
+    end
+
+    config.add_search_field('county') do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$county_qf',
+        pf: '$county_pf'
       }
     end
 
