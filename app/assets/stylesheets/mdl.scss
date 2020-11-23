@@ -236,8 +236,16 @@ a.remove:hover {
 	border: 0;
 }
 
-.advanced-search-start-over, .query-criteria-heading {
+h1.advanced .advanced-search-start-over {
+	display: none;
+}
+
+.advanced-search-start-over, .query-criteria-heading, .limit-criteria-heading {
 	font-family: Roboto;
+}
+
+.advanced-search-form .query-criteria, .advanced-search-form .limit-criteria, .advanced-search-form .sort-submit-buttons {
+	margin-bottom: 1rem !important;
 }
 
 .advanced-search-field, .sort-submit-buttons {
