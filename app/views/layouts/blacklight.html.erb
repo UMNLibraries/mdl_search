@@ -44,7 +44,7 @@
 
   <%= render partial: 'shared/ajax_modal' %>
 
-  <%= render partial: 'shared/search_block' %>
+  <%= render :partial => 'shared/search_block' unless current_page?('/advanced') %>
 
   <div id="main-container" class="<%= container_classes %>">
 
