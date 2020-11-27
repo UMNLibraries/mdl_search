@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Borealis from 'react-borealis';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
     const node = document.getElementById('viewer_data')
     const viewerNode = document.getElementById('react-borealis-viewer')
     const config = JSON.parse(node.getAttribute('viewerConfig'))
