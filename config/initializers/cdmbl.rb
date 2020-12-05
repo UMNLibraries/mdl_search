@@ -1,5 +1,7 @@
 require 'net/http'
 require 'uri'
+require Rails.root.join('lib', 'mdl', 'etl_worker')
+
 module CDMBL
   class CompletedCallback
     def self.call!(solr_client)

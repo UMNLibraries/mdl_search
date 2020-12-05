@@ -352,6 +352,16 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field('transcript') do |field|
+      field.include_in_advanced_search = true
+      field.include_in_simple_select = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$transcription_qf',
+        pf: '$transcription_pf'
+      }
+    end
+
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
