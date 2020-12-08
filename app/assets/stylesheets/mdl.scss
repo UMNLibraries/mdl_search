@@ -1024,7 +1024,7 @@ a.view-text:hover {
 
 /* Footer styles */
 .footer {
-	background: $light-green;
+	background: $light-gray;
 	border-top: none;
 	margin: 24px auto 0;
 	padding: 20px 0;
@@ -1036,12 +1036,7 @@ a.view-text:hover {
 }
 
 .footer a {
-	color: $black;
 	text-decoration: underline;
-}
-
-.footer a:hover {
-	color: $white;
 }
 
 .footer-links {
@@ -1061,14 +1056,14 @@ a.view-text:hover {
 }
 
 .logos {
+	border-top: .1rem dotted $light-green;
+	padding: 2rem 0 0 0;
 	margin-top: 24px;
 	text-align: center;
 }
 
 .logos img {
-	background: $white;
-	margin: 4px;
-	padding: 8px;
+	margin: 0 2.5rem;
 }
 /* End footer styles */
 
