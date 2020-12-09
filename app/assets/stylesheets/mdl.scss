@@ -165,15 +165,6 @@ body {
 	}
 }
 
-.blacklight-catalog .container {
-	margin: 0 auto;
-}
-
-.row {
-	margin-left: 0;
-	margin-right: 0;
-}
-
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 	color: $dark-green;
 	font-family: 'Jost', helvetica, arial, sans-serif;
@@ -202,31 +193,58 @@ a.remove:hover {
 }
 
 .navbar-brand {
-	background: transparent image-url("reflections-logo-blacklight.png") no-repeat top left;
+	background: transparent image-url("mdl-logo.svg") no-repeat top left;
 	color: $black !important;
 	display: inline-block;
-	height: 88px;
-	margin: 0 20px 4px 8px !important;
+	margin: 8px 20px 8px 0 !important;
 	overflow: hidden;
-	padding-right: 0;
+	padding: 1rem 0 0;
 	text-align: right;
 	text-indent: 100%;
 	white-space: nowrap;
-	width: 200px;
+	width: 300px;
 }
 
 .navbar-default {
 	background-color: $light-gray;
-	border-color: $medium-blue;
-	box-shadow: 0 0 8px $medium-gray;
+	border-color: $light-gray;
 }
 
-.navbar-fixed-top {
-	border-width: 0 0 2px;
+.navbar {
+	border: none;
+	margin-bottom: 0;
+}
+
+.navbar-nav > li {
+	height: 66px;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: $black;
+	height: 66px;
+	padding: 2.5rem 1.5rem 0 !important;
+	text-transform: uppercase;
+
+	&:hover {
+		background-color: $lightest-gray;
+		color: $black;
+	}
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+	background-color: $white;
+	color: $black;
+}
+
+.dropdown-menu {
+	border: 1px solid $light-gray;
+	border-top: none;
+	box-shadow: none;
+	margin: -1px
 }
 
 #search-block {
-	margin-top: 10rem;
+	margin-top: 66px;
 	background-color: $lightest-gray;
 	text-align: center;
 	padding: 1.5rem 0;
@@ -1006,7 +1024,7 @@ a.view-text:hover {
 
 /* Footer styles */
 .footer {
-	background: $light-green;
+	background: $light-gray;
 	border-top: none;
 	margin: 24px auto 0;
 	padding: 20px 0;
@@ -1018,12 +1036,7 @@ a.view-text:hover {
 }
 
 .footer a {
-	color: $black;
 	text-decoration: underline;
-}
-
-.footer a:hover {
-	color: $white;
 }
 
 .footer-links {
@@ -1043,14 +1056,14 @@ a.view-text:hover {
 }
 
 .logos {
+	border-top: .1rem dotted $light-green;
+	padding: 2rem 0 0 0;
 	margin-top: 24px;
 	text-align: center;
 }
 
 .logos img {
-	background: $white;
-	margin: 4px;
-	padding: 8px;
+	margin: 0 2.5rem;
 }
 /* End footer styles */
 
