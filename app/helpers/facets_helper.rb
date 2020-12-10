@@ -26,6 +26,9 @@ module FacetsHelper
     end.compact, "\n")
   end
 
+  def should_collapse_facet?(facet_field)
+    advanced_search? || super
+  end
 
   ##
   # Standard display of a facet value in a list. Used in both _facets sidebar

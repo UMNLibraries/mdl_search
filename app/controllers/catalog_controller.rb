@@ -85,6 +85,11 @@ class CatalogController < ApplicationController
     (params[:limit]) ? params[:limit] : 20
   end
 
+  def advanced_search?
+    request.path == '/advanced'
+  end
+  helper_method :advanced_search?
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
@@ -176,6 +181,7 @@ class CatalogController < ApplicationController
       field.include_in_advanced_search = true
       field.include_in_simple_select = true
 
+      field.collapse = false
       field.label = 'Topic'
     end
     config.add_facet_field 'type_ssi' do |field|
@@ -183,6 +189,7 @@ class CatalogController < ApplicationController
       field.include_in_simple_select = true
 
       field.label = 'Type'
+      field.collapse = false
       field.show = true
       field.limit = 10
     end
@@ -193,6 +200,7 @@ class CatalogController < ApplicationController
       field.label = 'Physical Format'
       field.show = true
       field.index_range = 'A'..'Z'
+      field.collapse = false
       field.index = true
       field.limit = 5
     end
@@ -201,6 +209,7 @@ class CatalogController < ApplicationController
       field.include_in_simple_select = true
 
       field.label = 'Date Created'
+      field.collapse = false
       field.limit = 5
     end
     config.add_facet_field 'placename_ssim' do |field|
@@ -209,6 +218,7 @@ class CatalogController < ApplicationController
 
       field.label = 'Location'
       field.index_range = 'A'..'Z'
+      field.collapse = false
       field.limit = 5
       field.index = true
     end
@@ -219,6 +229,7 @@ class CatalogController < ApplicationController
       field.label = 'Subject Headings'
       field.show = true
       field.index_range = 'A'..'Z'
+      field.collapse = false
       field.limit = 5
       field.index = true
     end
@@ -228,6 +239,7 @@ class CatalogController < ApplicationController
 
       field.label = 'Rights Status'
       field.index_range = 'A'..'Z'
+      field.collapse = false
       field.limit = 5
       field.index = true
     end
@@ -237,6 +249,7 @@ class CatalogController < ApplicationController
 
       field.label = 'Contributor'
       field.index_range = 'A'..'Z'
+      field.collapse = false
       field.limit = 5
       field.index = true
     end
