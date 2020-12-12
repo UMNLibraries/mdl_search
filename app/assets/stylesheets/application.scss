@@ -12,12 +12,14 @@
  *
  *= require_tree .
  *= require_self
- 
+
  *= require 'blacklight_advanced_search'
+ *= require select2
+ *= require select2-bootstrap
 
 */
 
-/* Fontello Fonts 
+/* Fontello Fonts
  *= require 'blacklight_advanced_search'
 
 */
