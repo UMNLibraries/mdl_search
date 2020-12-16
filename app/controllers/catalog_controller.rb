@@ -14,6 +14,8 @@ class CatalogController < ApplicationController
   end
 
   include Blacklight::Catalog
+  include BlacklightRangeLimit::ControllerOverride
+
 
 
   ## Blacklight Override
@@ -84,11 +86,6 @@ class CatalogController < ApplicationController
   def facet_list_limit
     (params[:limit]) ? params[:limit] : 20
   end
-
-  def advanced_search?
-    request.path == '/advanced'
-  end
-  helper_method :advanced_search?
 
   configure_blacklight do |config|
     # default advanced config values
@@ -178,25 +175,16 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field 'topic_ssim' do |field|
-      field.include_in_advanced_search = true
-      field.include_in_simple_select = true
-
       field.collapse = false
       field.label = 'Topic'
     end
     config.add_facet_field 'type_ssi' do |field|
-      field.include_in_advanced_search = true
-      field.include_in_simple_select = true
-
       field.label = 'Type'
       field.collapse = false
       field.show = true
       field.limit = 10
     end
     config.add_facet_field 'physical_format_ssi' do |field|
-      field.include_in_advanced_search = true
-      field.include_in_simple_select = true
-
       field.label = 'Physical Format'
       field.show = true
       field.index_range = 'A'..'Z'
@@ -205,17 +193,11 @@ class CatalogController < ApplicationController
       field.limit = 5
     end
     config.add_facet_field 'dat_ssi' do |field|
-      field.include_in_advanced_search = true
-      field.include_in_simple_select = true
-
       field.label = 'Date Created'
       field.collapse = false
-      field.limit = 5
+      field.range = true
     end
     config.add_facet_field 'placename_ssim' do |field|
-      field.include_in_advanced_search = false
-      field.include_in_simple_select = true
-
       field.label = 'Location'
       field.index_range = 'A'..'Z'
       field.collapse = false
@@ -223,9 +205,6 @@ class CatalogController < ApplicationController
       field.index = true
     end
     config.add_facet_field 'formal_subject_ssim' do |field|
-      field.include_in_advanced_search = false
-      field.include_in_simple_select = true
-
       field.label = 'Subject Headings'
       field.show = true
       field.index_range = 'A'..'Z'
@@ -233,20 +212,7 @@ class CatalogController < ApplicationController
       field.limit = 5
       field.index = true
     end
-    config.add_facet_field 'rights_status_ssi' do |field|
-      field.include_in_advanced_search = true
-      field.include_in_simple_select = false
-
-      field.label = 'Rights Status'
-      field.index_range = 'A'..'Z'
-      field.collapse = false
-      field.limit = 5
-      field.index = true
-    end
     config.add_facet_field 'collection_name_ssi' do |field|
-      field.include_in_advanced_search = true
-      field.include_in_simple_select = true
-
       field.label = 'Contributor'
       field.index_range = 'A'..'Z'
       field.collapse = false

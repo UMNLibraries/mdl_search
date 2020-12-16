@@ -12,7 +12,6 @@ module FacetsHelper
       })['facet_counts']['facet_fields'][field].length / 2
   end
 
-
   ##
   # Render a collection of facet fields.
   # @see #render_facet_limit
@@ -24,6 +23,10 @@ module FacetsHelper
     safe_join(facets_from_request(fields).map do |display_facet|
       render_facet_limit(display_facet, options)
     end.compact, "\n")
+  end
+
+  def advanced_search_facets
+    facets_from_request(facet_field_names).select { |f| should_render_facet?(f) }
   end
 
   ##

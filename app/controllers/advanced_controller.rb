@@ -1,4 +1,5 @@
 class AdvancedController < BlacklightAdvancedSearch::AdvancedController
+  include BlacklightRangeLimit::ControllerOverride
   blacklight_config.configure do |config|
     # name of Solr request handler, leave unset to use the same one your Blacklight
     # is ordinarily using (recommended if possible)
@@ -70,13 +71,11 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
     # form.
     config.facet_fields.clear
     config.add_facet_field 'topic_ssim' do |field|
-      field.collapse = true
       field.label = 'Topic'
       field.sort = 'index'
     end
     config.add_facet_field 'type_ssi' do |field|
       field.label = 'Type'
-      field.collapse = true
       field.show = true
       field.sort = 'index'
     end
@@ -84,33 +83,30 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       field.label = 'Physical Format'
       field.show = true
       field.index_range = 'A'..'Z'
-      field.collapse = true
-      field.sort = 'index'
-    end
-    config.add_facet_field 'dat_ssi' do |field|
-      field.label = 'Date Created'
-      field.collapse = true
-      field.limit = 5
       field.sort = 'index'
     end
     config.add_facet_field 'formal_subject_ssim' do |field|
       field.label = 'Subject Headings'
-      field.show = true
       field.index_range = 'A'..'Z'
-      field.collapse = true
       field.sort = 'index'
     end
     config.add_facet_field 'rights_status_ssi' do |field|
       field.label = 'Rights Status'
       field.index_range = 'A'..'Z'
-      field.collapse = true
       field.sort = 'index'
     end
     config.add_facet_field 'collection_name_ssi' do |field|
       field.label = 'Contributor'
       field.index_range = 'A'..'Z'
-      field.collapse = true
+      field.limit = -1 # Blacklight's default is 100, but we do not want to limit
       field.sort = 'index'
+    end
+    config.add_facet_field 'dat_ssi' do |field|
+      field.label = 'Date Created'
+      field.collapse = false
+      field.range = {
+        assumed_boundaries: [1800, Time.now.year]
+      }
     end
   end
 end
