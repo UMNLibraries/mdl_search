@@ -105,6 +105,10 @@ GEM
       titleize (~> 1.4)
     childprocess (1.0.1)
       rake (< 13.0)
+    chosen-rails (1.9.0)
+      coffee-rails (>= 3.2)
+      railties (>= 3.0)
+      sassc-rails (>= 2.1.2)
     chronic (0.10.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -326,10 +330,17 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    select2-rails (4.0.13)
     selenium-webdriver (3.142.2)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
@@ -439,6 +450,7 @@ DEPENDENCIES
   capistrano-sidekiq
   capybara
   cdmbl
+  chosen-rails (~> 1.9)
   coffee-rails (~> 4.2)
   coveralls
   database_cleaner
@@ -462,7 +474,6 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  select2-rails (~> 4.0.13)
   selenium-webdriver
   sidekiq
   sidekiq-failures

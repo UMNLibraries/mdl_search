@@ -280,6 +280,16 @@ h1.advanced .advanced-search-start-over {
 	}
 }
 
+.chosen-container.advanced-search-facet-select {
+  padding: 0;
+
+  .chosen-choices {
+    padding: 5px 10px;
+		border: 1px solid $light-gray;
+		background-image: none;
+  }
+}
+
 .advanced-search-btn {
 	display: inline-block;
 	margin-left: 1rem;
@@ -287,7 +297,7 @@ h1.advanced .advanced-search-start-over {
 
 .advanced-search-btn .advanced-search {
 	text-decoration: none;
-} 
+}
 
 .limit-criteria-heading {
 	margin-bottom: 2rem;

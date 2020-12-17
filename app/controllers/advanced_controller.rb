@@ -88,6 +88,7 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
     config.add_facet_field 'formal_subject_ssim' do |field|
       field.label = 'Subject Headings'
       field.index_range = 'A'..'Z'
+      field.limit = -1 # Blacklight's default is 100, but we do not want to limit
       field.sort = 'index'
     end
     config.add_facet_field 'rights_status_ssi' do |field|
