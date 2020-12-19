@@ -7,7 +7,7 @@
 %>
 
 <% advanced_search_facets.each do |display_facet| %>
-    <% if display_facet.name == 'dat_ssi' %>
+    <% if facet_configuration_for_field(display_facet.name).range %>
       <%= render_facet_limit(display_facet) %>
     <% else %>
         <div class="form-group advanced-search-facet">

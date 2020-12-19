@@ -51,6 +51,7 @@ module MDL
         {dest_path: 'description_tei', origin_path: 'descri', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'description_ts', origin_path: 'descri', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'dat_ssi', origin_path: 'dat', formatters: [CDMBL::StripFormatter]},
+        {dest_path: 'dat_ssim', origin_path: 'dat', formatters: [MDL::MultiDateFormatter]},
         {dest_path: 'dat_tesi', origin_path: 'dat', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'dat_sort', origin_path: 'dat', formatters: [CDMBL::StripFormatter]},
         {dest_path: 'publishing_agency_tei', origin_path: 'publia', formatters: [CDMBL::StripFormatter]},

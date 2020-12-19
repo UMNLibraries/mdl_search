@@ -23,7 +23,11 @@ Rails.application.routes.draw do
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
     concerns :range_searchable
+  end
 
+  resource :advanced, only: [:index], as: 'advanced', path: '/advanced', controller: 'advanced' do
+    concerns :searchable
+    concerns :range_searchable
   end
 
   concern :exportable, Blacklight::Routes::Exportable.new

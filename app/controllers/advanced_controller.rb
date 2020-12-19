@@ -1,5 +1,16 @@
 class AdvancedController < BlacklightAdvancedSearch::AdvancedController
   include BlacklightRangeLimit::ControllerOverride
+
+  def index
+    if params == {"controller"=>"advanced", "action"=>"index"}
+      @response = Rails.cache.fetch("advanced_search", expires_in: 12.hours) do
+        get_advanced_search_facets unless request.method == :post
+      end
+    else
+      @response = get_advanced_search_facets unless request.method == :post
+    end
+  end
+
   blacklight_config.configure do |config|
     # name of Solr request handler, leave unset to use the same one your Blacklight
     # is ordinarily using (recommended if possible)
@@ -102,12 +113,10 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       field.limit = -1 # Blacklight's default is 100, but we do not want to limit
       field.sort = 'index'
     end
-    config.add_facet_field 'dat_ssi' do |field|
+    config.add_facet_field 'dat_ssim' do |field|
       field.label = 'Date Created'
       field.collapse = false
-      field.range = {
-        assumed_boundaries: [1800, Time.now.year]
-      }
+      field.range = true
     end
   end
 end

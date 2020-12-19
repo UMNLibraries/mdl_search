@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
-  include BlacklightAdvancedSearch::Controller
   ##
   # Determine whether to render the bookmarks control
   def render_bookmarks_control?
@@ -192,7 +191,7 @@ class CatalogController < ApplicationController
       field.index = true
       field.limit = 5
     end
-    config.add_facet_field 'dat_ssi' do |field|
+    config.add_facet_field 'dat_ssim' do |field|
       field.label = 'Date Created'
       field.collapse = false
       field.range = true
@@ -292,52 +291,11 @@ class CatalogController < ApplicationController
     # tests can test it. In this case it's the same as
     # config[:default_solr_parameters][:qt], so isn't actually neccesary.
     config.add_search_field('subject') do |field|
-      field.include_in_advanced_search = false
       field.solr_parameters = { :'spellcheck.dictionary' => 'subject' }
       field.qt = 'search'
       field.solr_local_parameters = {
         qf: '$subject_qf',
         pf: '$subject_pf'
-      }
-    end
-
-    config.add_search_field('description') do |field|
-      field.include_in_advanced_search = true
-      field.include_in_simple_select = false
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.solr_local_parameters = {
-        qf: '$description_qf',
-        pf: '$description_pf'
-      }
-    end
-
-    config.add_search_field('city_or_township') do |field|
-      field.include_in_advanced_search = true
-      field.include_in_simple_select = false
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.solr_local_parameters = {
-        qf: '$city_or_township_qf',
-        pf: '$city_or_township_pf'
-      }
-    end
-
-    config.add_search_field('county') do |field|
-      field.include_in_advanced_search = true
-      field.include_in_simple_select = false
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.solr_local_parameters = {
-        qf: '$county_qf',
-        pf: '$county_pf'
-      }
-    end
-
-    config.add_search_field('transcript') do |field|
-      field.include_in_advanced_search = true
-      field.include_in_simple_select = false
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.solr_local_parameters = {
-        qf: '$transcription_qf',
-        pf: '$transcription_pf'
       }
     end
 

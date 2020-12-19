@@ -29,6 +29,12 @@ module MDL
 
     def aggregations
       {}.tap do |hsh|
+        ###
+        # To aggregate more child fields, merge them in here.
+        #   ex.
+        # hsh.merge!(child_field_1)
+        # hsh.merge!(child_field_2)
+        # hsh.merge!(child_field_3)
         hsh.merge!(transcriptions)
       end.select { |_, v| v.present? }
     end
