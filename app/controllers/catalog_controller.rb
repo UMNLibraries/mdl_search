@@ -14,7 +14,7 @@ class CatalogController < ApplicationController
 
   include Blacklight::Catalog
   include BlacklightRangeLimit::ControllerOverride
-
+  include BlacklightAdvancedSearch::Controller
 
 
   ## Blacklight Override
