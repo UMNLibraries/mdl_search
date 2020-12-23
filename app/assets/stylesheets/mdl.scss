@@ -299,6 +299,16 @@ h1.advanced .advanced-search-start-over {
 	text-decoration: none;
 }
 
+.advanced-search-form .has-error {
+	border-color: red;
+}
+
+.date-range-error-message {
+	color: red;
+	font-size: smaller;
+	display: none;
+}
+
 .limit-criteria-heading {
 	margin-bottom: 2rem;
 }

@@ -12,6 +12,19 @@ module FacetsHelper
       })['facet_counts']['facet_fields'][field].length / 2
   end
 
+  # type is 'begin' or 'end'
+  def render_empty_range_input(solr_field, type, input_label = nil, maxlength=4)
+    placeholder = {
+      begin: 'From (ex. 1982)',
+      end: 'To (ex. 1989)'
+    }[type]
+    type = type.to_s
+
+    html = label_tag("range[#{solr_field}][#{type}]", input_label, class: 'sr-only') if input_label.present?
+    html ||= ''.html_safe
+    html += text_field_tag("range[#{solr_field}][#{type}]", nil, maxlength: maxlength, class: "form-control range_#{type}", placeholder: placeholder)
+  end
+
   ##
   # Render a collection of facet fields.
   # @see #render_facet_limit

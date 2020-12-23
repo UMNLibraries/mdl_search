@@ -8,7 +8,26 @@
 
 <% advanced_search_facets.each do |display_facet| %>
     <% if facet_configuration_for_field(display_facet.name).range %>
-      <%= render_facet_limit(display_facet) %>
+        <%-
+        field_config = range_config(display_facet.name)
+        label = facet_field_label(display_facet.name)
+
+        input_label_range_begin = field_config[:input_label_range_begin] || t("blacklight.range_limit.range_begin", field_label: label)
+        input_label_range_end   = field_config[:input_label_range_end] || t("blacklight.range_limit.range_end", field_label: label)
+        -%>
+        <div class="form-group advanced-search-field">
+            <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
+                <%= facet_field_label(display_facet.name) %>
+            <% end %>
+            <div class="col-sm-3">
+                <%= render_empty_range_input(display_facet.name, :begin, input_label_range_begin) %>
+                <span class="date-range-error-message">Must come before end date</span>
+            </div>
+            <div class="col-sm-3">
+                <%= render_empty_range_input(display_facet.name, :end, input_label_range_end) %>
+                <span class="date-range-error-message">Must come after start date</span>
+            </div>
+        </div>
     <% else %>
         <div class="form-group advanced-search-facet">
             <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
