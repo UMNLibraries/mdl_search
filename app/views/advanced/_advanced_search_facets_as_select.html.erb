@@ -41,7 +41,7 @@
                     class: "form-control advanced-search-facet-select") do %>
                     <% display_facet.items.each do |facet_item| %>
                         <%= content_tag :option, value: facet_item.value, selected: facet_value_checked?(display_facet.name, facet_item.value) do %>
-                            <%= facet_item.label %>&nbsp;&nbsp;(<%= number_with_delimiter facet_item.hits %>)
+                            <%= facet_item.label %>
                         <% end %>
                     <% end %>
                 <% end %>
