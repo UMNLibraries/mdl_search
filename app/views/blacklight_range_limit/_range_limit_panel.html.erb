@@ -85,21 +85,6 @@
             </div>
           <% end %>
         <% end %>
-
-
-
-        <% if (stats = stats_for_field(solr_field)) && stats["missing"] > 0 %>
-          <ul class="missing list-unstyled facet-values subsection">
-            <li>
-              <span class="facet-label">
-                <%= link_to BlacklightRangeLimit.labels[:missing], add_range_missing(solr_field) %>
-              </span>
-              <span class="facet-count">
-                <%= number_with_delimiter(stats["missing"]) %>
-              </span>
-            </li>
-          </ul>
-        <% end %>
     </div>
   <% end %>
 </div>
