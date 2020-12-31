@@ -45,10 +45,8 @@ set :passenger_restart_with_touch, true
 
 # Restart all sidekiq instances so they can pick up the new code
 namespace :deploy do
-  after :finishing, :notify do
-    invoke "deploy:restart_sidekiq"
-  end
-
+  ###
+  # Called by capistrano-sidekiq
   task :restart_sidekiq do
     on roles(:all) do |host|
       (0..2).map do |pid|
