@@ -219,6 +219,14 @@ class CatalogController < ApplicationController
       field.index = true
     end
 
+    ###
+    # This is from advanced search, and needs to be here in order
+    # for the catalog/constraints partial to correctly represent
+    # this field's name. Without it we show "Rights status ssi"
+    config.add_facet_field 'rights_status_ssi' do |field|
+      field.include_in_simple_search = false
+      field.label = 'Rights Status'
+    end
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -227,12 +235,12 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'creator_tesi', label: 'Creator',:highlight => true
-    config.add_index_field 'dat_tesi', label: 'Date Created',:highlight => true
-    config.add_index_field 'description_ts', label: 'Description',:highlight => true
-    config.add_index_field 'contributing_organization_tesi', label: 'Contributing Institution',:highlight => true
-    config.add_index_field 'type_tesi', label: 'Type',:highlight => true
-    config.add_index_field 'physical_format_tesi', label: 'Format',:highlight => true
+    config.add_index_field 'creator_tesi', label: 'Creator', highlight: true
+    config.add_index_field 'dat_tesi', label: 'Date Created', highlight: true
+    config.add_index_field 'description_ts', label: 'Description', highlight: true
+    config.add_index_field 'contributing_organization_tesi', label: 'Contributing Institution', highlight: true
+    config.add_index_field 'type_tesi', label: 'Type', highlight: true
+    config.add_index_field 'physical_format_tesi', label: 'Format', highlight: true
 
 
     # solr fields to be displayed in the show (single result) view
@@ -298,6 +306,46 @@ class CatalogController < ApplicationController
         pf: '$subject_pf'
       }
     end
+
+    ###
+    # Advanced search fields
+    #
+    # These are also in the advanced controller blacklight config, but
+    # must be here as well in order for the parameters to be recognized
+    # when the advanced search form is submitted.
+    config.add_search_field('transcript') do |field|
+      field.include_in_simple_search = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$transcription_qf',
+        pf: '$transcription_pf'
+      }
+    end
+    config.add_search_field('description') do |field|
+      field.include_in_simple_search = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$description_qf',
+        pf: '$description_pf'
+      }
+    end
+    config.add_search_field('city_or_township') do |field|
+      field.include_in_simple_search = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$city_or_township_qf',
+        pf: '$city_or_township_pf'
+      }
+    end
+    config.add_search_field('county') do |field|
+      field.include_in_simple_search = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$county_qf',
+        pf: '$county_pf'
+      }
+    end
+
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
