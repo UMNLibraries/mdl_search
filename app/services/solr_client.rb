@@ -1,7 +1,7 @@
 require 'rsolr'
 
 class SolrClient
- def more_like_this(query)
+  def more_like_this(query)
     client.get 'select', :params => {q: query, start: 0, rows:  9, fl: 'title_ssi, id, type_ssi, format_ssi, format_tesi, compound_objects_ts, borealis_fragment_ssi', mm: '0%'}.merge(mlt_config)
   end
 
@@ -22,13 +22,17 @@ class SolrClient
     Blacklight.default_index.connection
   end
 
+  def commit
+    client.commit
+  end
+
   def delete_by_query(query)
     client.delete_by_query query
   end
 
   def delete_index
     client.delete_by_query '*:*'
-    client.commit
+    commit
   end
 
   def backup(number_to_keep: 1)

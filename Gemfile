@@ -47,7 +47,7 @@ end
 
 group :test, :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
@@ -76,7 +76,7 @@ gem 'webpacker', '2.0'
 # # CONTENTdm ETL
 gem 'devise', '4.6.2'
 gem 'devise-guests', '0.6.0'
-gem 'hash_at_path', '0.1.5'
+gem 'hash_at_path', '0.1.6'
 gem 'cdmbl', '0.17.1'
 gem 'sidekiq', '5.2.7'
 gem 'sinatra', '2.0.4', require: false
