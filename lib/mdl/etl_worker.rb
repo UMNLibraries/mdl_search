@@ -10,7 +10,7 @@ module MDL
   class CompoundAggregatingFieldTransformer < CDMBL::FieldTransformer
     TRANSC_FIELD_MAPPING = MDL::Transformer.field_mappings.find do |m|
       m[:dest_path] == 'transcription_tesi'
-    end.transform_values(&:dup) # Dup the values so we don't have frozen strings
+    end
 
     attr_reader :record
 
