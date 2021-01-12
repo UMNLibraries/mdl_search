@@ -52,8 +52,13 @@ module MdlBlacklightHelper
       label = index_presenter(doc).label field
     end
 
+    anchor = doc['borealis_fragment_ssi']
+    if anchor == '/kaltura_video' && doc['kaltura_video_playlist_ssi']
+      anchor = '/kaltura_video_playlist'
+    end
+
     link_to raw(label),
-            url_for(controller: 'catalog', action: 'show', id: doc.id, anchor: doc['borealis_fragment_ssi']),
+            url_for(controller: 'catalog', action: 'show', id: doc.id, anchor: anchor),
             document_link_params(doc, opts).merge(data: { turbolinks: false })
   end
 end
