@@ -29,12 +29,16 @@ namespace :mdl_ingester do
 
   def run_etl!(set_specs = [])
     puts "Indexing Sets: '#{set_specs.join(', ')}'"
-    CDMBL::ETLBySetSpecs.new(set_specs: set_specs, etl_config: config).run!
+    CDMBL::ETLBySetSpecs.new(
+      set_specs: set_specs,
+      etl_config: config,
+      etl_worker_klass: MDL::ETLWorker
+    ).run!
   end
 
   desc 'Launch a background job to index a single record.'
   task :record, [:id] => :environment  do |t, args|
-    CDMBL::TransformWorker.perform_async(
+    MDL::TransformWorker.perform_async(
       [args[:id].split(':')],
       { url: config[:solr_config][:url]},
       config[:cdm_endpoint],

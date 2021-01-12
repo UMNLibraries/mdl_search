@@ -1,0 +1,51 @@
+<%# alternate version of facets on form that renders using multi-select.
+    Has to copy and paste more code from blacklight than default, making
+    it somewhat more fragile.
+
+    Logic taken from facets_helper_behavior.rb, #render_facet_partials and
+    #render_facet_limit.
+%>
+
+<% advanced_search_facets.each do |display_facet| %>
+    <% if facet_configuration_for_field(display_facet.name).range %>
+        <%-
+        field_config = range_config(display_facet.name)
+        label = facet_field_label(display_facet.name)
+
+        input_label_range_begin = field_config[:input_label_range_begin] || t("blacklight.range_limit.range_begin", field_label: label)
+        input_label_range_end   = field_config[:input_label_range_end] || t("blacklight.range_limit.range_end", field_label: label)
+        -%>
+        <div class="form-group advanced-search-field">
+            <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
+                <%= facet_field_label(display_facet.name) %>
+            <% end %>
+            <div class="col-sm-3">
+                <%= render_empty_range_input(display_facet.name, :begin, input_label_range_begin) %>
+                <span class="date-range-error-message">Must come before end date</span>
+            </div>
+            <div class="col-sm-3">
+                <%= render_empty_range_input(display_facet.name, :end, input_label_range_end) %>
+                <span class="date-range-error-message">Must come after start date</span>
+            </div>
+        </div>
+    <% else %>
+        <div class="form-group advanced-search-facet">
+            <%= label_tag display_facet.name.parameterize, class: "col-sm-3 control-label" do %>
+                <%= facet_field_label(display_facet.name) %>
+            <% end %>
+
+            <div class="col-sm-9">
+                <%= content_tag(:select, multiple: true,
+                    name:  "f_inclusive[#{display_facet.name}][]",
+                    id:    display_facet.name.parameterize,
+                    class: "form-control advanced-search-facet-select") do %>
+                    <% display_facet.items.each do |facet_item| %>
+                        <%= content_tag :option, value: facet_item.value, selected: facet_value_checked?(display_facet.name, facet_item.value) do %>
+                            <%= facet_item.label %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    <% end %>
+<% end %>

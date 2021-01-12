@@ -16,7 +16,7 @@ Replace `/bin/bash` with `rails console` to skip right to a Rails console sessio
 
 Execute a task in the Rails Test Environment (e.g. run some tests):
 
-`$ docker-compose exec -e "RAILS_ENV=test" web respec`
+`$ docker-compose exec -e "RAILS_ENV=test" web rspec`
 
 
 ## Troubleshooting

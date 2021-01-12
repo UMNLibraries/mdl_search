@@ -66,6 +66,9 @@ group :test do
 end
 
 gem 'blacklight', '~> 6.10.1'
+gem 'blacklight_advanced_search', '~> 6.4'
+gem 'blacklight_range_limit', '~> 6.5'
+gem 'chosen-rails', '~> 1.9'
 gem 'rsolr', '~> 2.0.2'
 gem 'globalid'
 gem 'webpacker'
