@@ -68,6 +68,7 @@ end
 gem 'blacklight', '~> 6.10.1'
 gem 'blacklight_advanced_search', '~> 6.4'
 gem 'blacklight_range_limit', '~> 6.5'
+gem 'blacklight_oai_provider', '~> 6.0'
 gem 'chosen-rails', '~> 1.9'
 gem 'rsolr', '2.0.2'
 gem 'globalid', '0.4.2'
