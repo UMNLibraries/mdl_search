@@ -94,6 +94,7 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       field.label = 'Physical Format'
       field.show = true
       field.index_range = 'A'..'Z'
+      field.limit = -1 # Blacklight's default is 100, but we do not want to limit
       field.sort = 'index'
     end
     config.add_facet_field 'formal_subject_ssim' do |field|
