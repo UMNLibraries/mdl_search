@@ -389,6 +389,17 @@ h1.advanced .advanced-search-start-over {
 	text-decoration: none !important;
 }
 
+.btn-custom {
+	background-color: $dark-green;
+	color: $white;
+	text-decoration: none !important;
+	&:hover {
+		background-color: $light-green;
+		color: $black !important;
+		text-decoration: none !important;
+	}
+}
+
 .btn-link {
 	color: $dark-blue;
 }
