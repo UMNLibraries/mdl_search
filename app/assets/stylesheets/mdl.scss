@@ -84,7 +84,7 @@ body {
 
 @media (max-width: 767px) {
 	.navbar-brand {
-		background: transparent image-url("reflections-icon-blacklight.png") no-repeat top left !important;
+		background: transparent image-url("mdl-logo.svg") no-repeat top left !important;
 		width: 74px !important;
 	}
 
@@ -196,13 +196,13 @@ a.remove:hover {
 	background: transparent image-url("mdl-logo.svg") no-repeat top left;
 	color: $black !important;
 	display: inline-block;
-	margin: 8px 20px 8px 0 !important;
+	height: 66px;
+	margin: 8px 0 !important;
 	overflow: hidden;
-	padding: 1rem 0 0;
+	padding: 0;
 	text-align: right;
 	text-indent: 100%;
 	white-space: nowrap;
-	width: 300px;
 }
 
 .navbar-default {
@@ -215,14 +215,20 @@ a.remove:hover {
 	margin-bottom: 0;
 }
 
+.navbar-nav {
+	height: 87px;
+	margin-left: 2rem;
+}
+
 .navbar-nav > li {
-	height: 66px;
+	height: 87px;
 }
 
 .navbar-default .navbar-nav > li > a {
 	color: $black;
-	height: 66px;
-	padding: 2.5rem 1.5rem 0 !important;
+	font-size: 1.5rem;
+	height: 87px;
+	padding: 3.75rem 1.25rem 0 !important;
 	text-transform: uppercase;
 
 	&:hover {
@@ -240,18 +246,32 @@ a.remove:hover {
 	border: 1px solid $light-gray;
 	border-top: none;
 	box-shadow: none;
-	margin: -1px
+	margin: -1px;
+
+	li > a {
+		color: $black;
+		font-size: 1.5rem;
+		padding: 0.25rem 1.25rem;
+		text-decoration: none;
+		&:hover {
+			background-color: $white;
+			color: $dark-green;
+		}
+	}
 }
 
 #search-block {
-	margin-top: 66px;
+	margin-top: 87px;
 	background-color: $lightest-gray;
 	text-align: center;
 	padding: 1.5rem 0;
 }
 
 #search-block .search-query-form {
-	border: 0;
+	border: 1px solid $light-gray;
+	.search_field {
+		border: 0;
+	}
 }
 
 .page-header {
@@ -325,7 +345,9 @@ h1.advanced .advanced-search-start-over {
 }
 
 .input-group-addon:first-child {
-	border-right: 1px solid $lightest-gray;
+	border-right: 1px solid $light-gray;
+	font-size: 1.5rem;
+	padding: 0 .5rem;
 }
 
 .form-control {
