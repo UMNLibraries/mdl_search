@@ -360,6 +360,10 @@ h1.advanced .advanced-search-start-over {
 	height: auto;
 }
 
+input.range_begin, input.range_end {
+	border: 1px solid $light-gray;
+}
+
 .btn, .btn-sm, span.constraints-label {
 	font-size: 16px;
 }
@@ -387,6 +391,10 @@ h1.advanced .advanced-search-start-over {
 	border-color: $dark-green;
 	color: $white !important;
 	text-decoration: none !important;
+}
+
+form.range_limit .btn-default {
+	@extend .btn-primary;
 }
 
 .btn-custom {
