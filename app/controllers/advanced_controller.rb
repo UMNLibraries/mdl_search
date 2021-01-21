@@ -67,6 +67,10 @@ class AdvancedController < BlacklightAdvancedSearch::AdvancedController
       }
     end
     config.add_search_field('transcript') do |field|
+      ###
+      # Temporarily excluded from advanced search. Remove
+      # next line to re-enable the transcript search input
+      field.include_in_advanced_search = false
       field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
       field.solr_local_parameters = {
         qf: '$transcription_qf',
