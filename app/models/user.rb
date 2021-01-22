@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  include Spotlight::User
   if Blacklight::Utils.needs_attr_accessible?
     attr_accessible :email, :password, :password_confirmation
   end
@@ -22,27 +22,27 @@ class User < ActiveRecord::Base
   # translates to "6 & 4 > 0" which is a bitwise operation that evaluates to
   # "true" (6 & 4 = 4). See more at:
   # http://asilia.herokuapp.com/2011/04/06/bitmask-attributes-on-a-rails-application
-  scope :with_role, lambda { |role| where('roles_mask & ? > 0 ', (2**ROLES.index(role.to_s))) }
+  # scope :with_role, lambda { |role| where('roles_mask & ? > 0 ', (2**ROLES.index(role.to_s))) }
 
-  ROLES = %w[admin]
+  # ROLES = %w[admin]
 
-  def roles=(roles)
-    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
-  end
+  # def roles=(roles)
+  #   self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+  # end
 
-  def admin?
-      roles.include? 'admin'
-  end
+  # def admin?
+  #     roles.include? 'admin'
+  # end
 
-  def roles
-    ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
-  end
+  # def roles
+  #   ROLES.reject { |r| ((roles_mask || 0) & 2**ROLES.index(r)).zero? }
+  # end
 
-  def has_role?(role)
-    roles.include? role.to_s
-  end
+  # def has_role?(role)
+  #   roles.include? role.to_s
+  # end
 
-  def has_one_of_these_roles?(check_roles)
-    check_roles.map {|role| roles.include? role.to_s }.include?(true)
-  end
+  # def has_one_of_these_roles?(check_roles)
+  #   check_roles.map {|role| roles.include? role.to_s }.include?(true)
+  # end
 end
