@@ -83,10 +83,7 @@ body {
 }
 
 @media (max-width: 767px) {
-	.navbar-brand {
-		background: transparent image-url("mdl-logo.svg") no-repeat top left !important;
-		width: 74px !important;
-	}
+	
 
 	#sortAndPerPage, .pagination-search-widgets, .page_links {
 		text-align: center !important;
@@ -94,6 +91,10 @@ body {
 
 	.top-pagination {
 		display: none;
+	}
+
+	#search-block .advanced {
+		text-align: center !important;
 	}
 
 	.search-widgets {
@@ -142,6 +143,45 @@ body {
 
 	#sidebar {
 		margin-top: 0 !important;
+	}
+
+	.navbar-default {
+		.container {
+			padding: 0 30px 0 45px !important;
+		}
+
+		.navbar-toggle {
+			background-color: $lightest-gray;
+			border-color: $white;
+			&:hover {
+				background-color: $light-gray;
+			}
+
+			.icon-bar {
+				background-color: $medium-gray;
+			}
+		}
+	}
+
+	#search-block {
+		margin-top: 82px !important;
+	}
+
+	.navbar-default .navbar-collapse {
+		border-color: $lightest-gray;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.navbar-nav {
+		height: auto !important;
+		margin-left: 0 !important;
+	}
+
+	.navbar-nav .open .dropdown-menu {
+		background-color: $white;
+		position: absolute;
+		width: 100%;
 	}
 }
 
@@ -273,10 +313,13 @@ a.remove:hover {
 	background-color: $lightest-gray;
 	text-align: center;
 	padding: 1.5rem 0;
+
+	.advanced {
+		text-align: right;
+	}
 }
 
 #search-block .search-query-form {
-	border: 1px solid $light-gray;
 	.search_field {
 		border: 0;
 	}
@@ -353,7 +396,7 @@ h1.advanced .advanced-search-start-over {
 }
 
 .input-group-addon:first-child {
-	border-right: 1px solid $light-gray;
+	border-right: 1px solid $lightest-gray;
 	font-size: 1.5rem;
 	padding: 0 .5rem;
 }
