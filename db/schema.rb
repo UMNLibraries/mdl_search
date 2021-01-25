@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190514191244) do
+ActiveRecord::Schema.define(version: 2019_05_14_191244) do
 
-  create_table "bookmarks", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "bookmarks", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "user_type"
     t.string "document_id"
@@ -23,12 +23,12 @@ ActiveRecord::Schema.define(version: 20190514191244) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
-  create_table "indexing_runs", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "indexing_runs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "searches", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "searches", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "query_params", limit: 16777215
     t.integer "user_id"
     t.string "user_type"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20190514191244) do
     t.index ["user_id"], name: "index_searches_on_user_id"
   end
 
-  create_table "users", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

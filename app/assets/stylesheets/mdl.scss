@@ -83,10 +83,7 @@ body {
 }
 
 @media (max-width: 767px) {
-	.navbar-brand {
-		background: transparent image-url("reflections-icon-blacklight.png") no-repeat top left !important;
-		width: 74px !important;
-	}
+	
 
 	#sortAndPerPage, .pagination-search-widgets, .page_links {
 		text-align: center !important;
@@ -94,6 +91,10 @@ body {
 
 	.top-pagination {
 		display: none;
+	}
+
+	#search-block .advanced {
+		text-align: center !important;
 	}
 
 	.search-widgets {
@@ -142,6 +143,45 @@ body {
 
 	#sidebar {
 		margin-top: 0 !important;
+	}
+
+	.navbar-default {
+		.container {
+			padding: 0 30px 0 45px !important;
+		}
+
+		.navbar-toggle {
+			background-color: $lightest-gray;
+			border-color: $white;
+			&:hover {
+				background-color: $light-gray;
+			}
+
+			.icon-bar {
+				background-color: $medium-gray;
+			}
+		}
+	}
+
+	#search-block {
+		margin-top: 82px !important;
+	}
+
+	.navbar-default .navbar-collapse {
+		border-color: $lightest-gray;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+	}
+
+	.navbar-nav {
+		height: auto !important;
+		margin-left: 0 !important;
+	}
+
+	.navbar-nav .open .dropdown-menu {
+		background-color: $white;
+		position: absolute;
+		width: 100%;
 	}
 }
 
@@ -192,22 +232,30 @@ a.remove:hover {
 	color: $white !important;
 }
 
+.row {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+}
+
 .navbar-brand {
 	background: transparent image-url("mdl-logo.svg") no-repeat top left;
 	color: $black !important;
 	display: inline-block;
-	margin: 8px 20px 8px 0 !important;
+	height: 66px;
+	margin: 8px 0 !important;
 	overflow: hidden;
-	padding: 1rem 0 0;
+	padding: 0;
 	text-align: right;
 	text-indent: 100%;
 	white-space: nowrap;
-	width: 300px;
 }
 
 .navbar-default {
 	background-color: $light-gray;
 	border-color: $light-gray;
+	.container {
+		padding: 0 30px;
+	}
 }
 
 .navbar {
@@ -215,14 +263,20 @@ a.remove:hover {
 	margin-bottom: 0;
 }
 
+.navbar-nav {
+	height: 87px;
+	margin-left: 2rem;
+}
+
 .navbar-nav > li {
-	height: 66px;
+	height: 87px;
 }
 
 .navbar-default .navbar-nav > li > a {
 	color: $black;
-	height: 66px;
-	padding: 2.5rem 1.5rem 0 !important;
+	font-size: 1.5rem;
+	height: 87px;
+	padding: 3.75rem 1.25rem 0 !important;
 	text-transform: uppercase;
 
 	&:hover {
@@ -240,18 +294,35 @@ a.remove:hover {
 	border: 1px solid $light-gray;
 	border-top: none;
 	box-shadow: none;
-	margin: -1px
+	margin: -1px;
+
+	li > a {
+		color: $black;
+		font-size: 1.5rem;
+		padding: 0.25rem 1.25rem;
+		text-decoration: none;
+		&:hover {
+			background-color: $white;
+			color: $dark-green;
+		}
+	}
 }
 
 #search-block {
-	margin-top: 66px;
+	margin-top: 87px;
 	background-color: $lightest-gray;
 	text-align: center;
 	padding: 1.5rem 0;
+
+	.advanced {
+		text-align: right;
+	}
 }
 
 #search-block .search-query-form {
-	border: 0;
+	.search_field {
+		border: 0;
+	}
 }
 
 .page-header {
@@ -278,6 +349,10 @@ h1.advanced .advanced-search-start-over {
 	.form-control {
 		border: 1px solid $light-gray;
 	}
+}
+
+.chosen-container {
+	width: 100% !important;
 }
 
 .chosen-container.advanced-search-facet-select {
@@ -326,6 +401,8 @@ h1.advanced .advanced-search-start-over {
 
 .input-group-addon:first-child {
 	border-right: 1px solid $lightest-gray;
+	font-size: 1.5rem;
+	padding: 0 .5rem;
 }
 
 .form-control {
@@ -338,6 +415,10 @@ h1.advanced .advanced-search-start-over {
 	height: auto;
 }
 
+input.range_begin, input.range_end {
+	border: 1px solid $light-gray;
+}
+
 .btn, .btn-sm, span.constraints-label {
 	font-size: 16px;
 }
@@ -346,25 +427,46 @@ h1.advanced .advanced-search-start-over {
 	border-color: $light-gray;
 	color: $black;
 	text-decoration: none !important;
-}
-
-.btn-default:hover {
-	background: $lightest-gray !important;
-	border-color: $medium-gray;
-	color: $black !important;
-	text-decoration: none !important;
+	&:hover {
+		background: $lightest-gray !important;
+		border-color: $medium-gray;
+		color: $black !important;
+		text-decoration: none !important;
+	}
 }
 
 .btn-primary {
 	background-color: $dark-blue;
 	border-color: $dark-blue;
+	&:hover {
+		background-color: $dark-green;
+		border-color: $dark-green;
+		color: $white !important;
+		text-decoration: none !important;
+	}
 }
 
-.btn-primary:hover {
+form.range_limit .btn-default {
+	background-color: $dark-blue;
+	border-color: $dark-blue;
+	color: $white;
+	&:hover {
+		background-color: $dark-green !important;
+		border-color: $dark-green !important;
+		color: $white !important;
+		text-decoration: none !important;
+	}
+}
+
+.btn-custom {
 	background-color: $dark-green;
-	border-color: $dark-green;
-	color: $white !important;
+	color: $white;
 	text-decoration: none !important;
+	&:hover {
+		background-color: $light-green;
+		color: $black !important;
+		text-decoration: none !important;
+	}
 }
 
 .btn-link {
@@ -408,7 +510,7 @@ h1.advanced .advanced-search-start-over {
 	background: $lightest-gray;
 	border: 1px solid $light-gray;
 	border-radius: 4px;
-	margin-bottom: 24px;
+	margin: 2rem 0;
 	padding: 0 8px;
 }
 
@@ -472,10 +574,6 @@ h1.advanced .advanced-search-start-over {
 }
 
 /* Non-modal filter landing pages */
-#main-container .facet_pagination.top {
-	margin: 60px 0 0 0;
-	padding: 0 !important;
-}
 
 #main-container .modal-header, #main-container .modal-footer {
 	margin: 0 15px;
