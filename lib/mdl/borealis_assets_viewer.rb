@@ -1,7 +1,7 @@
 module MDL
   class BorealisAssetsViewer
     attr_reader :assets
-    def initialize(assets: assets)
+    def initialize(assets: [])
       @assets = [assets].flatten
     end
 

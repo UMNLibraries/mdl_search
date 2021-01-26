@@ -15,15 +15,44 @@ $( document ).on('turbolinks:load', function() {
   $('.home-page .blacklight-topic_ssim h3 a').text('Minnesota Reflections Topic')
   $('.home-page .blacklight-physical_format_ssi h3 a').text('Browse By Format')
 
-$('.home-page .more_facets_link').each(function() {
-  var $this = $(this);
-  var _href = $this.attr("href");
-  $this.attr("href", _href + '?facet.sort=index');
-});
+  $('.home-page .more_facets_link').each(function() {
+    var $this = $(this);
+    var _href = $this.attr("href");
+    $this.attr("href", _href + '?facet.sort=index');
+  });
 
   $('.home-page .more_facets_link').removeClass('more_facets_link');
 
   $(document).ready(function() {
     $('.search_q').focus();
   });
+
+  reinitModal();
 });
+
+function isModalOpen () {
+  return !!$('body.modal-open').length;
+}
+
+function reinitModal () {
+  if (isModalOpen()) {
+    // If we have an open modal on turbolinks:load, we need
+    // to reinitialize it and setup some custom behavior so
+    // that it can be properly dismissed. This is typically
+    // an issue when navigating +back+ from a facet filter
+    // option that was displayed in a modal. Something about
+    // Turbolinks caching seems to be disrupting the modal
+    // event handling when loading the page from cache. I'm
+    // Not sure it's worth trying to dive into the old
+    // Bootstrap/jQuery code to figure out why it's not
+    // playing nicely with Turbolinks, but this gets the job
+    // done.
+    var $modal = $('#ajax-modal');
+    $modal.modal();
+    $modal.on('hidden.bs.modal', function () {
+      $modalBackdrop = $('.modal-backdrop');
+      $modalBackdrop.removeClass('in');
+      $modalBackdrop.remove();
+    });
+  }
+}

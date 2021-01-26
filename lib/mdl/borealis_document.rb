@@ -15,6 +15,9 @@ module MDL
       to_viewer.keys.first
     end
 
+    # Output a viewer configuration hash
+    # This hash can be converted with .to_json and passed to the Borealis React
+    # component as its configuration. See views/catalog/_show_default.html.erb.
     def to_viewer
       to_viewers_klass.new(assets: assets).viewers
     end
@@ -25,6 +28,8 @@ module MDL
 
     private
 
+    # Return a list of assets (all subclasses of BorealisAsset)
+    # A non-compound record returns a list of one.
     def to_assets
       if compounds.empty?
         [asset(asset_klass(format_field),
@@ -62,6 +67,9 @@ module MDL
       end
     end
 
+    # BorealisAssetMap returns a BorealisAsset subclass based on the format
+    # field of a document. If an error occurs, it will generally be here.
+    # Format field data is hand entered and sometimes incorrectly so.
     def asset_klass(format_field)
       asset_map_klass.new(format_field: format_field).map
     end

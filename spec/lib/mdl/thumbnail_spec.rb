@@ -11,7 +11,7 @@ describe MDL::Thumbnail do
   subject { MDL::Thumbnail.new(collection:'mpls', id: '13128', cache_dir: tmpdir) }
 
   it 'returns a default thumbnail url' do
-    expect(subject.thumbnail_url).to eq 'http://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/mpls/id/13128'
+    expect(subject.thumbnail_url).to eq 'https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/mpls/id/13128'
   end
 
   it 'returns an audio thumbnail url' do
@@ -26,7 +26,7 @@ describe MDL::Thumbnail do
 
   it 'returns a filepath' do
     thumb = MDL::Thumbnail.new(collection:'mpls', id: '13128', cache_dir: tmpdir, type: 'Moving Image')
-    expect(thumb.file_path).to eq '/mdl_search/tmp/mpls_13128.jpg'
+    expect(thumb.file_path).to eq '/app/tmp/mpls_13128.jpg'
   end
 
   it 'returns a filename' do
@@ -40,7 +40,7 @@ describe MDL::Thumbnail do
 
   it 'returns its data' do
     VCR.use_cassette("thumbnail_data") do
-      response = Net::HTTP.get_response(URI('http://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/mpls/id/13128')).body
+      response = Net::HTTP.get_response(URI('https://cdm16022.contentdm.oclc.org/utils/getthumbnail/collection/mpls/id/13128')).body
       expect(subject.data).to eq response
     end
   end

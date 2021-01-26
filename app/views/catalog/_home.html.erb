@@ -1,14 +1,7 @@
-  <style type="text/css">
-    .navbar .search-query-form {
-      display: none;
-    }
-  </style>
+
   <div class="row home-page">
     <div class="col-md-12">
       <div class="home-wrapper">
-        <div id="home-search">
-          <%= render_search_bar  %>
-        </div>
         <div class="home-desc">
           <a href="/?utf8=✓&search_field=all_fields&q=">Browse all</a> <strong><%= record_count %></strong> items from <strong>189</strong> historical societies, libraries, archives, and cultural organizations across Minnesota
         </div>
@@ -45,13 +38,3 @@
       </div>
     </div>
   </div>
-<div class="row">
-  <%= javascript_pack_tag 'drawMap' %>
-    <%= render partial: 'map_view',
-      locals: {
-        coordinates: random_coordinates,
-        map_id: 'home_map',
-        with_popup: false
-      }
-  %>
-</div>

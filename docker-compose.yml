@@ -1,52 +1,68 @@
-version: '2'
+version: '3'
 services:
-  solr_setup:
-    build: .
-    command: bundle exec rake solr:setup_dev
-    volumes:
-      - .:/mdl_search
   solr:
-    image: solr:6.6.0
+    image: mdl_solr:dev
     ports:
       - "8983:8983"
     volumes:
-      - ./cores:/opt/solr/server/solr/cores
+      - ./solr_snapshots:/solr_snapshots
   web:
     build: .
     env_file:
       - .env
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
-    volumes:
-      - .:/mdl_search
-    ports:
-      - "3000:3000"
-    links:
-      - solr
-    depends_on:
-      - solr
-    environment:
-      - GEONAMES_USER
-      - GEONAMES_TOKEN
-  sidekiq:
-    build: .
-    command: bundle exec sidekiq  -c 10 -r /mdl_search
-    volumes:
-      - .:/mdl_search
-    links:
-      - redis
-    env_file:
-      - .env
-    environment:
-      - GEONAMES_USER
-      - GEONAMES_TOKEN
-  webpacker:
-    build: .
-    command: ./bin/webpack-dev-server
+    command: >
+      bash -c "
+        RAILS_ENV=test rails s -b 0.0.0.0 -p 3001 --pid `pwd`/tmp/pids/server-test.pid &
+        # Run web server
+        rails s -b 0.0.0.0 -p 3000"
+    ports: ['3000:3000', '3001:3001']
     volumes:
       - .:/app
-    ports:
-      - '8080:8080'
+    links:
+      - solr
+      - db
+      - selenium
+    depends_on:
+      - solr
+  db:
+    image: library/mysql:5.7
+    env_file:
+      - .env
+    volumes:
+      - reflections-db-test-data-mysql-5-7:/var/lib/mysql
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq -q critical,2 -c 1 -q default -c 2 -r /app
+    volumes:
+      - .:/app
+    links:
+      - redis
+      - db
+    env_file:
+      - .env
   redis:
     image: redis:latest
-  redis:
-    image: redis:latest
+  redis_cache:
+    image: redis:4.0.10
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+        - ./docker/redis-cache.conf:/usr/local/etc/redis/redis.conf
+
+  webpacker:
+      build: .
+      command: ./bin/webpack-dev-server
+      volumes:
+        - .:/app
+      ports:
+        - '8080:8080'
+  selenium:
+    image: selenium/standalone-chrome-debug:latest
+    ports: ['4444:4444', '5900:5900']
+    stdin_open: true
+    tty: true
+volumes:
+  reflections-db-data-mysql-5-7:
+    driver: local
+  reflections-db-test-data-mysql-5-7:
+    driver: local
+

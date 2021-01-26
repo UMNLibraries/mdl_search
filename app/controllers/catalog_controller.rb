@@ -13,6 +13,8 @@ class CatalogController < ApplicationController
   end
 
   include Blacklight::Catalog
+  include BlacklightRangeLimit::ControllerOverride
+  include BlacklightAdvancedSearch::Controller
 
 
   ## Blacklight Override
@@ -85,6 +87,13 @@ class CatalogController < ApplicationController
   end
 
   configure_blacklight do |config|
+    # default advanced config values
+    config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
+    # config.advanced_search[:qt] ||= 'advanced'
+    config.advanced_search[:url_key] ||= 'advanced'
+    config.advanced_search[:query_parser] ||= 'dismax'
+    config.advanced_search[:form_solr_parameters] ||= {}
+
     ## Class for sending and receiving requests from a search index
     # config.repository_class = Blacklight::Solr::Repository
     #
@@ -105,7 +114,7 @@ class CatalogController < ApplicationController
 
     config.default_per_page = 25
 
-    config.autocomplete_enabled = true
+    config.autocomplete_enabled = false
     config.autocomplete_path = 'suggest'
 
     config.index.thumbnail_method = :cached_thumbnail_tag
@@ -164,14 +173,60 @@ class CatalogController < ApplicationController
     #  (useful when user clicks "more" on a large facet and wants to navigate alphabetically across a large set of results)
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
-    config.add_facet_field 'topic_ssim', label: 'Topic'
-    config.add_facet_field 'type_ssi', label: 'Type', show: true, collapse: false, limit: 10
-    config.add_facet_field 'physical_format_ssi', label: 'Physical Format', show: true, index_range: 'A'..'Z', collapse: false, index: true, limit: 5
-    config.add_facet_field 'dat_ssi', label: 'Date Created', collapse: false, limit: 5
-    config.add_facet_field 'placename_ssim', label: 'Location', index_range: 'A'..'Z', collapse: false, limit: 5, index: true
-    config.add_facet_field 'formal_subject_ssim', label: 'Subject Headings', show: true, index_range: 'A'..'Z', collapse: false, limit: 5, index: true
-    config.add_facet_field 'collection_name_ssi', label: 'Contributor', index_range: 'A'..'Z', collapse: false, limit: 5, index: true
+    config.add_facet_field 'topic_ssim' do |field|
+      field.collapse = false
+      field.label = 'Topic'
+    end
+    config.add_facet_field 'type_ssi' do |field|
+      field.label = 'Type'
+      field.collapse = false
+      field.show = true
+      field.limit = 10
+    end
+    config.add_facet_field 'physical_format_ssi' do |field|
+      field.label = 'Physical Format'
+      field.show = true
+      field.index_range = 'A'..'Z'
+      field.collapse = false
+      field.index = true
+      field.limit = 5
+    end
+    config.add_facet_field 'dat_ssim' do |field|
+      field.label = 'Date Created'
+      field.collapse = false
+      field.range = true
+    end
+    config.add_facet_field 'placename_ssim' do |field|
+      field.label = 'Location'
+      field.index_range = 'A'..'Z'
+      field.collapse = false
+      field.limit = 5
+      field.index = true
+    end
+    config.add_facet_field 'formal_subject_ssim' do |field|
+      field.label = 'Subject Headings'
+      field.show = true
+      field.index_range = 'A'..'Z'
+      field.collapse = false
+      field.limit = 5
+      field.index = true
+    end
+    config.add_facet_field 'collection_name_ssi' do |field|
+      field.label = 'Contributor'
+      field.index_range = 'A'..'Z'
+      field.collapse = false
+      field.limit = 5
+      field.index = true
+    end
 
+    ###
+    # This is from advanced search, and needs to be here in order
+    # for the catalog/constraints partial to correctly represent
+    # this field's name. Without it we show "Rights status ssi"
+    config.add_facet_field 'rights_status_ssi' do |field|
+      field.include_in_simple_search = false
+      field.label = 'Rights Status'
+    end
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -180,12 +235,12 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field 'creator_tesi', label: 'Creator',:highlight => true
-    config.add_index_field 'dat_tesi', label: 'Date Created',:highlight => true
-    config.add_index_field 'description_ts', label: 'Description',:highlight => true
-    config.add_index_field 'contributing_organization_tesi', label: 'Contributing Institution',:highlight => true
-    config.add_index_field 'type_tesi', label: 'Type',:highlight => true
-    config.add_index_field 'physical_format_tesi', label: 'Format',:highlight => true
+    config.add_index_field 'creator_tesi', label: 'Creator', highlight: true
+    config.add_index_field 'dat_tesi', label: 'Date Created', highlight: true
+    config.add_index_field 'description_ts', label: 'Description', highlight: true
+    config.add_index_field 'contributing_organization_tesi', label: 'Contributing Institution', highlight: true
+    config.add_index_field 'type_tesi', label: 'Type', highlight: true
+    config.add_index_field 'physical_format_tesi', label: 'Format', highlight: true
 
 
     # solr fields to be displayed in the show (single result) view
@@ -252,6 +307,46 @@ class CatalogController < ApplicationController
       }
     end
 
+    ###
+    # Advanced search fields
+    #
+    # These are also in the advanced controller blacklight config, but
+    # must be here as well in order for the parameters to be recognized
+    # when the advanced search form is submitted.
+    config.add_search_field('transcript') do |field|
+      field.include_in_simple_search = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$transcription_qf',
+        pf: '$transcription_pf'
+      }
+    end
+    config.add_search_field('description') do |field|
+      field.include_in_simple_search = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$description_qf',
+        pf: '$description_pf'
+      }
+    end
+    config.add_search_field('city_or_township') do |field|
+      field.include_in_simple_search = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$city_or_township_qf',
+        pf: '$city_or_township_pf'
+      }
+    end
+    config.add_search_field('county') do |field|
+      field.include_in_simple_search = false
+      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+      field.solr_local_parameters = {
+        qf: '$county_qf',
+        pf: '$county_pf'
+      }
+    end
+
+
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
@@ -267,9 +362,5 @@ class CatalogController < ApplicationController
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
     config.spell_max = 5
-
-    # Configuration for autocomplete suggestor
-    config.autocomplete_enabled = true
-    config.autocomplete_path = 'suggest'
   end
 end

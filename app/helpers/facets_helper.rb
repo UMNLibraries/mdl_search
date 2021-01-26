@@ -12,6 +12,18 @@ module FacetsHelper
       })['facet_counts']['facet_fields'][field].length / 2
   end
 
+  # type is 'begin' or 'end'
+  def render_empty_range_input(solr_field, type, input_label = nil, maxlength=4)
+    placeholder = {
+      begin: 'From (ex. 1982)',
+      end: 'To (ex. 1989)'
+    }[type]
+    type = type.to_s
+
+    html = label_tag("range[#{solr_field}][#{type}]", input_label, class: 'sr-only') if input_label.present?
+    html ||= ''.html_safe
+    html += text_field_tag("range[#{solr_field}][#{type}]", nil, maxlength: maxlength, class: "form-control range_#{type}", placeholder: placeholder)
+  end
 
   ##
   # Render a collection of facet fields.
@@ -26,6 +38,9 @@ module FacetsHelper
     end.compact, "\n")
   end
 
+  def advanced_search_facets
+    facets_from_request(facet_field_names).select { |f| should_render_facet?(f) }
+  end
 
   ##
   # Standard display of a facet value in a list. Used in both _facets sidebar
@@ -40,7 +55,7 @@ module FacetsHelper
   def render_facet_value(facet_field, item, options ={})
     path = path_for_facet(facet_field, item)
     val = facet_display_value(facet_field, item)
-    content_tag(:li, :class => "facet-label #{type_class(val)}") do
+    content_tag(options.fetch(:tag_name, :li), :class => "facet-label #{type_class(val)}") do
       link_to_unless(options[:suppress_link], facet_display_value(facet_field, item), path, :class=>"facet_select")
     end + render_facet_count(item.hits)
   end

@@ -14,6 +14,7 @@ module MDL
 
     it 'produces a configuration for Videos' do
       expect(video).to receive(:transcripts)
+      expect(video).to receive(:video_playlist_id)
       expect(viewer(video)).to be_kind_of(Hash)
       expect(viewer(video)['type']).to eq 'kaltura_video'
       expect(viewer(video)['targetId']).to eq 'kaltura_player_video'

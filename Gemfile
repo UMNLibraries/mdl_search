@@ -5,10 +5,10 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'mysql2', '~> 0.3.18'
+gem 'mysql2', '~> 0.4.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.2'
+gem 'rails', '~> 5.2.0'
 # # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # # Use Uglifier as compressor for JavaScript assets
@@ -35,7 +35,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'binding_of_caller'
-  gem 'meta_request'
+  gem 'meta_request', '~> 0.7.2'
   gem 'capistrano', '~> 3.6'
   gem 'capistrano-rails'
   gem 'capistrano-sidekiq'
@@ -59,26 +59,30 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'database_cleaner'
-  gem 'capybara-webkit'
   gem 'vcr'
   gem 'webmock'
 end
 
 gem 'blacklight', '~> 6.10.1'
-gem 'rsolr', '~> 2.0.2'
-gem 'globalid'
-gem 'webpacker'
+gem 'blacklight_advanced_search', '~> 6.4'
+gem 'blacklight_range_limit', '~> 6.5'
+gem 'chosen-rails', '~> 1.9'
+gem 'rsolr', '2.0.2'
+gem 'globalid', '0.4.2'
+gem 'webpacker', '2.0'
 
 # # CONTENTdm ETL
-gem 'devise'
-gem 'devise-guests'
-gem 'hash_at_path'
-gem 'cdmbl'
-gem 'sidekiq'
-gem 'sinatra', require: false
-gem 'sidekiq-failures'
-gem 'whenever', :require => false
+gem 'devise', '4.6.2'
+gem 'devise-guests', '0.6.0'
+gem 'hash_at_path', '0.1.5'
+gem 'cdmbl', '0.17.1'
+gem 'sidekiq', '5.2.7'
+gem 'sinatra', '2.0.4', require: false
+gem 'sidekiq-failures', '1.0.0'
+gem 'whenever', '0.9.7', :require => false
 
 # Autmatically link URLs in citation details
-gem 'rinku'
+gem 'rinku', '2.0.2'
+gem 'redis-rails', '5.0.2'

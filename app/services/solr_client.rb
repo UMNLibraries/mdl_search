@@ -22,12 +22,27 @@ class SolrClient
     Blacklight.default_index.connection
   end
 
-  def swap_cores
-    Net::HTTP.get_response(URI("#{ENV['SOLR_BASE_URL']}/solr/admin/cores?action=SWAP&core=#{ENV['SOLR_CORE_0']}&other=#{ENV['SOLR_CORE_1']}"))
+  def delete_by_query(query)
+    client.delete_by_query query
   end
 
   def delete_index
     client.delete_by_query '*:*'
     client.commit
+  end
+
+  def backup(number_to_keep: 1)
+    client.get 'replication', params: {
+      command: 'backup',
+      location: ENV['SOLR_BACKUP_LOCATION'],
+      numberToKeep: number_to_keep
+    }
+  end
+
+  def restore
+    client.get 'replication', params: {
+      command: 'restore',
+      location: ENV['SOLR_BACKUP_LOCATION']
+    }
   end
 end

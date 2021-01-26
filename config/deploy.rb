@@ -37,25 +37,21 @@ set :default_environment, {
   'PATH' => "/swadm/bin/ruby:$PATH"
 }
 
+append :linked_dirs, "log"
+
+set :rails_env, "production"
+
+set :passenger_restart_with_touch, true
+
+# Restart all sidekiq instances so they can pick up the new code
 namespace :deploy do
-
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-      # execute :touch, release_path.join('tmp/restart.txt')
+  ###
+  # Called by capistrano-sidekiq
+  task :restart_sidekiq do
+    on roles(:all) do |host|
+      (0..2).map do |pid|
+        execute "sudo systemctl restart sidekiq-#{pid}"
+      end
     end
   end
-
-  after :publishing, :restart
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
-
 end
