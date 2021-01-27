@@ -313,14 +313,16 @@ class CatalogController < ApplicationController
     # These are also in the advanced controller blacklight config, but
     # must be here as well in order for the parameters to be recognized
     # when the advanced search form is submitted.
-    config.add_search_field('transcript') do |field|
-      field.include_in_simple_search = false
-      field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
-      field.solr_local_parameters = {
-        qf: '$transcription_qf',
-        pf: '$transcription_pf'
-      }
-    end
+    #
+    # Commenting out transcript until we have a good plan for transcript search results - PKS
+    #config.add_search_field('transcript') do |field|
+    #  field.include_in_simple_search = false
+    #  field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
+    #  field.solr_local_parameters = {
+    #    qf: '$transcription_qf',
+    #    pf: '$transcription_pf'
+    #  }
+    #end
     config.add_search_field('description') do |field|
       field.include_in_simple_search = false
       field.solr_parameters = { :'spellcheck.dictionary' => 'default' }
