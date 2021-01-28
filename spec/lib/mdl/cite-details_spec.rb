@@ -58,7 +58,7 @@ describe MDL::CiteDetails do
     end
 
     it 'transforms the topic field' do
-      expect(subject.to_hash[:fields][8]).to eq({:label => "Minnesota Reflections Topic", :field_values=>[{:text=>"Environment", :url=>"/catalog?f[topic_ssim][]=Environment"}]})
+      expect(subject.to_hash[:fields][8]).to eq({:label => "Minnesota Digital Library Topic", :field_values=>[{:text=>"Environment", :url=>"/catalog?f[topic_ssim][]=Environment"}]})
     end
 
     it 'transforms the type field' do
