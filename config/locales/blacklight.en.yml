@@ -1,6 +1,6 @@
 en:
   blacklight:
-    application_name: 'Minnesota Reflections'
+    application_name: 'Minnesota Digital Library'
     search:
       fields:
         table_ssim: "Page Titles"
