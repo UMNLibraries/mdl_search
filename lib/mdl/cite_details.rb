@@ -101,7 +101,7 @@ module MDL
         {key: 'dat_ssi', label: 'Date Created'},
         {key: 'publishing_agency_ssi', label: 'Publishing Agency', facet: true},
         {key: 'dimensions_ssi', label: 'Dimensions', facet: true},
-        {key: 'topic_ssim', label: 'Minnesota Reflections Topic', facet: true},
+        {key: 'topic_ssim', label: 'Minnesota Digital Library Topic', facet: true},
         {key: 'type_ssi', label: 'Type', facet: true},
         {key: 'physical_format_ssi', label: 'Physical Format', facet: true},
         {key: 'formal_subject_ssim', label: 'Library of Congress Subject Headings', facet: true},
