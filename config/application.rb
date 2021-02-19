@@ -38,5 +38,11 @@ module MdlSearch
 
     # Compress pages
     config.middleware.use Rack::Deflater
+
+    config.to_prepare do
+      Dir.glob("#{Rails.root}/app/overrides/**/*_override.rb").each do |override|
+        require_dependency override
+      end
+    end
   end
 end
