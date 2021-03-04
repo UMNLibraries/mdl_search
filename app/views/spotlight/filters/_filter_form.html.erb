@@ -7,6 +7,9 @@
   <div class="form-actions">
     <div class="primary-actions">
       <%= f.submit 'Save', class: 'btn btn-primary' %>
+      <% if filter.persisted? %>
+        <%= link_to 'Delete', spotlight_exhibit_filter_path(exhibit, filter), method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </div>
   </div>
 <% end %>

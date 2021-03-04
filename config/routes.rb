@@ -47,6 +47,15 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :spotlight do
+    resources :exhibit do
+      ###
+      # Wires up to our app/overrides/spotlight/filters_controller_override.rb
+      # extension
+      resources :filters, only: [:destroy]
+    end
+  end
+
   get 'contentdm-images' => 'contentdm_images#show'
   get 'contentdm-images/info' => 'contentdm_images#info'
   get 'thumbnails/:id/(:type)' => 'thumbnails#show', as: 'thumbnail'
