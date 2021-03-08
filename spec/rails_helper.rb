@@ -41,6 +41,8 @@ end
 #
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
+require Rails.root.join('spec/requests/oai_response_examples')
+
 # Checks for pending migration and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
@@ -78,6 +80,10 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 
   config.before(:each, type: :feature) do
+    SolrClient.new.delete_index
+  end
+
+  config.before(:each, type: :request) do
     SolrClient.new.delete_index
   end
 end

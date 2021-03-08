@@ -65,6 +65,10 @@ GEM
     blacklight_advanced_search (6.4.1)
       blacklight (~> 6.0, >= 6.0.1)
       parslet
+    blacklight_oai_provider (6.0.0)
+      blacklight (~> 6.0)
+      oai (~> 0.4)
+      rails (>= 4.2, < 6)
     blacklight_range_limit (6.5.0)
       blacklight (~> 6.10)
       jquery-rails
@@ -160,6 +164,8 @@ GEM
       i18n (~> 0.5)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.14.0)
+      faraday (>= 0.7.4, < 1.0)
     ffi (1.9.25)
     fontello_rails_converter (0.4.6)
       activesupport
@@ -237,6 +243,10 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
+    oai (0.4.0)
+      builder (>= 3.1.0)
+      faraday
+      faraday_middleware
     orm_adapter (0.5.0)
     parslet (2.0.0)
     pry (0.13.1)
@@ -452,6 +462,7 @@ DEPENDENCIES
   binding_of_caller
   blacklight (~> 6.10.1)
   blacklight_advanced_search (~> 6.4)
+  blacklight_oai_provider (~> 6.0)
   blacklight_range_limit (~> 6.5)
   capistrano (~> 3.6)
   capistrano-bundler (~> 1.1.2)
