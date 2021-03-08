@@ -2,6 +2,8 @@
 class SolrDocument
 
   include Blacklight::Solr::Document
+  include BlacklightOaiProvider::SolrDocument
+
 
   # self.unique_key = 'id'
 
@@ -18,7 +20,23 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension( Blacklight::Document::DublinCore)
 
-
+  ###
+  # These define the metadata that's returned for each record
+  # when calling the OAI GetRecord verb
+  field_semantics.merge!(
+    creator: 'creator_tesi',
+    date: 'dat_ssi',
+    subject: 'subject_ssim',
+    title: 'title_ssi',
+    language: 'language_ssi',
+    format: 'physical_format_tesi',
+    type: 'type_ssi',
+    description: 'description_ts',
+    source: 'publishing_agency_ssi',
+    relation: 'topic_ssim',
+    publisher: 'contributing_organization_ssi',
+    rights: 'rights_ssi'
+  )
 
   def more_like_this
     mlt_assets solr.more_like_this(query)['response']['docs']
@@ -32,6 +50,9 @@ class SolrDocument
     "(#{mlt_values}) AND -#{self.id}"
   end
 
+  def sets
+    OaiSet.sets_for(self)
+  end
 
   private
 
