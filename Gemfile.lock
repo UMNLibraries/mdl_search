@@ -1,3 +1,14 @@
+PATH
+  remote: ../cdmbl
+  specs:
+    cdmbl (0.17.1)
+      activesupport (>= 4.2)
+      contentdm_api (~> 0.5.0)
+      hash_at_path (~> 0.1)
+      rsolr (~> 2.0)
+      sidekiq (>= 3.5)
+      titleize (~> 1.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -102,13 +113,6 @@ GEM
       regexp_parser (~> 1.2)
       uglifier
       xpath (~> 3.2)
-    cdmbl (0.17.1)
-      activesupport (>= 4.2)
-      contentdm_api (~> 0.5.0)
-      hash_at_path (~> 0.1)
-      rsolr (~> 2.0)
-      sidekiq (>= 3.5)
-      titleize (~> 1.4)
     childprocess (1.0.1)
       rake (< 13.0)
     chosen-rails (1.9.0)
@@ -183,7 +187,7 @@ GEM
       http_parser.rb (~> 0.6.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    http-form_data (2.1.1)
+    http-form_data (2.3.0)
     http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -470,7 +474,7 @@ DEPENDENCIES
   capistrano-rails
   capistrano-sidekiq
   capybara
-  cdmbl (= 0.17.1)
+  cdmbl (= 0.17.1)!
   chosen-rails (~> 1.9)
   coffee-rails (~> 4.2)
   coveralls
