@@ -25,9 +25,10 @@ module MDL
         cdm_endpoint: 'https://server16022.contentdm.oclc.org/dmwebservices/index.php',
         max_compounds: 1,
         batch_size: 5,
-        solr_config: solr_config,
-        from: 8.days.ago.to_date.iso8601
-      }
+        solr_config: solr_config
+      }.tap do |hsh|
+        hsh[:from] = 8.days.ago.to_date.iso8601 unless ENV['INGEST_ALL']
+      end
     end
 
     def set_specs
