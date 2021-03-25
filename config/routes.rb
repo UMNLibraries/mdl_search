@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'thumbnail_link/:id' => 'thumbnail_links#show'
 
   get ":page" => "pages#show", constraints: lambda { |request|
-    request.params[:page] != 'catalog' && request.params[:page] != 'sidekiq'
+    %w(catalog sidekiq indexing).exclude?(request.params[:page])
   }
 
   require 'sidekiq/web'
@@ -52,6 +52,8 @@ Rails.application.routes.draw do
   get 'contentdm-images/info' => 'contentdm_images#info'
   get 'thumbnails/:id/(:type)' => 'thumbnails#show', as: 'thumbnail'
 
+  get 'indexing' => 'indexing#index', as: 'indexing'
+  post 'indexing' => 'indexing#create'
 
   devise_for :users, skip: [:logout]
   devise_scope :user do

@@ -78,7 +78,7 @@ gem 'webpacker', '2.0'
 gem 'devise', '4.6.2'
 gem 'devise-guests', '0.6.0'
 gem 'hash_at_path', '0.1.6'
-gem 'cdmbl', '0.17.1'
+gem 'cdmbl', '0.18.0'
 gem 'sidekiq', '5.2.7'
 gem 'sinatra', '2.0.4', require: false
 gem 'sidekiq-failures', '1.0.0'
