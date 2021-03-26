@@ -6,9 +6,16 @@ class IndexingController < ApplicationController
   include Blacklight::Catalog
 
   blacklight_config.configure do |config|
+    ###
+    # Using an arbitrary high number to effectively remove the
+    # limit Blacklight applies to the facet query. Setting a
+    # limit on the facet itself (-1) doesn't seem to work in
+    # this case as it does in AdvancedController. The actual
+    # total count for the oai_set_ssi facet is around 200, so
+    # this should give us some room to grow.
+    config.default_more_limit = 1_000_000
     config.add_facet_field FACET_FIELD do |field|
       field.index_range = 'A'..'Z'
-      field.limit = -1 # Blacklight's default is 100, but we do not want to limit
     end
   end
 
