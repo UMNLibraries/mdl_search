@@ -87,3 +87,5 @@ gem 'whenever', '0.9.7', :require => false
 # Autmatically link URLs in citation details
 gem 'rinku', '2.0.2'
 gem 'redis-rails', '5.0.2'
+
+gem 'sentry-raven'
