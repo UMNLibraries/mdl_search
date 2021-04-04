@@ -73,6 +73,7 @@ gem 'chosen-rails', '~> 1.9'
 gem 'rsolr', '2.0.2'
 gem 'globalid', '0.4.2'
 gem 'webpacker', '2.0'
+gem 'cancancan', '~> 3.2.1'
 
 # # CONTENTdm ETL
 gem 'devise', '4.6.2'
@@ -82,7 +83,7 @@ gem 'cdmbl', '0.18.0'
 gem 'sidekiq', '5.2.7'
 gem 'sinatra', '2.0.4', require: false
 gem 'sidekiq-failures', '1.0.0'
-gem 'whenever', '0.9.7', :require => false
+gem 'whenever', '0.9.7', require: false
 
 # Autmatically link URLs in citation details
 gem 'rinku', '2.0.2'
