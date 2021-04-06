@@ -1,5 +1,6 @@
 class IndexingController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_authorization
 
   FACET_FIELD = 'oai_set_ssi'.freeze
 
@@ -48,5 +49,9 @@ class IndexingController < ApplicationController
         config[:from] = Date.parse(params[:date]).iso8601
       end
     end
+  end
+
+  def check_authorization
+    authorize! :index, :collections
   end
 end
