@@ -40,9 +40,13 @@ class IndexingController < ApplicationController
   end
 
   def etl_config
-    MDL::ETL.new.config.merge(
-      set_spec: params.require(:collection),
-      from: Date.parse(params.require(:date)).iso8601
-    )
+    collection = params.require(:collection)
+    MDL::ETL.new.config.merge(set_spec: collection).tap do |config|
+      if params[:date].empty?
+        config.delete(:from)
+      else
+        config[:from] = Date.parse(params[:date]).iso8601
+      end
+    end
   end
 end
