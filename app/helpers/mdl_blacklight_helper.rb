@@ -61,6 +61,10 @@ module MdlBlacklightHelper
 
   def build_anchor(doc)
     anchor = doc['borealis_fragment_ssi']
+    if anchor == '/kaltura_audio' && doc['kaltura_audio_playlist_ssi']
+      anchor = '/kaltura_audio_playlist'
+    end
+
     if anchor == '/kaltura_video' && doc['kaltura_video_playlist_ssi']
       anchor = '/kaltura_video_playlist'
     end
