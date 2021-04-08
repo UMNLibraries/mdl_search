@@ -76,7 +76,7 @@ gem 'webpacker', '2.0'
 gem 'cancancan', '~> 3.2.1'
 
 # # CONTENTdm ETL
-gem 'devise', '4.6.2'
+gem 'devise', '4.7.1'
 gem 'devise-guests', '0.6.0'
 gem 'hash_at_path', '0.1.6'
 gem 'cdmbl', '0.18.0'
