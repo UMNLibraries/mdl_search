@@ -1,5 +1,6 @@
 require 'cdmbl'
 require 'mdl/transformer'
+require 'mdl/job_auditing'
 
 module MDL
   ###
@@ -81,18 +82,19 @@ module MDL
   end
 
   class TransformWorker < CDMBL::TransformWorker
+    prepend EtlAuditing
+
     def transformer_klass
       @transformer_klass ||= CompoundAggregatingTransformer
     end
   end
 
   class ETLWorker < CDMBL::ETLWorker
-    def transform_worker_klass
-      @transform_worker_klass ||= TransformWorker
-    end
+    prepend EtlAuditing
 
-    def etl_worker_klass
-      @etl_worker_klass ||= self.class
+    def initialize
+      @transform_worker_klass = TransformWorker
+      @etl_worker_klass = self.class
     end
   end
 end
