@@ -27,6 +27,8 @@ module CDMBL
       Rails.logger.info "CDMBL: Loading #{ingestables.length} records and deleting #{deletables.length}"
     end
   end
+
+  LoadWorker.prepend(MDL::EtlAuditing)
 end
 
 ###

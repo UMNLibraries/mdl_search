@@ -1,0 +1,49 @@
+module MDL
+  module EtlAuditing
+    JobNotYetCreatedError = Class.new(StandardError)
+
+    module ClassMethods
+      def perform_async(*args)
+        jid = super
+        ###
+        # TODO: update CDMBL so jobs have a reference to an indexing run
+        # rather than assume the last one is the one we care about. This
+        # will work, though, unless we start running multiple indexing
+        # runs at the same time.
+        IndexingRun.last.jobs.create!(job_id: jid)
+        jid
+      end
+    end
+
+    def self.prepended(base)
+      class << base
+        prepend ClassMethods
+      end
+    end
+
+    def perform(*args)
+      ###
+      # The job can be picked up by a worker before the Job record
+      # is even created. If that happens, raise an exception to
+      # trigger Sidekiq's retry logic. JobNotYetCreatedError is
+      # ignored by Sentry, so it won't be noisy.
+      job = Job.find_by(job_id: self.jid) || raise(JobNotYetCreatedError)
+      indexing_run = job.indexing_run
+
+      super
+
+      job.update(completed_at: Time.current)
+      notify_complete if indexing_finished?(indexing_run)
+    end
+
+    private
+
+    def notify_complete
+      Raven.send_event(Raven::Event.new(message: 'ETL Finished'))
+    end
+
+    def indexing_finished?(indexing_run)
+      indexing_run.jobs.where(completed_at: nil).none?
+    end
+  end
+end
