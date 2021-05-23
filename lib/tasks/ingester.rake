@@ -29,6 +29,8 @@ namespace :mdl_ingester do
 
   def run_etl!(set_specs = [])
     puts "Indexing Sets: '#{set_specs.join(', ')}'"
+    IndexingRun.create!
+    Raven.send_event(Raven::Event.new(message: 'ETL Started'))
     CDMBL::ETLBySetSpecs.new(
       set_specs: set_specs,
       etl_config: config,

@@ -5,7 +5,7 @@ module MDL
                 :field_mappings,
                 :filter_callback,
                 :set_spec_filter
-    def initialize(oai_endpoint: 'http://cdm16022.contentdm.oclc.org/oai/oai.php',
+    def initialize(oai_endpoint: 'https://cdm16022.contentdm.oclc.org/oai/oai.php',
                   set_spec_pattern: /^ul_([a-zA-Z0-9])*\s-\s/,
                   field_mappings:  Transformer.field_mappings,
                   filter_callback: CDMBL::RegexFilterCallback,
@@ -26,7 +26,9 @@ module MDL
         max_compounds: 1,
         batch_size: 5,
         solr_config: solr_config
-      }
+      }.tap do |hsh|
+        hsh[:from] = 8.days.ago.to_date.iso8601 unless ENV['INGEST_ALL']
+      end
     end
 
     def set_specs

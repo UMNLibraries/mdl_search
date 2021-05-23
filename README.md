@@ -4,20 +4,57 @@ An implementation of the [Blacklight Search](http://projectblacklight.org/) plat
 
 # Developer Quickstart
 
-Follow the [development environment setup](https://github.com/Minitex/mdl_search/wiki/Development-Environment-Setup) instructions.
+## Local/Docker hybrid
+
+We'll run the Rails app locally, but the databases (MySQL, Redis, and Solr) are containerized.
+
+Install [Docker](https://docs.docker.com/engine/install/) and Docker Compose
+Install [Docker Compose](https://docs.docker.com/compose/)
+
+Copy the .env-example file
+
+```bash
+cp .env-example .env
+```
+
+Install Ruby 2.4 via [RVM](http://rvm.io/) or [rbenv](https://github.com/rbenv/rbenv)
+
+(rvm instructions)
+```bash
+rvm install ruby-2.4
+```
+
+Install MySQL and Redis clients, as well as geckodriver for system tests run via Selenium.
+
+```bash
+brew install mysql@5.7 redis geckodriver
+```
+
+Install Node via [NVM](https://github.com/nvm-sh/nvm) (or preferred alternative)
+
+```bash
+nvm install 12
+```
+
+Install Yarn
+
+```bash
+npm i -g yarn
+```
+
+Run the setup script (builds Docker images for dependencies)
+
+```bash
+./local-dev-init.sh
+```
+
+[Ingest some content](https://github.com/Minitex/mdl_search/wiki/Development-Environment-Setup#ingest-some-content)
 
 ## Interacting with the App on the Command Line
 
 Enter an interactive session with the application (must be running in another tab):
 
-`$ docker-compose exec web /bin/bash`
-
-Replace `/bin/bash` with `rails console` to skip right to a Rails console session.
-
-Execute a task in the Rails Test Environment (e.g. run some tests):
-
-`$ docker-compose exec -e "RAILS_ENV=test" web rspec`
-
+`$ bundle exec rails console`
 
 ## Troubleshooting
 
@@ -41,18 +78,22 @@ For more details on how to develop and build these React components, see the [Re
 
 # Testing
 
-A complete test environment comes package with `mdl_search`. This includes a test Solr instance as well as a separate running web application test instance.
+```bash
+###
+# Full suite
+bundle exec rspec
 
-To run the test suite: `./docker-compose-test rspec`
+###
+# Single directory
+bundle exec rspec spec/features/
 
-Note: The `./docker-compose-test` simply executes commands against the `web` service running in your app and sets the Rails Environment to "test".
+###
+# Single file
+bundle exec rspec spec/lib/borealis_image_spec.rb
+```
 
-There is a single, standardized Solr test instance (temporarily) stored on [Dockerhub](https://cloud.docker.com/repository/registry-1.docker.io/cfennell/mdl_solr/tags). Any container storage system (e.g. Artifactory docker) could store this container. This instance contains a handful of representative records and can be updated as new test cases are identified.
-
-### Watching Your Functional Tests (Helpful for Debugging)
-
-The Reflections `docker-compose.yml` comes equipped with a selenium server running VNC. To watch Selenium as it drives the test browser, install a [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) and connect it to `http://localhost:5900` with the password "`secret`".
-
+We have separate Docker containers for development and test environments so that you can run tests without
+worrying about affecting your local development data.
 
 # Developer Tips
 

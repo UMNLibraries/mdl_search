@@ -27,4 +27,23 @@ module CDMBL
       Rails.logger.info "CDMBL: Loading #{ingestables.length} records and deleting #{deletables.length}"
     end
   end
+
+  LoadWorker.prepend(MDL::EtlAuditing)
+end
+
+###
+# The CONTENTdmAPI::Request constructor uses dependency injection to
+# provide an http client. The default value for that is `HTTP`, which
+# normally resovles to the httprb library, which is fine in practice,
+# but is not compatible with WebMock which makes testing more difficult.
+# Providing a namespaced HTTP constant that uses Net::HTTP under the
+# hood solves that problem.
+module CONTENTdmAPI
+  class HTTP
+    class << self
+      def get(url)
+        Net::HTTP.get(URI(url))
+      end
+    end
+  end
 end

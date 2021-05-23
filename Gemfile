@@ -8,7 +8,7 @@ end
 gem 'mysql2', '~> 0.4.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.5'
 # # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # # Use Uglifier as compressor for JavaScript assets
@@ -47,7 +47,7 @@ end
 
 group :test, :development do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
+  gem 'pry-rails'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'faker'
@@ -68,21 +68,25 @@ end
 gem 'blacklight', '~> 6.10.1'
 gem 'blacklight_advanced_search', '~> 6.4'
 gem 'blacklight_range_limit', '~> 6.5'
+gem 'blacklight_oai_provider', '~> 6.0'
 gem 'chosen-rails', '~> 1.9'
 gem 'rsolr', '2.0.2'
 gem 'globalid', '0.4.2'
 gem 'webpacker', '2.0'
+gem 'cancancan', '~> 3.2.1'
 
 # # CONTENTdm ETL
 gem 'devise', '4.6.2'
 gem 'devise-guests', '0.6.0'
-gem 'hash_at_path', '0.1.5'
-gem 'cdmbl', '0.17.1'
+gem 'hash_at_path', '0.1.6'
+gem 'cdmbl', '0.18.0'
 gem 'sidekiq', '5.2.7'
 gem 'sinatra', '2.0.4', require: false
 gem 'sidekiq-failures', '1.0.0'
-gem 'whenever', '0.9.7', :require => false
+gem 'whenever', '0.9.7', require: false
 
 # Autmatically link URLs in citation details
 gem 'rinku', '2.0.2'
 gem 'redis-rails', '5.0.2'
+
+gem 'sentry-raven'
