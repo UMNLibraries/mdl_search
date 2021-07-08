@@ -2,7 +2,8 @@ module Ingestion
   module_function
 
   def ingest_record(id)
-    MDL::TransformWorker.new.perform(
+    worker = setup_worker
+    worker.perform(
       [id.split(':')],
       { url: config[:solr_config][:url] },
       config[:cdm_endpoint],
@@ -19,5 +20,15 @@ module Ingestion
 
   def config
     @config ||= etl.config
+  end
+
+  def setup_worker
+    run = IndexingRun.create!
+    worker = MDL::TransformWorker.new
+    worker.jid = SecureRandom.hex
+    run.jobs.create!(
+      job_id: worker.jid
+    )
+    worker
   end
 end
