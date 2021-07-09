@@ -65,7 +65,7 @@ module MdlBlacklightHelper
       anchor = '/kaltura_audio_playlist'
     end
 
-    if anchor == '/kaltura_video' && doc['kaltura_video_playlist_ssi']
+    if anchor == '/kaltura_video' && (doc['kaltura_video_playlist_ssi'] || doc['kaltura_audio_playlist_ssi'])
       anchor = '/kaltura_video_playlist'
     end
 

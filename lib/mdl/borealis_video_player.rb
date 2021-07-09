@@ -1,7 +1,7 @@
 module MDL
   class BorealisVideoPlayer < BorealisAssetsViewer
     def to_viewer
-      (asset.video_playlist_id) ? playlist : player
+      (asset.playlist_id) ? playlist : player
     end
 
     def player
@@ -29,7 +29,7 @@ module MDL
         'uiconf_id' => 38719361,
         'flashvars' => {
           'streamerType' => 'auto',
-          'playlistAPI.kpl0Id' => asset.video_playlist_id,
+          'playlistAPI.kpl0Id' => asset.playlist_id,
         },
         'transcript' => {
           'texts' => asset.transcripts,
